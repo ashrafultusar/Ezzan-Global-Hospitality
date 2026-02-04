@@ -1,252 +1,252 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogoutButton } from "@/components/auth/LogoutButton";
-import {
-  Menu,
-  X,
-  Home,
-  Info,
-  Briefcase,
-  Map,
-  Mail,
-  UserCircle,
-  LayoutDashboard,
-  ChevronDown,
-  User,
-  MessageCircle, // WhatsApp icon er moto kaj korbe
-  Send,
-} from "lucide-react";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
+import { Menu, X } from "lucide-react";
 
 const NAVIGATION_LINKS = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "About Us", href: "/aboutUs", icon: Info },
-  { name: "Universities", href: "/universities", icon: Info },
-  { name: "Why Malaysia", href: "/studyInMalaysia", icon: Briefcase },
-  { name: "Tourist Visa", href: "/touristVisa", icon: Map },
-  { name: "Blog", href: "/blog", icon: Mail },
-  { name: "Contact Us", href: "/contactUs", icon: Mail },
+  { name: "HOME", href: "/" },
+  { name: "HOTELS", href: "/hotels" },
+  { name: "SERVICES", href: "/services" },
+  { name: "GALLERY", href: "/gallery" },
+  { name: "CONTACT", href: "/contact" },
 ];
 
 export default function Navbar() {
-  const { data: session, status } = useSession();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const pathName = usePathname();
-
-  const isLoading = status === "loading";
-
-  const isStaff = useMemo(() => {
-    return (
-      session?.user?.role === "admin" || session?.user?.role === "moderator"
-    );
-  }, [session?.user?.role]);
-
-  const navLinks = useMemo(() => {
-    if (isStaff) {
-      return [
-        { name: "Dashboard", href: "/ts-staff-portal", icon: LayoutDashboard },
-        ...NAVIGATION_LINKS,
-      ];
-    }
-    return NAVIGATION_LINKS;
-  }, [isStaff]);
+  const [animate, setAnimate] = useState(false);
+  const [activeNav, setActiveNav] = useState("/");
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (mobileOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
+    if (mobileOpen) {
+      const timer = setTimeout(() => setAnimate(true), 10);
+      return () => clearTimeout(timer);
+    } else {
+      setAnimate(false);
+    }
   }, [mobileOpen]);
+
+  useEffect(() => {
+    setActiveNav(pathname);
+  }, [pathname]);
 
   return (
     <>
-      <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-60 border-b border-slate-100 shadow-sm transition-all duration-300">
+      <nav className="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-20 flex items-center justify-between">
-            {/* --- Left Side: Mobile Toggle & Logo --- */}
-            <div className="flex items-center gap-4">
+          <div className="h-24 flex items-center justify-between">
+            {/* --- Logo Section --- */}
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => setMobileOpen(true)}
-                aria-label="Open Menu"
-                className="lg:hidden p-2 cursor-pointer hover:bg-slate-100 rounded-xl transition-colors"
+                className="lg:hidden p-2 hover:bg-slate-100 rounded-lg"
               >
-                <Menu size={26} className="text-slate-700" />
+                <Menu size={24} className="text-slate-700" />
               </button>
-
-              <Link
-                href="/"
-                className="flex items-center gap-2 group active:scale-95 transition-transform"
-              >
-                <div className="relative h-16 w-16 sm:h-24 sm:w-24 shrink-0">
-                  <Image
-                    src="/assets/logo/logo.png"
-                    alt="Agency Logo"
-                    fill
-                    sizes="(max-width: 768px) 80px, 96px"
-                    priority
-                    className="object-contain"
-                  />
+              
+              <Link href="/" className="flex items-center gap-3 group">
+                <div className="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-inner">
+                  <span className="text-2xl">👑</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-serif font-bold text-slate-900 leading-tight">
+                    Ezzan Global
+                  </span>
+                  <span className="text-[10px] tracking-[0.2em] text-slate-500 font-medium uppercase">
+                    Hotels & Resorts
+                  </span>
                 </div>
               </Link>
             </div>
 
-            {/* --- Center: Desktop Navigation --- */}
-            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {navLinks.map((link) => {
-                const isActive = pathName === link.href;
-                const isDashboard = link.name === "Dashboard";
-
-                return (
+            {/* --- Desktop Navigation with Animation --- */}
+            <div className="hidden lg:flex items-center gap-1">
+              {NAVIGATION_LINKS.map((link) => (
+                <div key={link.href} className="relative group">
                   <Link
-                    key={link.href}
                     href={link.href}
-                    className={`px-4 py-2 text-[15px] font-semibold transition-all duration-200 rounded-full ${
-                      isActive
-                        ? "text-blue-700 bg-blue-50"
-                        : isDashboard
-                          ? "text-orange-600 hover:bg-orange-50"
-                          : "text-slate-600 hover:text-blue-600 hover:bg-slate-50"
+                    className={`px-6 py-2 font-medium transition-all duration-300 relative ${
+                      activeNav === link.href
+                        ? "text-[#D4AF37] font-bold"
+                        : "text-slate-700 hover:text-[#D4AF37]"
                     }`}
                   >
-                    {link.name}
+                    <span className="relative z-10">{link.name}</span>
+                    
+                    {/* Animated underline */}
+                    <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-[#D4AF37] transition-all duration-300 ${
+                      activeNav === link.href
+                        ? "w-16 opacity-100"
+                        : "w-0 opacity-0 group-hover:w-16 group-hover:opacity-100"
+                    }`} />
+                    
+                    {/* Hover background animation */}
+                    <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#D4AF37]/0 via-[#D4AF37]/5 to-[#D4AF37]/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
                   </Link>
-                );
-              })}
+                </div>
+              ))}
             </div>
 
-            <div className="flex items-center gap-2 sm:gap-4">
-              {/* Profile / Login Logic */}
-              <div className="flex items-center gap-3">
-                {isLoading ? (
-                  <div className="h-10 w-10 bg-slate-100 animate-pulse rounded-full" />
-                ) : session?.user ? (
-                  <div className="relative">
-                    <button
-                      onClick={() => setProfileOpen(!profileOpen)}
-                      className="flex items-center gap-1 p-1 rounded-full border border-blue-200 hover:border-blue-400 hover:bg-slate-50 transition-all outline-none"
-                    >
-                      <User className="text-[#14919B]" />
-                      <ChevronDown
-                        size={14}
-                        className={`text-slate-400 transition-transform duration-200 ${
-                          profileOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {profileOpen && (
-                      <>
-                        <div
-                          className="fixed inset-0 z-10 "
-                          onClick={() => setProfileOpen(false)}
-                        ></div>
-                        <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                          <div className="p-4 border-b  bg-linear-to-br from-slate-50 to-white">
-                            <p className="text-sm font-bold text-slate-900 truncate">
-                              {session?.user?.name}
-                            </p>
-                            <p className="text-xs text-slate-500 truncate mb-2">
-                              {session?.user?.email}
-                            </p>
-                            {isStaff && (
-                              <span className="inline-flex items-center px-2.5 py-0.5 bg-orange-100 text-orange-700 text-[10px] font-black rounded-full uppercase tracking-tighter">
-                                {session?.user?.role}
-                              </span>
-                            )}
-                          </div>
-                          <div className="p-2">
-                            <Link
-                              href="/profile"
-                              onClick={() => setProfileOpen(false)}
-                              className="flex items-center gap-3 px-3 py-2.5 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700 rounded-xl transition-colors"
-                            >
-                              <UserCircle size={18} /> My Profile
-                            </Link>
-                            <div className="border-t border-slate-50 my-1"></div>
-                            <LogoutButton className="w-full text-red-600 text-sm py-2.5 px-3 rounded-xl hover:bg-red-50 transition-colors text-left font-semibold flex items-center gap-3" />
-                          </div>
-                        </div>
-                      </>
-                    )}
-                  </div>
-                ) : (
-                  <Link
-                    href="/login"
-                    className="bg-[#0891B2] hover:bg-[#0369A1] text-white font-bold px-4 py-2 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-500/10"
-                  >
-                    Login
-                  </Link>
-                )}
-              </div>
+            {/* --- Booking Button --- */}
+            <div className="flex items-center">
+              <Link
+                href="/booking"
+                className="bg-gradient-to-r from-[#E5A524] to-[#D4891A] hover:from-[#D4891A] hover:to-[#B37314] text-slate-900 font-bold px-6 py-3 rounded-md transition-all shadow-md active:scale-95 hover:shadow-lg hover:scale-105 duration-300"
+              >
+                Book Now
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* --- Mobile Sidebar --- */}
+      {/* --- Mobile Full Screen Menu --- */}
       <div
-        className={`fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[90] transition-opacity duration-300 ${
-          mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-[100] transition-all duration-500 ${
+          mobileOpen 
+            ? "bg-gradient-to-br from-black/90 via-black/80 to-black/70 backdrop-blur-sm" 
+            : "bg-transparent backdrop-blur-none pointer-events-none"
         }`}
         onClick={() => setMobileOpen(false)}
       />
 
-      <aside
-        className={`fixed top-0 left-0 h-full w-70 bg-white z-100 shadow-2xl transform transition-transform duration-300 ease-out ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full"
+      {/* Full Screen Menu - Centered Content */}
+      <div
+        className={`fixed top-0 right-0 h-full w-full z-[110] transition-all duration-500 ${
+          mobileOpen 
+            ? "translate-x-0 opacity-100" 
+            : "translate-x-full opacity-0"
         }`}
       >
-        <div className="p-6 flex justify-between items-center border-b">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 flex items-center justify-center relative">
-              <Image
-                src="/assets/logo/logo.png"
-                alt="TS Tour and Travel Official Logo"
-                fill
-                priority
-                sizes="40px"
-                className="object-contain p-0.5"
-              />
-            </div>
-            <span className="font-bold text-slate-800 text-lg">Menu</span>
-          </div>
-          <button
-            onClick={() => setMobileOpen(false)}
-            className="p-2 hover:bg-slate-100 rounded-full transition-colors cursor-pointer"
-          >
-            <X size={22} className="text-slate-500" />
-          </button>
+        {/* Close Button */}
+        <button
+          onClick={() => setMobileOpen(false)}
+          className="absolute top-8 right-8 z-[120] p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 group"
+        >
+          <X 
+            size={28} 
+            className="text-white group-hover:rotate-90 transition-transform duration-300" 
+          />
+        </button>
+
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className={`absolute inset-0 bg-gradient-to-l from-[#D4AF37]/5 to-transparent transition-all duration-700 ${
+            animate ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+          }`} />
+          
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#D4AF37/10,transparent_50%)] transition-all duration-1000 ${
+            animate ? "scale-100 opacity-100" : "scale-50 opacity-0"
+          }`} />
         </div>
 
-        <nav className="py-4 px-3 h-[calc(100vh-100px)] overflow-y-auto">
-          <div className="border-t border-slate-100 my-4" />
+        {/* Centered Menu Content */}
+        <div className="relative h-full w-full flex flex-col justify-center items-center px-4">
+          <div className="text-center w-full max-w-md">
+            {/* Logo in Menu - Centered */}
+            <div className={`mb-12 transition-all duration-700 ${
+              animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`}>
+              <div className="flex flex-col items-center justify-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">👑</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-serif font-bold text-white">
+                    Ezzan Global
+                  </div>
+                  <div className="text-sm tracking-widest text-white/80 uppercase mt-2">
+                    Hotels & Resorts
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          {navLinks?.map((link) => {
-            const isActive = pathName === link.href;
-            return (
+            {/* Centered Navigation Links with Active State */}
+            <nav className="space-y-4">
+              {NAVIGATION_LINKS.map((link, index) => (
+                <div
+                  key={link.name}
+                  className={`transition-all duration-500 ${
+                    animate 
+                      ? "translate-y-0 opacity-100" 
+                      : "translate-y-8 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${index * 100 + 300}ms` }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`group block relative ${
+                      activeNav === link.href ? "text-[#D4AF37]" : "text-white"
+                    }`}
+                  >
+                    <div className={`text-3xl md:text-4xl font-bold transition-all duration-300 relative inline-block py-2 ${
+                      activeNav === link.href 
+                        ? "scale-105" 
+                        : "hover:scale-105 hover:text-[#D4AF37]"
+                    }`}>
+                      {link.name}
+                      {/* Active indicator dot for mobile */}
+                      {activeNav === link.href && (
+                        <span className="absolute -right-6 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#D4AF37] rounded-full animate-pulse" />
+                      )}
+                    </div>
+                    <div className={`h-0.5 w-0 mx-auto transition-all duration-500 mt-1 ${
+                      activeNav === link.href
+                        ? "w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-100"
+                        : "group-hover:w-24 group-hover:bg-gradient-to-r group-hover:from-transparent group-hover:via-[#D4AF37] group-hover:to-transparent group-hover:opacity-100 bg-transparent"
+                    }`} />
+                  </Link>
+                </div>
+              ))}
+            </nav>
+
+            {/* Centered Mobile Booking Button */}
+            <div className={`mt-12 transition-all duration-700 ${
+              animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`} style={{ transitionDelay: "800ms" }}>
               <Link
-                key={link.name}
-                href={link.href}
+                href="/booking"
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all mb-1 ${
-                  isActive
-                    ? "bg-blue-50 text-blue-700"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                }`}
+                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#E5A524] to-[#D4891A] hover:from-[#D4891A] hover:to-[#B37314] text-slate-900 font-bold px-8 py-4 rounded-lg transition-all shadow-xl active:scale-95 group w-full max-w-xs mx-auto hover:scale-105 duration-300"
               >
-                <link.icon
-                  size={20}
-                  className={isActive ? "text-blue-600" : "text-slate-400"}
-                />
-                <span className="font-bold text-[15px]">{link.name}</span>
+                <span className="text-lg">Book Now</span>
+                <span className="text-xl transform group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
               </Link>
-            );
-          })}
-        </nav>
-      </aside>
+            </div>
+
+            {/* Centered Contact Info */}
+            <div className={`mt-10 text-white/70 text-sm transition-all duration-700 ${
+              animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`} style={{ transitionDelay: "900ms" }}>
+              <div className="space-y-2">
+                <p className="font-medium">Contact: +888045425560</p>
+                <p className="font-medium">Email: info@ezan.com</p>
+              </div>
+            </div>
+
+            {/* Social Icons - Centered */}
+            <div className={`mt-8 flex justify-center gap-6 transition-all duration-700 ${
+              animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+            }`} style={{ transitionDelay: "1000ms" }}>
+              <a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors duration-300 transform hover:scale-110">
+                <span className="text-lg">Facebook</span>
+              </a>
+              <a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors duration-300 transform hover:scale-110">
+                <span className="text-lg">Instagram</span>
+              </a>
+              <a href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors duration-300 transform hover:scale-110">
+                <span className="text-lg">Twitter</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
