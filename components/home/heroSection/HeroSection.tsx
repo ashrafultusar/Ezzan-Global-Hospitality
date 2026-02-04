@@ -1,175 +1,84 @@
-"use client";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { ArrowRight, GraduationCap, Building2, Plane } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import styles from "./HeroSection.module.css";
 import Link from "next/link";
+import styles from "./HeroSection.module.css";
 
 const HeroSection = () => {
   const images = [
-    "/assets/home/hero.jpg",
-    "/assets/home/malaysia.jpg",
-    "/assets/home/maldivs.jpg",
-    "/assets/home/nepal.jpg",
-    "/assets/home/saudia.jpg",
-    "/assets/home/singapor.jpg",
-    "/assets/home/srilanka.jpg",
-    "/assets/home/thailand.jpg",
-    "/assets/office/image6.jpeg",
-    "/assets/office/image2.jpeg",
+    "/assets/home/home.jpg",
+    "/assets/home/home1.jpg",
+    "/assets/home/home2.jpg",
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(timer);
-  }, [images.length]);
-
   return (
-    <section className="relative w-full min-h-screen bg-linear-to-br from-[#FFFFFF] via-[#FDF6E9] to-[#EAF3FF] py-12 lg:py-16 flex items-center overflow-hidden">
-      <div className="absolute top-1/2 left-[-10%] -translate-y-1/2 w-150 h-150 bg-[#F3E8BB]/40 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 right-0 w-100 h-100 bg-[#D1E9E6]/30 rounded-full blur-[100px] -z-10" />
+    <section className={styles.heroSection}>
+      {/* --- CSS Background Slider --- */}
+      <div className="absolute inset-0 z-0">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            className={styles.slide}
+            style={{
+              backgroundImage: `url(${src})`,
+              animationDelay: `${index * 5}s`,
+            }}
+          />
+        ))}
+        <div className={styles.overlay} />
+      </div>
 
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* --- LEFT CONTENT --- */}
-          <div className="space-y-6 lg:space-y-8 max-w-2xl text-left">
-            <div className="inline-flex items-center gap-2 bg-[#E1EBF7] border border-transparent px-4 py-2 rounded-full">
-              <GraduationCap className="w-4 h-4 text-[#1E56A0]" />
-              <span className="text-xs lg:text-sm font-semibold text-[#1E56A0]">
-                Higher Education Opportunities in Malaysia
-              </span>
-            </div>
-
-            <div className="space-y-2">
-              <h1 className="text-[40px] md:text-[54px] lg:text-[68px] font-black text-[#2D3142] leading-[1.1] tracking-tight">
-                Expert Guidance For{" "}
-                <span className="text-[#14919B]">Bangladeshi</span> <br />
-                <span className="text-[#1E56A0]">Students In Malaysia</span>
-              </h1>
-            </div>
-
-            <p className="text-[#5E6272] text-base lg:text-xl leading-relaxed max-w-lg font-medium">
-              TS Tour & Travel is a professional education consultancy... (rest
-              of your text)
-            </p>
-
-            <div className="flex items-center gap-3 sm:gap-4 pt-4">
-              <Link href={"/contactUs"}>
-                <Button className="bg-[#14919B] hover:bg-[#0E747C] text-white rounded-lg px-4 sm:px-6 lg:px-8 h-10 sm:h-12 lg:h-14 text-sm sm:text-base lg:text-lg font-bold flex items-center gap-2 shadow-md cursor-pointer">
-                  Get Free Consultation{" "}
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </Button>
-              </Link>
-              <Link href={"/universities"}>
-                <Button
-                  variant="outline"
-                  className="border border-gray-300 text-[#2D3142] rounded-lg px-4 sm:px-6 lg:px-8 h-10 sm:h-12 lg:h-14 text-sm sm:text-base lg:text-lg font-bold cursor-pointer bg-white/50 hover:bg-white"
-                >
-                  Find Universities
-                </Button>
-              </Link>
-            </div>
+      {/* --- Main Content --- */}
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="max-w-5xl mx-auto flex flex-col items-center">
+          
+          {/* Top Badge */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 border border-[#D4AF37]/30 rounded-full bg-black/20 backdrop-blur-md mb-6 animate-in fade-in duration-1000">
+             <span className="text-[#D4AF37] text-xs sm:text-sm font-medium tracking-[0.3em] uppercase">
+               ★ THE NO.1 LUXURY HOTEL GROUP IN BANGLADESH ★
+             </span>
           </div>
 
-          {/* --- RIGHT CONTENT: VISUAL ELEMENTS --- */}
-          <div className="relative flex justify-center lg:justify-end items-center">
-            <div className="absolute top-10 -right-4 grid grid-cols-4 gap-2 opacity-20">
-              {[...Array(16)].map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-[#2D3142] rounded-full" />
-              ))}
-            </div>
+          {/* Main Heading */}
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-4 leading-tight">
+            Redefining <span className="text-[#D4AF37]">Luxury</span>
+          </h1>
+          
+          <h2 className="text-lg md:text-2xl font-serif text-white/90 mb-6 tracking-[0.1em] uppercase">
+            Crown Luxury Hotels & Resorts
+          </h2>
 
-            <div className={styles.visualWrapper}>
-              <div className="absolute inset-0 border-2 border-dashed border-teal-200 rounded-full animate-[spin_30s_linear_infinite]" />
+          <p className="text-sm md:text-lg text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed px-2">
+            Experience world-class 5-star services and royal hospitality at our 
+            exclusive locations. Every moment crafted for your perfection.
+          </p>
 
-              {/* SLIDING IMAGE CIRCLE */}
-              <div className={`${styles.imageCircle} relative overflow-hidden`}>
-                {images?.map((src, index) => (
-                  <Image
-                    key={src}
-                    src={src}
-                    alt="Study in Malaysia"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                    className={`object-cover transition-opacity duration-1000 ease-in-out ${
-                      index === currentIndex
-                        ? "opacity-100 scale-100"
-                        : "opacity-0 scale-110"
-                    }`}
-                  />
-                ))}
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full sm:w-auto">
+            <Link 
+              href="/hotels" 
+              className="bg-[#D4AF37] hover:bg-[#B37314] text-slate-900 font-bold px-8 py-3.5 rounded-md transition-all w-[80%] sm:w-auto text-base shadow-lg active:scale-95"
+            >
+              Explore Our Hotels
+            </Link>
+            <Link 
+              href="/booking" 
+              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold px-8 py-3.5 rounded-md transition-all w-[80%] sm:w-auto text-base active:scale-95"
+            >
+              Book Now
+            </Link>
+          </div>
+
+          {/* Stats Section */}
+          <div className="hidden sm:grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 py-6 border-t border-white/20 w-full">
+            {[
+              { value: "5 ★", label: "LUXURY HOTELS" },
+              { value: "2000+", label: "ROOMS" },
+              { value: "24/7", label: "SERVICE" },
+              { value: "$150+", label: "PRICE" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center border-r border-white/10 last:border-none">
+                <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">{stat.value}</div>
+                <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">{stat.label}</div>
               </div>
-
-              {/* STAT CARDS */}
-              <div
-                className={`${styles.statCard1} bg-[#1E56A0] text-white rounded-xl shadow-xl`}
-              >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Building2 className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
-                </div>
-                <div>
-                  <p className="text-xl lg:text-3xl font-bold leading-none">
-                    <span
-                      className={`${styles.counterAnim} ${styles.partnerCount}`}
-                    ></span>
-                    +
-                  </p>
-                  <p className="text-[10px] lg:text-xs opacity-80">
-                    Partner Universities
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className={`${styles.statCard2} bg-[#14919B] text-white rounded-xl shadow-xl`}
-                style={{ animationDelay: "1s" }}
-              >
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Plane className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
-                </div>
-                <div>
-                  <p className="text-xl lg:text-3xl font-bold leading-none">
-                    <span
-                      className={`${styles.counterAnim} ${styles.visaCount}`}
-                    ></span>
-                    +
-                  </p>
-                  <p className="text-[10px] lg:text-xs opacity-80">
-                    Successful Visas
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className={`${styles.statCard3} bg-white rounded-2xl shadow-2xl p-4 lg:p-6`}
-                style={{ animationDelay: "2s" }}
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 bg-[#E1EBF7] rounded-lg">
-                    <GraduationCap className="w-5 h-5 text-[#1E56A0]" />
-                  </div>
-                  <span className="font-bold text-[#2D3142] text-sm lg:text-base">
-                    Student Visa
-                  </span>
-                </div>
-
-                <Link href={"/universities"}>
-                  <Button
-                    size="sm"
-                    className="w-full bg-[#E1EBF7] cursor-pointer text-[#1E56A0] hover:bg-[#D1DFEF] font-bold rounded-lg py-2"
-                  >
-                    Apply Now
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,155 +1,47 @@
-/* HeroSection.module.css */
-
-@keyframes floatCard {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animateFloat {
-  animation: floatCard 4s ease-in-out infinite;
-}
-
-.animateFloat:hover {
-  animation-play-state: paused;
-}
-
-/* কার্ডগুলোর পজিশনিং যাতে মোবাইলে ভেঙে না যায় */
-.statCard1 {
-  composes: animateFloat;
-  z-index: 20;
-}
-
-.statCard2 {
-  composes: animateFloat;
-  z-index: 20;
-}
-
-.statCard3 {
-  composes: animateFloat;
-  z-index: 20;
-}
-
-
-
-/* HeroSection.module.css */
-
-.visualWrapper {
+.heroSection {
   position: relative;
-  width: clamp(280px, 42vw, 480px);
-  aspect-ratio: 1 / 1;
+  height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.imageCircle {
-  position: absolute;
-  inset: 4%;
-  border-radius: 9999px;
   overflow: hidden;
-  border: clamp(4px, 1vw, 8px) solid white;
-  box-shadow: 0 30px 60px -15px rgba(0,0,0,0.2);
+  background-color: #0f172a; /* fallback color */
 }
 
-.statCardBase {
+.slide {
   position: absolute;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  gap: clamp(8px, 1.2vw, 16px);
-  padding: clamp(10px, 1.5vw, 20px);
-  border-radius: clamp(12px, 2vw, 24px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  animation: floatCard 4s ease-in-out infinite;
+  inset: 0;
+  opacity: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: crossfade 15s infinite ease-in-out;
 }
 
-.statCard1 {
-  composes: statCardBase;
-  top: 0;
-  left: -10%;
-}
-
-.statCard2 {
-  composes: statCardBase;
-  top: 35%;
-  right: -15%;
-}
-
-.statCard3 {
+.overlay {
   position: absolute;
-  bottom: -40px; 
-  right: -20px;
-  z-index: 20;
-  background: white;
-  width: clamp(160px, 18vw, 220px); 
-  padding: clamp(10px, 1.5vw, 20px);
-  border-radius: clamp(12px, 2vw, 24px);
-  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
-  animation: floatCard 4s ease-in-out infinite;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 1;
 }
 
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@media (max-width: 1024px) {
-  .statCard1 { left: -5%; }
-  .statCard2 { right: -5%; }
-  .statCard3 { 
-    bottom: -30px; 
-    right: 10px;  
-    transform: scale(0.9);
+@keyframes crossfade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
   }
 }
-
-@media (max-width: 640px) {
-  .statCard3 {
-    bottom: -20px;
-    right: 0;
-    width: 150px;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 640px) {
-  .visualWrapper {
-    width: 290px;
-    margin-top: 2rem;
-  }
-}
-
-
-
-@property --num {
-  syntax: "<integer>";
-  initial-value: 0;
-  inherits: false;
-}
-
-/* Page load hoye gele auto animate hobar jonno keyframe */
-@keyframes countUp {
-  from { --num: 0; }
-  to { --num: var(--final-num); }
-}
-
-.counterAnim {
-  /* Dynamic value set korar jonno CSS variable use kora hoyeche */
-  animation: countUp 3s cubic-bezier(0, 0.5, 0, 1) forwards;
-  counter-set: num var(--num);
-}
-
-.counterAnim::after {
-  content: counter(num);
-}
-
-/* Prottek card er jonno alada final value */
-.partnerCount { --final-num: 41; }
-.visaCount { --final-num: 500; }

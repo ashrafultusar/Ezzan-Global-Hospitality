@@ -3,7 +3,6 @@ import AirlinePartners from "@/components/home/airlinePartners/AirlinePartners";
 import ContactSection from "@/components/home/contactSection/ContactSection";
 import Counselors from "@/components/home/counselors/Counselors";
 import HeroSection from "@/components/home/heroSection/HeroSection";
-import OurUniversities from "@/components/home/ourUniversities/OurUniversities";
 import SuccessStories from "@/components/home/successStories/SuccessStories";
 import WhyChooseUs from "@/components/home/whyChooseUs/WhyChooseUs";
 import { Suspense } from "react";
@@ -12,7 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <OurUniversities />
+    
       <AboutUs />
       <WhyChooseUs />
       <Counselors />
