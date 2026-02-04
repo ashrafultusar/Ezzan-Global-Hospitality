@@ -1,5 +1,4 @@
 import FeaturedHotels from "@/components/home/featuredHotels/FeaturedHotels";
-
 import HeroSection from "@/components/home/heroSection/HeroSection";
 import RoomsAndSuites from "@/components/home/roomsAndSuites/RoomsAndSuites";
 import Amenities from "@/components/home/amenities/Amenities";
@@ -15,7 +14,6 @@ export default function Home() {
       <RoomsAndSuites />
       <Amenities />
       <EventsMeetings />
-
       <Suspense
         fallback={<div className="h-80 w-full bg-slate-100 animate-pulse" />}
       ></Suspense>
