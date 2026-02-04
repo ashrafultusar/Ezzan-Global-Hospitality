@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const NAVIGATION_LINKS = [
   { name: "HOME", href: "/" },
-  { name: "HOTELS", href: "/hotels" },
-  { name: "SERVICES", href: "/services" },
+  { name: "HOTELS", href: "/about" },
+  { name: "SERVICES", href: "/amenities" },
   { name: "GALLERY", href: "/gallery" },
   { name: "CONTACT", href: "/contact" },
 ];
@@ -16,18 +15,12 @@ const NAVIGATION_LINKS = [
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
-  const [activeNav, setActiveNav] = useState("/");
-  const [isScrolled, setIsScrolled] = useState(false); // স্ক্রল স্টেট ট্র্যাকিং
-  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // স্ক্রল হ্যান্ডলার: পেজ স্ক্রল করলে ব্যাকগ্রাউন্ড চেঞ্জ হবে
+  // Scroll Detection Logic
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -36,7 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     if (mobileOpen) {
       const timer = setTimeout(() => setAnimate(true), 10);
-      document.body.style.overflow = "hidden"; // মেনু ওপেন থাকলে স্ক্রল বন্ধ
+      document.body.style.overflow = "hidden";
       return () => clearTimeout(timer);
     } else {
       setAnimate(false);
@@ -44,24 +37,18 @@ export default function Navbar() {
     }
   }, [mobileOpen]);
 
-  useEffect(() => {
-    setActiveNav(pathname);
-  }, [pathname]);
-
   return (
     <>
-      {/* Nav classes: 
-        - isScrolled ? bg-white : bg-transparent 
-      */}
+      {/* --- Main Navbar Section --- */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled 
-            ? "bg-white/95 backdrop-blur-md border-slate-100 shadow-sm py-2" 
-            : "bg-transparent border-transparent py-4"
+            ? "bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-0" 
+            : "bg-transparent border-b border-transparent py-2"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-20 flex items-center justify-between">
+          <div className="h-16 flex items-center justify-between">
             
             {/* --- Logo Section --- */}
             <div className="flex items-center gap-3">
@@ -71,20 +58,20 @@ export default function Navbar() {
                   isScrolled ? "hover:bg-slate-100 text-slate-700" : "hover:bg-white/10 text-white"
                 }`}
               >
-                <Menu size={24} />
+                <Menu size={22} className="cursor-pointer" />
               </button>
               
-              <Link href="/" className="flex items-center gap-3 group">
-                <div className="w-12 h-12 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform">
-                  <span className="text-2xl">👑</span>
+              <Link href="/" className="flex items-center gap-2 group">
+                <div className="w-10 h-10 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform">
+                  <span className="text-xl">👑</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className={`text-xl font-serif font-bold leading-tight transition-colors duration-300 ${
+                  <span className={`text-lg font-serif font-bold leading-tight transition-colors duration-300 ${
                     isScrolled ? "text-slate-900" : "text-white"
                   }`}>
                     Ezzan Global
                   </span>
-                  <span className={`text-[10px] tracking-[0.2em] font-medium uppercase transition-colors duration-300 ${
+                  <span className={`text-[8px] tracking-[0.2em] font-medium uppercase transition-colors duration-300 ${
                     isScrolled ? "text-slate-500" : "text-[#D4AF37]"
                   }`}>
                     Hotels & Resorts
@@ -94,25 +81,17 @@ export default function Navbar() {
             </div>
 
             {/* --- Desktop Navigation --- */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-8">
               {NAVIGATION_LINKS.map((link) => (
-                <div key={link.href} className="relative group">
-                  <Link
-                    href={link.href}
-                    className={`px-6 py-2 font-medium transition-all duration-300 relative ${
-                      isScrolled 
-                        ? (activeNav === link.href ? "text-[#D4AF37]" : "text-slate-700") 
-                        : (activeNav === link.href ? "text-[#D4AF37]" : "text-white/90 hover:text-white")
-                    }`}
-                  >
-                    <span className="relative z-10">{link.name}</span>
-                    
-                    {/* Animated underline */}
-                    <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-[#D4AF37] transition-all duration-300 ${
-                      activeNav === link.href ? "w-12 opacity-100" : "w-0 opacity-0 group-hover:w-12 group-hover:opacity-100"
-                    }`} />
-                  </Link>
-                </div>
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-semibold transition-colors duration-300 ${
+                    isScrolled ? "text-slate-700 hover:text-[#D4AF37]" : "text-white hover:text-[#D4AF37]"
+                  }`}
+                >
+                  {link.name}
+                </Link>
               ))}
             </div>
 
@@ -120,7 +99,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <Link
                 href="/booking"
-                className="bg-gradient-to-r from-[#E5A524] to-[#D4891A] hover:scale-105 text-slate-900 font-bold px-7 py-3 rounded-md transition-all shadow-md active:scale-95 duration-300"
+                className="bg-gradient-to-r from-[#E5A524] to-[#D4891A] hover:brightness-110 text-white text-xs font-bold px-5 py-2.5 rounded-md transition-all shadow-md active:scale-95"
               >
                 Book Now
               </Link>
@@ -129,44 +108,92 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* --- Mobile Full Screen Menu (Same as before) --- */}
+      {/* --- Mobile Full Screen Side Bar (Original Design Restored) --- */}
       <div
         className={`fixed inset-0 z-[100] transition-all duration-500 ${
           mobileOpen 
-            ? "bg-slate-900/95 backdrop-blur-xl opacity-100" 
+            ? "bg-gradient-to-br from-black/95 via-black/90 to-black/80 backdrop-blur-sm opacity-100" 
             : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setMobileOpen(false)}
+      />
+
+      <div
+        className={`fixed top-0 right-0 h-full w-full z-[110] transition-all duration-500 ${
+          mobileOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+        }`}
       >
         {/* Close Button */}
         <button
           onClick={() => setMobileOpen(false)}
-          className="absolute top-8 right-8 z-[120] p-3 text-white hover:rotate-90 transition-transform duration-300"
+          className="absolute top-8 right-8 z-[120] p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-all duration-300 group"
         >
-          <X size={32} />
+          <X size={28} className="text-white group-hover:rotate-90 transition-transform duration-300 cursor-pointer" />
         </button>
 
-        {/* Menu Content */}
-        <div className="h-full flex flex-col justify-center items-center text-center">
-           <nav className="space-y-8">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className={`absolute inset-0 bg-gradient-to-l from-[#D4AF37]/5 to-transparent transition-all duration-700 ${
+            animate ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+          }`} />
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#D4AF37/10,transparent_50%)] transition-all duration-1000 ${
+            animate ? "scale-100 opacity-100" : "scale-50 opacity-0"
+          }`} />
+        </div>
+
+        {/* Centered Menu Content */}
+        <div className="relative h-full w-full flex flex-col justify-center items-center px-4">
+          <div className="text-center w-full max-w-md">
+            {/* Logo Section */}
+            <div className={`mb-12 transition-all duration-700 ${animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
+              <div className="flex flex-col items-center justify-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg">
+                  <span className="text-3xl">👑</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-serif font-bold text-white">Ezzan Global</div>
+                  <div className="text-sm tracking-widest text-white/80 uppercase mt-2">Hotels & Resorts</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Nav Links */}
+            <nav className="space-y-6">
               {NAVIGATION_LINKS.map((link, index) => (
                 <div
                   key={link.name}
-                  className={`transition-all duration-500 transform ${
-                    animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                  }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
+                  className={`transition-all duration-500 ${animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+                  style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-4xl font-serif font-bold text-white hover:text-[#D4AF37] transition-colors"
+                    className="group block"
                   >
-                    {link.name}
+                    <div className="text-3xl md:text-4xl font-bold text-white hover:text-[#D4AF37] transition-all duration-300">
+                      {link.name}
+                    </div>
+                    <div className="h-0.5 w-0 mx-auto group-hover:w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent transition-all duration-500 mt-2" />
                   </Link>
                 </div>
               ))}
-           </nav>
+            </nav>
+
+            {/* Social Icons & Contact Restored */}
+            <div className={`mt-12 transition-all duration-700 ${animate ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`} style={{ transitionDelay: "800ms" }}>
+              <div className="text-white/70 text-sm space-y-1 mb-6">
+                <p>Contact: +888045425560</p>
+                <p>Email: info@ezan.com</p>
+              </div>
+              <div className="flex justify-center gap-6">
+                {["Facebook", "Instagram", "Twitter"].map((social) => (
+                  <a key={social} href="#" className="text-white/70 hover:text-[#D4AF37] transition-colors text-sm font-medium">
+                    {social}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
