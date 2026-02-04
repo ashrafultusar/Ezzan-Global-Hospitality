@@ -1,0 +1,139 @@
+'use client';
+import { useState } from 'react';
+import Image from 'next/image';
+
+const hotels = [
+    {
+        id: 1,
+        name: "Grand Millennium Kuala Lumpur",
+        location: "Kuala Lumpur, Malaysia",
+        description: "Luxury in the heart of KL with stunning KLCC views",
+        image: "/assets/home/home.jpg", 
+        rating: 5,
+        features: ["City View", "Spa", "Pool"]
+    },
+    {
+        id: 2,
+        name: "Paradise Resort Langkawi",
+        location: "Langkawi, Kedah, Malaysia",
+        description: "Beachfront paradise with crystal clear waters",
+        image: "/assets/home/home1.jpg", 
+        rating: 5,
+        features: ["Beachfront", "Water Sports", "Spa"]
+    },
+    {
+        id: 3,
+        name: "Heritage Grand Penang",
+        location: "George Town, Penang, Malaysia",
+        description: "Colonial charm meets modern luxury",
+        image: "/assets/home/home2.jpg", 
+        rating: 5,
+        features: ["Heritage", "Cultural Tours", "Garden"]
+    }
+];
+
+const FeaturedHotels = () => {
+    const [hoveredCard, setHoveredCard] = useState(null);
+
+    return (
+        <section className="relative py-20 px-4 bg-[#f3eee6] overflow-hidden">
+            {/* Background Decorative Gradients */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-3xl" />
+            </div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Header Section */}
+                <div className="text-center mb-16 space-y-4">
+                    <div className="inline-flex items-center gap-3 animate-fade-up">
+                        <div className="w-8 h-[1px] bg-[#D4AF37]" />
+                        <h4 className="text-[#D4AF37] uppercase tracking-[0.2em] text-xs font-bold">
+                            Our Collection
+                        </h4>
+                        <div className="w-8 h-[1px] bg-[#D4AF37]" />
+                    </div>
+                    
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1A2B48] animate-fade-up [animation-delay:200ms]">
+                        Featured Hotels
+                    </h2>
+                    
+                    <p className="text-gray-500 max-w-xl mx-auto animate-fade-up [animation-delay:400ms]">
+                        Experience luxury redefined at our most exclusive properties
+                    </p>
+                </div>
+
+                {/* Hotel Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    {hotels.map((hotel, index) => (
+                        <div 
+                            key={hotel.id}
+                            className="group relative animate-fade-up"
+                            style={{ animationDelay: `${(index + 3) * 150}ms` }}
+                            onMouseEnter={() => setHoveredCard(hotel.id)}
+                            onMouseLeave={() => setHoveredCard(null)}
+                        >
+                            {/* Card Body */}
+                            <div className="relative bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl group-hover:-translate-y-2">
+                                
+                                {/* Image Container */}
+                                <div className="relative h-64 w-full">
+                                    <Image 
+                                        src={hotel.image} 
+                                        alt={hotel.name}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    {/* Rating Badge */}
+                                    <div className="absolute top-4 right-4 z-20 bg-[#FFB400] text-white px-3 py-1 rounded flex items-center gap-1 text-sm font-bold shadow-lg">
+                                        <span className="text-white">★</span> {hotel.rating}
+                                    </div>
+                                    
+                                    {/* Hover Features Overlay */}
+                                    <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center gap-2 transition-opacity duration-300 ${hoveredCard === hotel.id ? 'opacity-100' : 'opacity-0'}`}>
+                                        {hotel.features.map((f, i) => (
+                                            <span key={i} className="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full border border-white/40">
+                                                {f}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="p-6">
+                                    <div className="flex items-center text-gray-400 text-xs mb-2 italic">
+                                        <span className="mr-1">📍</span> {hotel.location}
+                                    </div>
+                                    <h3 className="text-[#1A2B48] text-xl font-bold mb-2 group-hover:text-[#D4AF37] transition-colors">
+                                        {hotel.name}
+                                    </h3>
+                                    <p className="text-gray-500 text-sm mb-6 line-clamp-2">
+                                        {hotel.description}
+                                    </p>
+                                    
+                                    <button className="flex items-center text-[#D4AF37] font-bold text-sm uppercase tracking-wider group/btn">
+                                        View Details 
+                                        <span className="ml-2 transition-transform group-hover/btn:translate-x-2">→</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Footer Button */}
+                <div className="text-center">
+                    <button className="group relative overflow-hidden bg-[#1A2B48] text-white px-10 py-4 rounded-lg font-bold transition-transform active:scale-95">
+                        <span className="relative z-10 flex items-center gap-2">
+                            View All Hotels <span>→</span>
+                        </span>
+                        {/* Shine Animation */}
+                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shine" />
+                    </button>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default FeaturedHotels;
