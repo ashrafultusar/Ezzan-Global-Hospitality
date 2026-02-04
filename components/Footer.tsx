@@ -1,196 +1,192 @@
-import {
-  Facebook,
-  Instagram,
-  Youtube,
-  Mail,
-  Phone,
-  MapPin,
-} from "lucide-react";
-import Image from "next/image";
+"use client";
+
+import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Twitter } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const services = [
-    "Malaysia Admission",
-    "Student Visa",
-    "Tourist Visa",
-    "Air Ticketing",
-    "Scholarship Guidance",
+    { name: "Luxury Suites", href: "/rooms" },
+    { name: "Spa & Wellness", href: "/spa" },
+    { name: "Fine Dining", href: "/dining" },
+    { name: "Event Venues", href: "/events" },
+    { name: "Concierge Service", href: "/concierge" },
+  ];
+
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: "Hotels", href: "/hotels" },
+    { name: "Services", href: "/services" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" },
+    { name: "Book Now", href: "/booking" },
   ];
 
   const socialLinks = [
     {
       icon: Facebook,
-      href: "https://www.facebook.com/tsstudysolutionmalaysia",
+      href: "#",
       label: "Facebook",
-      brandClass: "bg-[#1877F2] text-white",
+      brandClass: "bg-[#1877F2] hover:bg-[#1877F2]/90 text-white",
     },
     {
       icon: Instagram,
       href: "#",
       label: "Instagram",
-      brandClass:
-        "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white",
+      brandClass: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white",
+    },
+    {
+      icon: Twitter,
+      href: "#",
+      label: "Twitter",
+      brandClass: "bg-[#1DA1F2] hover:bg-[#1DA1F2]/90 text-white",
     },
     {
       icon: Youtube,
       href: "#",
       label: "YouTube",
-      brandClass: "bg-[#FF0000] text-white",
-    },
-    {
-      // TikTok Custom SVG for perfect rendering
-      icon: () => (
-        <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.47-.88-.64-1.62-1.49-2.11-2.47-.04 3.44-.02 6.88-.04 10.32-.08 2.51-1.42 4.97-3.71 6.01-2.26 1.08-5.11.87-7.14-.52-2.13-1.42-3.21-4.18-2.58-6.62.53-2.2 2.45-3.95 4.67-4.27.9-.14 1.83-.03 2.69.29-.02 1.35-.02 2.7-.02 4.05-.85-.35-1.84-.42-2.69-.07-1.12.44-1.92 1.6-1.9 2.81.01 1.29.98 2.45 2.25 2.64 1.37.23 2.91-.53 3.44-1.85.17-.41.24-.85.23-1.29V.02z" />
-        </svg>
-      ),
-      href: "https://www.tiktok.com/@ts.tour.travels7",
-      label: "Tiktok",
-      brandClass: "bg-black text-white",
+      brandClass: "bg-[#FF0000] hover:bg-[#FF0000]/90 text-white",
     },
   ];
 
-  const offices = [
+  const contactInfo = [
     {
-      name: "Bangladesh Office",
-      address:
-        "House No:67,Shahid Moslem Uddin Chattrabas Goli,Central Road,Paira Chattar, Rangpur, Bangladesh, 5400",
-      phone: "+8801341-462233",
-      email: "info@tstourtravels.com",
+      icon: Phone,
+      label: "Phone",
+      value: "+888045425560",
+      href: "tel:+888045425560",
     },
     {
-      name: "Malaysia Office",
-      address:
-        "Mercu Summer Suites, 8 Jalan Cendana 50250, Kuala Lumpur, Malaysia",
-      phone: "+6017-708 5596",
-      email: "info@tstourtravels.com",
+      icon: Mail,
+      label: "Email",
+      value: "info@ezzan.com",
+      href: "mailto:info@ezzan.com",
+    },
+    {
+      icon: MapPin,
+      label: "Address",
+      value: "Luxury Street, Resort City 5400",
+      href: "#",
     },
   ];
 
   return (
-    <footer className="bg-[#172636] text-white/80">
+    <footer className="bg-[#2a2622] text-white/80">
+      {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+          {/* Brand Section */}
           <div className="space-y-6">
-            <div className="flex items-center ">
-              <div className="relative h-20 w-20 sm:h-24  sm:w-24 shrink-0">
-                <Image
-                  src="/assets/logo/logo.png"
-                  alt="Agency Logo"
-                  fill
-                  sizes="(max-width: 768px) 80px, 96px"
-                  priority
-                  className="object-contain"
-                />
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B37314] flex items-center justify-center shadow-lg">
+                <span className="text-3xl">👑</span>
               </div>
-
               <div className="flex flex-col">
-                <span className="text-lg sm:text-xl font-bold text-white leading-tight">
-                  TS Tour & Travel
+                <span className="text-2xl font-serif font-bold text-white">
+                  Ezzan Global
                 </span>
-                <span className="text-xs sm:text-sm text-[#64748B] font-medium italic">
-                  ANYTHING ANYTIME
+                <span className="text-xs tracking-[0.2em] text-[#D4AF37] font-medium uppercase">
+                  Hotels & Resorts
                 </span>
               </div>
             </div>
 
-            <p className="text-white/60 leading-relaxed text-sm max-w-sm">
-              The most trusted education consultancy in Bangladesh. We are by
-              your side for all assistance regarding higher education and visas
-              for Malaysia.
+            <p className="text-white/60 leading-relaxed text-sm">
+              Experience unparalleled luxury and world-class hospitality at Ezzan Global. 
+              Where every stay becomes a cherished memory and every moment is crafted to perfection.
             </p>
-            <div className="flex flex-wrap gap-3 pt-2">
+            
+            <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (
                 <a
-                  target="_blank"
-                  rel="noopener noreferrer"
                   key={social.label}
                   href={social.href}
-                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 ${social.brandClass}`}
+                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${social.brandClass} hover:scale-110 active:scale-95 shadow-lg`}
                   aria-label={social.label}
                 >
-                  <social.icon />
+                  <social.icon size={20} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* 2. Services List */}
-          <div className="lg:justify-self-center">
-            <h3 className="text-lg font-bold text-white mb-6">Our Services</h3>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
+              Quick Links
+            </h3>
             <ul className="space-y-4">
-              {services.map((service) => (
-                <li
-                  key={service}
-                  className="flex items-center gap-2 group cursor-pointer"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/40 group-hover:bg-cyan-400 transition-colors" />
-                  <span className="text-white/60 text-sm group-hover:text-white transition-colors">
-                    {service}
-                  </span>
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-3 group text-white/60 hover:text-[#D4AF37] transition-all duration-300"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]/40 group-hover:bg-[#D4AF37] transition-colors" />
+                    <span className="text-sm group-hover:translate-x-1 transition-transform">
+                      {link.name}
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* 3. Contact Details */}
+          {/* Services */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
+              Our Services
+            </h3>
+            <ul className="space-y-4">
+              {services.map((service) => (
+                <li key={service.name}>
+                  <Link
+                    href={service.href}
+                    className="flex items-center gap-3 group text-white/60 hover:text-[#D4AF37] transition-all duration-300"
+                  >
+                    <span className="text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
+                      •
+                    </span>
+                    <span className="text-sm group-hover:translate-x-1 transition-transform">
+                      {service.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <div className="lg:col-span-1 w-full">
-            <h3 className="text-lg font-bold text-white mb-6">Contact Us</h3>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
-              {offices.map((office, index) => (
-                <div key={index} className="space-y-3">
-                  <h4 className="text-cyan-400 text-[10px] font-bold uppercase tracking-widest border-b border-cyan-400/20 pb-1 mb-3">
-                    {office.name}
-                  </h4>
-
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2 group">
-                      <MapPin className="w-4 h-4 text-cyan-400/70 shrink-0 mt-0.5" />
-                      <span className="text-white/60 text-[13px] leading-snug">
-                        {office.address}
-                      </span>
-                    </li>
-
-                    <li className="flex items-center gap-2">
-                      <Phone className="w-3.5 h-3.5 text-cyan-400/70 shrink-0" />
-                      <a
-                        href={`tel:${office.phone.replace(/\s+/g, "")}`}
-                        className="text-white/60 text-[13px] hover:text-white transition-colors"
-                      >
-                        {office.phone}
-                      </a>
-                    </li>
-
-                    <li className="flex items-center gap-2">
-                      <Mail className="w-3.5 h-3.5 text-cyan-400/70 shrink-0" />
-                      <a
-                        href={`mailto:${office.email}`}
-                        className="text-white/60 text-[13px] hover:text-white transition-colors break-all"
-                      >
-                        {office.email}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
+              Contact Us
+            </h3>
+            <div className="space-y-5">
+              {contactInfo.map((info) => (
+                <a
+                  key={info.label}
+                  href={info.href}
+                  className="flex items-start gap-4 group"
+                >
+                  <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center group-hover:bg-[#D4AF37]/20 transition-colors">
+                    <info.icon size={18} className="text-[#D4AF37]" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-white/90 group-hover:text-[#D4AF37] transition-colors">
+                      {info.label}
+                    </p>
+                    <p className="text-sm text-white/60 group-hover:text-white/90 transition-colors mt-1">
+                      {info.value}
+                    </p>
+                  </div>
+                </a>
               ))}
             </div>
+
+          
           </div>
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-xs">
-          <p>© 2026 TS Tour & Travel. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Terms of Service
-            </a>
-          </div>
-        </div>
+       
       </div>
     </footer>
   );

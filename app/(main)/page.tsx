@@ -1,29 +1,22 @@
-import AboutUs from "@/components/home/aboutUs/AboutUs";
-import AirlinePartners from "@/components/home/airlinePartners/AirlinePartners";
-import ContactSection from "@/components/home/contactSection/ContactSection";
-import Counselors from "@/components/home/counselors/Counselors";
+import FeaturedHotels from "@/components/home/featuredHotels/FeaturedHotels";
 import HeroSection from "@/components/home/heroSection/HeroSection";
-import OurUniversities from "@/components/home/ourUniversities/OurUniversities";
-import SuccessStories from "@/components/home/successStories/SuccessStories";
-import WhyChooseUs from "@/components/home/whyChooseUs/WhyChooseUs";
+import RoomsAndSuites from "@/components/home/roomsAndSuites/RoomsAndSuites";
+import Amenities from "@/components/home/amenities/Amenities";
+import EventsMeetings from "@/components/home/eventsMeetings/EventsMeetings";
+
 import { Suspense } from "react";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <OurUniversities />
-      <AboutUs />
-      <WhyChooseUs />
-      <Counselors />
+      <FeaturedHotels />
+      <RoomsAndSuites />
+      <Amenities />
+      <EventsMeetings />
       <Suspense
         fallback={<div className="h-80 w-full bg-slate-100 animate-pulse" />}
-      >
-        <SuccessStories />
-      </Suspense>
-      <AirlinePartners />
-
-      <ContactSection />
+      ></Suspense>
     </div>
   );
 }

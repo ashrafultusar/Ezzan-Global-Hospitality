@@ -13,33 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tstourtravels.com"),
+  metadataBase: new URL("http://localhost:3000/"),
   title: {
-    default: "TS TOUR & TRAVEL",
-    template: "%s | TS TOUR & TRAVEL",
+    default: "Ezzan Global",
+    template: "%s | Ezzan-Global",
   },
   description:
     "Experience the best travel agency services. We offer affordable tour packages, hotel bookings, and flight tickets worldwide.",
   keywords: [
-    "tour and travel",
-    "travel agency",
-    "tour packages",
-    "TS Tour",
-    "ts tour and travel",
-    "ts tour travel",
-    "flight booking",
-    "travel deals",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
+    "Ezzan Global",
   ],
-  authors: [{ name: "TS TOUR & TRAVEL" }],
+  authors: [{ name: "Ezzan Global" }],
   icons: {
     icon: "/assets/logo/logo.png",
     apple: "/assets/logo/logo.png",
   },
   openGraph: {
-    title: "TS TOUR & TRAVEL",
+    title: "Ezzan Global",
     description: "Your trusted partner for global exploration.",
     url: "https://tstourtravels.com",
-    siteName: "TS TOUR & TRAVEL",
+    siteName: "Ezzan Global",
     images: [
       {
         url: "/assets/office/image6.jpeg",
