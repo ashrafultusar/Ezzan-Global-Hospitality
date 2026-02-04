@@ -1,0 +1,91 @@
+.sliderWrapper {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  display: flex;
+}
+
+
+.sliderContainer::before,
+.sliderContainer::after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.sliderContainer::before {
+  left: 0;
+  background: linear-gradient(to right, white 0%, transparent 100%);
+}
+
+.sliderContainer::after {
+  right: 0;
+  background: linear-gradient(to left, white 0%, transparent 100%);
+}
+
+.sliderTrack {
+  display: flex;
+  width: max-content;
+  
+  gap: 60px; 
+  animation: scroll 30s linear infinite;
+  
+  will-change: transform;
+}
+
+.logoItem {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px; 
+}
+
+.universityLogo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  
+  filter: grayscale(0); 
+  transition: transform 0.3s ease;
+}
+
+.sliderTrack:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+   
+    transform: translateX(calc(-50% - 30px)); 
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderTrack {
+    gap: 30px;
+    animation: scroll 20s linear infinite;
+  }
+  .logoItem {
+    width: 100px;
+  }
+  .universityLogo {
+    height: 40px;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 15px)); }
+  }
+}
