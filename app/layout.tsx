@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ezzan Global" }],
   icons: {
-    icon: "/assets/logo/logo.png",
-    apple: "/assets/logo/logo.png",
+    icon: "",
+    apple: "",
   },
   openGraph: {
     title: "Ezzan Global",

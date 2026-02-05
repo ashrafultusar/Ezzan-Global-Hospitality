@@ -1,8 +1,8 @@
-import FeaturedHotels from "@/components/home/featuredHotels/FeaturedHotels";
-import HeroSection from "@/components/home/heroSection/HeroSection";
-import RoomsAndSuites from "@/components/home/roomsAndSuites/RoomsAndSuites";
-import Amenities from "@/components/home/amenities/Amenities";
-import EventsMeetings from "@/components/home/eventsMeetings/EventsMeetings";
+import FeaturedHotels from "@/components/main/home/featuredHotels/FeaturedHotels";
+import HeroSection from "@/components/main/home/heroSection/HeroSection";
+import RoomsAndSuites from "@/components/main/home/roomsAndSuites/RoomsAndSuites";
+import Amenities from "@/components/main/home/amenities/Amenities";
+import EventsMeetings from "@/components/main/home/eventsMeetings/EventsMeetings";
 
 import { Suspense } from "react";
 
