@@ -6,10 +6,11 @@ import { Menu, X } from "lucide-react";
 
 const NAVIGATION_LINKS = [
   { name: "HOME", href: "/" },
-  { name: "HOTELS", href: "/about" },
+  { name: "HOTELS", href: "/hotels" },
   { name: "SERVICES", href: "/amenities" },
   { name: "GALLERY", href: "/gallery" },
-  { name: "CONTACT", href: "/contact" },
+  { name: "ABOUT", href: "/about" },
+  { name: "CONTACT", href: "/contactUs" },
 ];
 
 export default function Navbar() {
