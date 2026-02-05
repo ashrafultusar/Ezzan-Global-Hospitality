@@ -44,26 +44,63 @@ const TOP_CONTACTS: ContactMethod[] = [
   },
 ];
 
-const HOTEL_LIST: HotelContact[] = [
-  { id: 1, name: "Grand Millennium Lumpur", location: "Kuala Lumpur, Malaysia", phone: "+60 12345679" },
-  { id: 2, name: "Paradise Resort Langkawi", location: "Langkawi, Kedah, Malaysia", phone: "+60 12546639" },
-  { id: 3, name: "Heritage Grand Penang", location: "George Town, Penang, Malaysia", phone: "+60 12346693" },
-  { id: 4, name: "Waterfront Luxury Johor Bahru", location: "Johor Bahru, Malaysia", phone: "+60 12345667" },
-  { id: 5, name: "Rainforest Eco Lodge Sabah", location: "Kota Kinabalu, Sabah, Malaysia", phone: "+60 12348682" },
-  { id: 6, name: "The Majestic Hotel", location: "Kuala Lumpur, Malaysia", phone: "+60 12346682" },
+const LOCATIONS = [
+  {
+    id: 1,
+    name: "Grand Millennium Kuala Lumpur",
+    address: "160, Jalan Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7844!2d101.7093!3d3.1478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3629!2sGrand%20Millennium%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1700000000000",
+  },
+  {
+    id: 2,
+    name: "Paradise Resort Langkawi",
+    address: "Pantai Cenang, 07000 Langkawi, Kedah, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1!2d99.7!3d6.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b!2sPantai%20Cenang!5e0!3m2!1sen!2smy!4v1700000000000",
+  },
+  {
+    id: 3,
+    name: "Heritage Grand Penang",
+    address: "10, Lebuh Farquhar, George Town, 10200 Penang, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1!2d100.3!3d5.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304a!2sGeorge%20Town!5e0!3m2!1sen!2smy!4v1700000000000",
+  },
+  {
+    id: 4,
+    name: "Waterfront Luxury Johor Bahru",
+    address: "Jalan Ibrahim Sultan, Stulang Laut, 80300 Johor Bahru, Johor, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.1!2d103.7!3d1.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da!2sJohor%20Bahru!5e0!3m2!1sen!2smy!4v1700000000000",
+  },
+  {
+    id: 5,
+    name: "Rainforest Eco Lodge Sabah",
+    address: "Jalan Pantai, Tanjung Aru, 88100 Kota Kinabalu, Sabah, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.1!2d116.0!3d5.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b!2sKota%20Kinabalu!5e0!3m2!1sen!2smy!4v1700000000000",
+  },
 ];
 
 export default function ContactUs() {
   return (
     <section className="bg-[#fdfbf7] min-h-screen">
       {/* Header */}
-      <div className="bg-[#1a2b4b] text-white py-16 text-center px-4">
-        <p className="text-[#f2b830] uppercase tracking-[0.2em] text-xs font-bold mb-2">GET IN TOUCH</p>
-        <h2 className="text-4xl md:text-5xl font-serif mb-4">Contact Us</h2>
-        <p className="text-gray-300 max-w-2xl mx-auto text-sm">
-          Have questions or need assistance? Our team is here to help plan your perfect stay.
+
+      <section className="bg-[#1a2a4d] pt-28 pb-20 px-4 text-center">
+      <div className="max-w-5xl mx-auto">
+        {/* Sub-title */}
+        <p className="text-[#d48e28] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+        GET IN TOUCH
+        </p>
+
+        {/* Main Title */}
+        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
+        Contact Us
+        </h1>
+
+        {/* Description */}
+        <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+        Have questions or need assistance? Our team is here to help you plan your perfect stay.
         </p>
       </div>
+    </section>
+
 
       <div className="max-w-6xl mx-auto px-6 mt-10">
         {/* Top 3 Cards */}
@@ -84,31 +121,52 @@ export default function ContactUs() {
           ))}
         </div>
 
-        {/* Middle Section Title */}
-        <h2 className="text-2xl font-serif text-center text-[#1a2b4b] mb-10">Contact Our Hotels Directly</h2>
 
         {/* Hotel Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-          {HOTEL_LIST.map((hotel) => (
-            <div key={hotel.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-              <h4 className="font-bold text-[#1a2b4b] mb-3">{hotel.name}</h4>
-              <div className="space-y-2 mb-6">
-                <div className="flex items-center gap-2 text-gray-400 text-xs">
-                  <MapPin className="w-3.5 h-3.5 text-gray-400" />
-                  <span>{hotel.location}</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#f2b830] text-xs font-bold">
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>{hotel.phone}</span>
-                </div>
+        <section className="pb-20 bg-[#FDFCFB]">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl font-serif font-bold text-[#1a2b4b] text-center mb-12">
+          Our Hotel Locations
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {LOCATIONS.map((hotel) => (
+            <div 
+              key={hotel.id} 
+              className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border  border-gray-100 group hover:shadow-lg transition-shadow duration-300"
+            >
+              {/* Google Map Embed */}
+              <div className="h-64 w-full relative">
+                <iframe
+                  title={hotel.name}
+                  src={hotel.mapUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale-[0.2] contrast-[1.1]"
+                />
               </div>
-              <div className="flex gap-2">
-                <button className="flex-1 bg-[#25D366] text-white py-2 rounded text-[10px] font-bold">WhatsApp</button>
-                <button className="flex-1 bg-[#1a2b4b] text-white py-2 rounded text-[10px] font-bold">Call</button>
+
+              {/* Hotel Info */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-[#1a2b4b] mb-3 group-hover:text-[#D4A373] transition-colors">
+                  {hotel.name}
+                </h3>
+                <div className="flex items-start gap-2 text-gray-500">
+                  <MapPin className="w-4 h-4 text-[#D4A373] mt-1 shrink-0" />
+                  <p className="text-sm leading-relaxed">
+                    {hotel.address}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+    </section>
 
         {/* Footer Info */}
         <div className="border-t border-gray-200 pt-16 pb-10">

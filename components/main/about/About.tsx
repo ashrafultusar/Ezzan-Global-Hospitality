@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Award, Users, Heart, Globe } from "lucide-react"; // Real icons for values
+import { Award, Users, Heart, Globe } from "lucide-react";
 
 // --- Types ---
 interface StatCard {
@@ -57,8 +57,9 @@ const VALUES: ValueItem[] = [
 export default function About() {
   return (
     <div className="w-full">
-      {/* --- Hero / Background Section --- */}
-      <div className="relative h-[450px] md:h-[550px] w-full flex items-center justify-center">
+      {/* --- Hero Section Fix --- */}
+      {/* হাইট h-[50vh] থেকে h-[60vh] করা হয়েছে এবং pt-20 দেওয়া হয়েছে যাতে হেডারের নিচে ঢাকা না পড়ে */}
+      <div className="relative h-[60vh] w-full flex items-center justify-center pt-20">
         <Image
           src="/assets/about/image1.jpg" 
           alt="Malaysia Luxury Resort"
@@ -69,10 +70,10 @@ export default function About() {
         
         {/* --- Content Over Image --- */}
         <div className="relative z-10 text-center text-white px-6">
-          <p className="text-[#f2b830] uppercase tracking-[0.3em] text-[10px] md:text-xs font-black mb-3">
+          <p className="text-[#f2b830] uppercase tracking-[0.3em] text-[10px] md:text-xs font-black mb-4">
             ABOUT US
           </p>
-          <h1 className="text-4xl md:text-6xl font-serif max-w-4xl mx-auto leading-[1.1] mb-6 font-medium">
+          <h1 className="text-4xl md:text-6xl font-serif max-w-4xl mx-auto leading-[1.2] mb-6 font-medium">
             Malaysia&apos;s Premier <br className="hidden md:block" /> Hotel Collection
           </h1>
           <p className="text-gray-300 text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
@@ -84,7 +85,6 @@ export default function About() {
       {/* --- Our Story Section --- */}
       <section className="bg-white py-24 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Text Content */}
           <div className="space-y-6">
             <h2 className="text-4xl font-serif text-[#1a2b4b] font-bold">Our Story</h2>
             <div className="space-y-5 text-[#555] leading-[1.8] text-[15px]">
@@ -98,10 +98,6 @@ export default function About() {
                 standards of luxury and service. From the bustling streets of Kuala Lumpur to the pristine 
                 beaches of Langkawi, our properties offer guests an authentic Malaysian experience wrapped 
                 in world-class hospitality.
-              </p>
-              <p>
-                Today, we continue to innovate and elevate our offerings, ensuring that every guest who 
-                stays with us leaves with unforgettable memories and a desire to return.
               </p>
             </div>
           </div>
@@ -131,7 +127,7 @@ export default function About() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {VALUES.map((value) => (
-              <div key={value.id} className="flex flex-col items-center group">
+              <div key={value.id} className="flex flex-col items-center group text-center">
                 <div className="w-16 h-16 rounded-full bg-[#f2b830]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   {value.icon}
                 </div>
