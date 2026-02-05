@@ -32,7 +32,7 @@ const HeroSection = () => {
           {/* Top Badge */}
           <div className="inline-flex items-center gap-3 px-4 py-2 border border-[#D4AF37]/30 rounded-full bg-black/20 backdrop-blur-md mb-6 animate-in fade-in duration-1000">
              <span className="text-[#D4AF37] text-xs sm:text-sm font-medium tracking-[0.3em] uppercase">
-               ★ THE NO.1 LUXURY HOTEL GROUP IN BANGLADESH ★
+               ★ THE NO.1 LUXURY HOTEL GROUP IN Malaysia ★
              </span>
           </div>
 
