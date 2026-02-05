@@ -41,11 +41,11 @@ export default function Gallery() {
   return (
     <section className="bg-[#fdfbf7] min-h-screen pb-20">
       {/* Header */}
-      <div className="bg-[#1a2b4b] text-white py-20 text-center px-4">
+      <div  className="bg-[#1a2a4d] pt-28 pb-20 px-4 text-center">
         <p className="text-[#eab308] uppercase tracking-[0.3em] text-xs font-bold mb-3">
           Gallery
         </p>
-        <h2 className="text-4xl md:text-5xl font-serif mb-6">
+        <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
           Visual Journey
         </h2>
         <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
