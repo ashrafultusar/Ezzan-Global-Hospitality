@@ -123,13 +123,10 @@ const FeaturedHotels = () => {
 
                 {/* Footer Button */}
                 <div className="text-center">
-                    <button className="group relative overflow-hidden bg-[#1A2B48] text-white px-10 py-4 rounded-lg font-bold transition-transform active:scale-95">
-                        <span className="relative z-10 flex items-center gap-2">
-                            View All Hotels <span>→</span>
-                        </span>
-                        {/* Shine Animation */}
-                        <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shine" />
-                    </button>
+                <button className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
+                            Explore Venues 
+                            <span className="transition-transform group-hover:translate-x-2">→</span>
+                        </button>
                 </div>
             </div>
         </section>
