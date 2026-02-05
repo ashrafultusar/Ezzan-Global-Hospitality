@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 const NAVIGATION_LINKS = [
   { name: "HOME", href: "/" },
   { name: "HOMESTAY", href: "/homestay" },
+  { name: "TOUR PACKAGES", href: "/tourPackages" },
   { name: "SERVICES", href: "/ourServices" },
   { name: "GALLERY", href: "/gallery" },
   { name: "ABOUT", href: "/about" },
