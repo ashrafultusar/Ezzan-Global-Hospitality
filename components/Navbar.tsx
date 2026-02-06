@@ -118,7 +118,7 @@ export default function Navbar() {
             {/* --- Booking Button --- */}
             <div className="flex items-center">
               <Link
-                href="/booking"
+                href="/homestay"
                 className="bg-gradient-to-r from-[#E5A524] to-[#D4891A] hover:brightness-110 text-white text-xs font-bold px-5 py-2.5 rounded-md transition-all shadow-md active:scale-95"
               >
                 Book Now
