@@ -25,7 +25,7 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Call Us",
     description: "Available 24/7 for your inquiries",
-    value: "+60 12-345 6789",
+    value: "+6017708 5596",
     icon: <Phone className="w-6 h-6 text-[#d4a373]" />, // Golden color
   },
   {
@@ -39,7 +39,7 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Email Us",
     description: "We'll respond within 24 hours",
-    value: "+60 12-345 6789",
+    value: "izzanglobalhospitality@gmail.com",
     icon: <Mail className="w-6 h-6 text-[#4285F4]" />, // Email Blue
   },
 ];
@@ -168,27 +168,6 @@ export default function ContactUs() {
       </div>
     </section>
 
-        {/* Footer Info */}
-        <div className="border-t border-gray-200 pt-16 pb-10">
-            <h3 className="text-center text-2xl font-serif text-[#1a2b4b] mb-12">Head Office</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-                <div className="flex flex-col items-center">
-                    <MapPin className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Address</h5>
-                    <p className="text-gray-500 text-[10px] leading-relaxed">Level 19, Tower A, KL23, Kuala Lumpur, 50088 Malaysia</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Phone className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Phone</h5>
-                    <p className="text-gray-500 text-[10px]">+60 12-345 6789</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Clock className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Hours</h5>
-                    <p className="text-gray-500 text-[10px]">Mon - Fri: 9:00 AM - 6:00 PM<br/>Sat - Sun: 10:00 AM - 4:00 PM</p>
-                </div>
-            </div>
-        </div>
       </div>
     </section>
   );

@@ -45,3 +45,60 @@
     opacity: 0;
   }
 }
+
+
+/* ১. Stats counter  */
+@property --num-luxury {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-rooms {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --num-price {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+
+.countLuxury::after {
+  content: counter(num);
+}
+
+.countRooms {
+  animation: countRoomsAnim 3s forwards cubic-bezier(0, 0, 0.2, 1);
+  counter-reset: num var(--num-rooms);
+}
+.countRooms::after {
+  content: counter(num);
+}
+
+.countPrice {
+  animation: countPriceAnim 3s forwards cubic-bezier(0, 0, 0.2, 1);
+  counter-reset: num var(--num-price);
+}
+.countPrice::after {
+  content: counter(num);
+}
+
+
+@keyframes countLuxuryAnim {
+  from { --num-luxury: 0; }
+  to { --num-luxury: 5; }
+}
+
+@keyframes countRoomsAnim {
+  from { --num-rooms: 0; }
+  to { --num-rooms: 100; }
+}
+
+@keyframes countPriceAnim {
+  from { --num-price: 0; }
+  to { --num-price: 150; }
+}
+
+
