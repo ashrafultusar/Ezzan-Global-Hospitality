@@ -64,11 +64,7 @@
   inherits: false;
 }
 
-/* ২. এনিমেশন সেটআপ */
-.countLuxury {
-  animation: countLuxuryAnim 3s forwards cubic-bezier(0, 0, 0.2, 1);
-  counter-reset: num var(--num-luxury);
-}
+
 .countLuxury::after {
   content: counter(num);
 }
@@ -97,10 +93,12 @@
 
 @keyframes countRoomsAnim {
   from { --num-rooms: 0; }
-  to { --num-rooms: 2000; }
+  to { --num-rooms: 100; }
 }
 
 @keyframes countPriceAnim {
   from { --num-price: 0; }
   to { --num-price: 150; }
 }
+
+

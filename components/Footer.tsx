@@ -1,6 +1,14 @@
 "use client";
 
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+} from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
@@ -14,7 +22,7 @@ const Footer = () => {
 
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "Hotels", href: "/hotels" },
+    { name: "Home Stay", href: "/homestay" },
     { name: "Services", href: "/services" },
     { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" },
@@ -32,7 +40,8 @@ const Footer = () => {
       icon: Instagram,
       href: "#",
       label: "Instagram",
-      brandClass: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white",
+      brandClass:
+        "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white",
     },
     {
       icon: Twitter,
@@ -58,13 +67,13 @@ const Footer = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "info@ezzan.com",
+      value: "izzanglobalhospitality@gmail.com",
       href: "mailto:info@ezzan.com",
     },
     {
       icon: MapPin,
       label: "Address",
-      value: "Luxury Street, Resort City 5400",
+      value: "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
       href: "#",
     },
   ];
@@ -91,10 +100,11 @@ const Footer = () => {
             </div>
 
             <p className="text-white/60 leading-relaxed text-sm">
-              Experience unparalleled luxury and world-class hospitality at Ezzan Global. 
-              Where every stay becomes a cherished memory and every moment is crafted to perfection.
+              Experience unparalleled luxury and world-class hospitality at
+              Ezzan Global. Where every stay becomes a cherished memory and
+              every moment is crafted to perfection.
             </p>
-            
+
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (
                 <a
@@ -181,12 +191,8 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-
-          
           </div>
         </div>
-
-       
       </div>
     </footer>
   );
