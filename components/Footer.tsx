@@ -12,21 +12,14 @@ import {
 import Link from "next/link";
 
 const Footer = () => {
-  const services = [
-    { name: "Luxury Suites", href: "/rooms" },
-    { name: "Spa & Wellness", href: "/spa" },
-    { name: "Fine Dining", href: "/dining" },
-    { name: "Event Venues", href: "/events" },
-    { name: "Concierge Service", href: "/concierge" },
-  ];
-
+  
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "Home Stay", href: "/homestay" },
-    { name: "Services", href: "/services" },
+    { name: "Services", href: "/ourServices" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Contact", href: "/contact" },
-    { name: "Book Now", href: "/booking" },
+    { name: "Contact", href: "/contactUs" },
+    { name: "Book Now", href: "/homestay" },
   ];
 
   const socialLinks = [
@@ -82,7 +75,7 @@ const Footer = () => {
     <footer className="bg-[#2a2622] text-white/80">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
@@ -141,29 +134,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
-              Our Services
-            </h3>
-            <ul className="space-y-4">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <Link
-                    href={service.href}
-                    className="flex items-center gap-3 group text-white/60 hover:text-[#D4AF37] transition-all duration-300"
-                  >
-                    <span className="text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
-                      •
-                    </span>
-                    <span className="text-sm group-hover:translate-x-1 transition-transform">
-                      {service.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Contact Info */}
           <div>
