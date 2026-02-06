@@ -1,0 +1,56 @@
+.sliderContainer {
+    width: 100%;
+    padding: 40px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .sliderWrapper {
+    display: flex;
+    gap: 24px; /* Gap exactly 24px */
+    width: max-content;
+    /* ৯ সেকেন্ড ব্যবহার করছি (৩টি কার্ডের জন্য ৩ সেকেন্ড করে) */
+    animation: slideInfinite 9s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+  }
+  
+  .sliderWrapper:hover {
+    animation-play-state: paused;
+  }
+  
+  .slideCard {
+    width: 380px; 
+    flex-shrink: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    background: white;
+  }
+  
+  /* ৩টি কার্ডের জন্য ফিক্সড ইনফিনিট লজিক */
+  @keyframes slideInfinite {
+    /* কার্ড ১ (০% থেকে ৩০% পর্যন্ত স্থির থাকবে) */
+    0%, 30% { transform: translateX(0); }
+    
+    /* কার্ড ২ এ মুভ (৩৩% এ মুভ শেষ হয়ে ৬৩% পর্যন্ত থাকবে) */
+    33%, 63% { transform: translateX(calc(-380px - 24px)); }
+    
+    /* কার্ড ৩ এ মুভ (৬৬% এ মুভ শেষ হয়ে ৯৬% পর্যন্ত থাকবে) */
+    66%, 96% { transform: translateX(calc(-760px - 48px)); }
+    
+    /* ১০০% এ এসে এটি ডুপ্লিকেট ১ নম্বর কার্ডে পৌঁছাবে এবং গ্যাপ ছাড়া রিস্টার্ট হবে */
+    100% { transform: translateX(calc(-1140px - 72px)); }
+  }
+  
+  /* মোবাইল রেসপন্সিভ ফিক্স */
+  @media (max-width: 768px) {
+    .slideCard {
+      width: 300px;
+    }
+    @keyframes slideInfinite {
+      0%, 30% { transform: translateX(0); }
+      33%, 63% { transform: translateX(calc(-300px - 24px)); }
+      66%, 96% { transform: translateX(calc(-600px - 48px)); }
+      100% { transform: translateX(calc(-900px - 72px)); }
+    }
+  }
