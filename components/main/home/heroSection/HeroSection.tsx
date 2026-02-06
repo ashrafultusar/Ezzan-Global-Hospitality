@@ -53,33 +53,53 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 w-full sm:w-auto">
             <Link 
-              href="/hotels" 
+              href="/homestay" 
               className="bg-[#D4AF37] hover:bg-[#B37314] text-slate-900 font-bold px-8 py-3.5 rounded-md transition-all w-[80%] sm:w-auto text-base shadow-lg active:scale-95"
             >
               Explore Our Hotels
             </Link>
             <Link 
-              href="/booking" 
+              href="/homestay" 
               className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold px-8 py-3.5 rounded-md transition-all w-[80%] sm:w-auto text-base active:scale-95"
             >
               Book Now
             </Link>
           </div>
 
-          {/* Stats Section */}
-          <div className="hidden sm:grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 py-6 border-t border-white/20 w-full">
-            {[
-              { value: "5 ★", label: "LUXURY HOTELS" },
-              { value: "2000+", label: "ROOMS" },
-              { value: "24/7", label: "SERVICE" },
-              { value: "$150+", label: "PRICE" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center border-r border-white/10 last:border-none">
-                <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">{stat.value}</div>
-                <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+      {/* Stats Section */}
+<div className="hidden sm:grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 py-6 border-t border-white/20 w-full">
+  
+  {/* Luxury Hotels */}
+  <div className="text-center border-r border-white/10">
+    <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">
+      <span className={styles.countLuxury}></span> ★
+    </div>
+    <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">LUXURY HOTELS</div>
+  </div>
+
+  {/* Rooms */}
+  <div className="text-center border-r border-white/10">
+    <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">
+      <span className={styles.countRooms}></span>+
+    </div>
+    <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">ROOMS</div>
+  </div>
+
+  {/* Service */}
+  <div className="text-center border-r border-white/10">
+    <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">24/7</div>
+    <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">SERVICE</div>
+  </div>
+
+  {/* Price */}
+  <div className="text-center last:border-none">
+    <div className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-0.5">
+      $<span className={styles.countPrice}></span>+
+    </div>
+    <div className="text-[11px] md:text-xs text-white font-bold uppercase tracking-wider">PRICE</div>
+  </div>
+
+</div>
         </div>
       </div>
     </section>
