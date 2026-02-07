@@ -25,7 +25,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Facebook,
-      href: "#",
+      href: "https://www.facebook.com/profile.php?id=61560087117685&rdid=9P8cnr3c5xrOOvLV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17QZu6Fp2u%2F#",
       label: "Facebook",
       brandClass: "bg-[#1877F2] hover:bg-[#1877F2]/90 text-white",
     },
@@ -100,7 +100,7 @@ const Footer = () => {
 
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (
-                <a
+                <a target="_blank"
                   key={social.label}
                   href={social.href}
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${social.brandClass} hover:scale-110 active:scale-95 shadow-lg`}
