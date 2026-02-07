@@ -2,20 +2,7 @@ import Image from "next/image";
 import { Star, Users, Calendar, Compass } from "lucide-react";
 import TourSlider from "./TourSlider";
 import { toursInsideKL, toursInternational, toursOutsideKL } from "@/data/tour";
-// --- Types ---
-interface TourPackage {
-  id: number;
-  category: string;
-  duration: string;
-  image: string;
-  title: string;
-  description: string;
-  rating: number;
-  reviews: number;
-  tags: string[];
-  price: string;
-  categoryColor: string;
-}
+
 
 export default function TourPackagesPage() {
   return (
