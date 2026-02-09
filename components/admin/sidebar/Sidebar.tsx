@@ -11,29 +11,26 @@ import {
   ChevronLeft,
   Menu,
   X,
+  Building2,
+  Bed,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Hook for active path
 import { useState } from "react";
 
 const mainMenuItems = [
-  { name: "Dashboard", icon: LayoutDashboard, href: "/ts-staff-portal" },
-  { name: "Admin Management", icon: UserCog, href: "/ts-staff-portal/admin" },
+  { name: "Dashboard", icon: LayoutDashboard, href: "/izzan-staff-portal" },
+  { name: "Admin Management", icon: UserCog, href: "/izzan-staff-portal/admin" },
   {
-    name: "Professional Team",
-    icon: UsersRound,
-    href: "/ts-staff-portal/professionalTeam",
+    name: "Rooms",
+    icon: Bed,
+    href: "/izzan-staff-portal/rooms",
   },
+  { name: "Blog", icon: Newspaper, href: "/izzan-staff-portal/blog" },
   {
-    name: "Universities",
-    icon: GraduationCap,
-    href: "/ts-staff-portal/universities",
-  },
-  { name: "Blog", icon: Newspaper, href: "/ts-staff-portal/blog" },
-  {
-    name: "Success Stories",
-    icon: Trophy,
-    href: "/ts-staff-portal/successStories",
+    name: "Hotels",
+    icon: Building2,
+    href: "/izzan-staff-portal/hotels",
   },
 ];
 
@@ -124,10 +121,9 @@ export default function Sidebar() {
                       text-sm font-medium
                       rounded-lg
                       transition-all duration-200
-                      ${
-                        isActive
-                          ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
-                          : "hover:bg-white/5 hover:text-white"
+                      ${isActive
+                        ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                        : "hover:bg-white/5 hover:text-white"
                       }
                     `}
                   >

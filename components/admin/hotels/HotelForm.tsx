@@ -1,27 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import { Briefcase, Globe, Save, Loader2 } from "lucide-react";
-import { createTeamMember, updateTeamMember } from "@/actions/professionalTeamActions";
+import { MapPin, Save, Loader2 } from "lucide-react";
+import { createHotel, updateHotel } from "@/actions/hotelActions";
 import { handleServerResponse } from "@/lib/utils/formHelpers";
 import ImageUpload from "@/components/admin/shared/ImageUpload";
 import { useRouter } from "next/navigation";
 
-interface ProfessionalTeamFormProps {
+interface HotelFormProps {
     mode: "create" | "edit";
     initialData?: {
         _id?: string;
         name: string;
-        country: string;
-        designation: string;
+        description: string;
+        location: string;
         image?: string;
     };
 }
 
-const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
-    mode,
-    initialData,
-}) => {
+const HotelForm: React.FC<HotelFormProps> = ({ mode, initialData }) => {
     const router = useRouter();
     const [preview, setPreview] = useState<string | null>(initialData?.image || null);
     const [imageFile, setImageFile] = useState<File | null>(null);
@@ -46,12 +43,12 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
 
         // Manually add form fields
         const nameInput = form.querySelector('[name="name"]') as HTMLInputElement;
-        const countryInput = form.querySelector('[name="country"]') as HTMLInputElement;
-        const designationInput = form.querySelector('[name="designation"]') as HTMLInputElement;
+        const locationInput = form.querySelector('[name="location"]') as HTMLInputElement;
+        const descriptionInput = form.querySelector('[name="description"]') as HTMLTextAreaElement;
 
         if (nameInput?.value) formData.append("name", nameInput.value);
-        if (countryInput?.value) formData.append("country", countryInput.value);
-        if (designationInput?.value) formData.append("designation", designationInput.value);
+        if (locationInput?.value) formData.append("location", locationInput.value);
+        if (descriptionInput?.value) formData.append("description", descriptionInput.value);
 
         // Add compressed image file if available
         if (imageFile) {
@@ -61,14 +58,14 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
         try {
             const result =
                 mode === "edit" && initialData?._id
-                    ? await updateTeamMember(initialData._id, formData)
-                    : await createTeamMember(formData);
+                    ? await updateHotel(initialData._id, formData)
+                    : await createHotel(formData);
 
             handleServerResponse(result, () => {
-                router.push("/izzan-staff-portal/professionalTeam");
+                router.push("/izzan-staff-portal/hotels");
             });
         } catch (error) {
-            console.error("Error submitting team member:", error);
+            console.error("Error submitting hotel:", error);
         } finally {
             setLoading(false);
         }
@@ -82,68 +79,65 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
                 preview={preview}
                 onImageChange={handleImageChange}
                 onCompressionStateChange={handleCompressionStateChange}
-                label="Upload Photo"
-                shape="circle"
+                label="Upload Hotel Image"
+                shape="rectangle"
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Name */}
+            <div className="grid grid-cols-1 gap-6">
+                {/* Hotel Name */}
                 <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Full Name
+                    <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-tight">
+                        Hotel Name
                     </label>
                     <input
                         name="name"
                         type="text"
                         required
                         defaultValue={initialData?.name}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50/30"
-                        placeholder="John Doe"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50/30"
+                        placeholder="e.g. Grand Plaza Hotel"
                     />
                 </div>
 
-                {/* Country */}
+                {/* Location */}
                 <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Country
+                    <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-tight">
+                        Location
                     </label>
                     <div className="relative">
                         <input
-                            name="country"
+                            name="location"
                             type="text"
                             required
-                            defaultValue={initialData?.country}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50/30"
-                            placeholder="Bangladesh"
+                            defaultValue={initialData?.location}
+                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50/30"
+                            placeholder="e.g. New York, USA"
                         />
-                        <Globe className="absolute left-3 top-3.5 text-gray-400" size={18} />
+                        <MapPin className="absolute left-3 top-3.5 text-gray-400" size={18} />
                     </div>
                 </div>
 
-                {/* Designation */}
-                <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Designation
+                {/* Description */}
+                <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2 tracking-tight">
+                        Description
                     </label>
-                    <div className="relative">
-                        <input
-                            name="designation"
-                            type="text"
-                            required
-                            defaultValue={initialData?.designation}
-                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none bg-gray-50/30"
-                            placeholder="Senior Researcher"
-                        />
-                        <Briefcase className="absolute left-3 top-3.5 text-gray-400" size={18} />
-                    </div>
+                    <textarea
+                        name="description"
+                        rows={6}
+                        required
+                        defaultValue={initialData?.description}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition bg-gray-50/30 resize-none"
+                        placeholder="Describe the hotel, amenities, and features..."
+                    ></textarea>
                 </div>
             </div>
 
-            {/* Buttons */}
+            {/* Action Buttons */}
             <div className="flex justify-end items-center gap-4 pt-4 border-t border-gray-50">
                 <button
                     type="button"
-                    onClick={() => router.push("/izzan-staff-portal/professionalTeam")}
+                    onClick={() => router.push("/izzan-staff-portal/hotels")}
                     disabled={loading || isCompressing}
                     className="px-6 py-2.5 text-gray-500 font-medium hover:text-gray-800 transition disabled:opacity-50"
                 >
@@ -152,14 +146,14 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
                 <button
                     type="submit"
                     disabled={loading || isCompressing}
-                    className="flex items-center gap-2 px-8 py-2.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition disabled:bg-blue-400 disabled:cursor-not-allowed"
+                    className="flex items-center gap-2 px-8 py-2.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 shadow-lg shadow-blue-100 transition active:scale-95 disabled:bg-blue-400 disabled:cursor-not-allowed"
                 >
                     {loading ? <Loader2 className="animate-spin" size={18} /> : isCompressing ? <Loader2 className="animate-spin" size={18} /> : <Save size={18} />}
-                    {isCompressing ? "Optimizing..." : loading ? "Saving..." : mode === "edit" ? "Update Member" : "Publish Member"}
+                    {isCompressing ? "Optimizing..." : loading ? "Saving..." : mode === "edit" ? "Update Hotel" : "Add Hotel"}
                 </button>
             </div>
         </form>
     );
 };
 
-export default ProfessionalTeamForm;
+export default HotelForm;

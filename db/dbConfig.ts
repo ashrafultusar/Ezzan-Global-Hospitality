@@ -26,7 +26,7 @@ export const connectDB = async () => {
 
   if (!cached.promise) {
     const opts = {
-      dbName: "TsToursAndTravels",
+      dbName: "IzzanDB",
       bufferCommands: false,
       maxPoolSize: 10,
     };
