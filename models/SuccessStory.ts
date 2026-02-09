@@ -1,17 +1,29 @@
-import mongoose, { Schema, model, models } from "mongoose";
 
-const SuccessStorySchema = new Schema(
+import mongoose, { Schema, Document, Model } from "mongoose";
+
+export interface ISuccessStory extends Document {
+    studentName: string;
+    university: string;
+    subject: string;
+    image: string;
+    story: string;
+    rating: number;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+const SuccessStorySchema = new Schema<ISuccessStory>(
     {
         studentName: { type: String, required: true },
-        subject: { type: String, required: true },
         university: { type: String, required: true },
-        country: { type: String },
+        subject: { type: String, required: true },
+        image: { type: String, required: true },
         story: { type: String, required: true },
-        image: { type: String, default: "" },
+        rating: { type: Number, default: 5 },
     },
     { timestamps: true }
 );
 
-const SuccessStory = models.SuccessStory || model("SuccessStory", SuccessStorySchema);
+const SuccessStory: Model<ISuccessStory> = mongoose.models.SuccessStory || mongoose.model<ISuccessStory>("SuccessStory", SuccessStorySchema);
 
 export default SuccessStory;

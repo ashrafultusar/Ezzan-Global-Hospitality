@@ -97,7 +97,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ mode, initialData }) => {
 
             const success = handleServerResponse(result, () => {
                 router.refresh();
-                router.push("/ts-staff-portal/blog");
+                router.push("/izzan-staff-portal/blog");
             });
         } catch (error) {
             console.error("Error submitting blog:", error);
@@ -232,7 +232,7 @@ const BlogForm: React.FC<BlogFormProps> = ({ mode, initialData }) => {
             <div className="flex justify-end gap-4 pt-6 border-t border-gray-100">
                 <button
                     type="button"
-                    onClick={() => router.push("/ts-staff-portal/blog")}
+                    onClick={() => router.push("/izzan-staff-portal/blog")}
                     disabled={loading || isCompressing}
                     className="px-6 py-3 text-gray-500 font-medium hover:text-gray-800 transition disabled:opacity-50"
                 >

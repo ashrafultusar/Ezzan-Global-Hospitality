@@ -11,7 +11,7 @@ interface Testimonial {
   subject: string;
   image: string;
   story: string;
-  rating?: number; 
+  rating?: number;
 }
 
 const SuccessStories: React.FC = async () => {
@@ -20,7 +20,7 @@ const SuccessStories: React.FC = async () => {
   return (
     <section id="success" className="py-16 md:py-24 lg:py-28 bg-[#F8FAFC] relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,#14919B15,transparent_70%)] pointer-events-none" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 rounded-full bg-[#FDF6E9] text-[#D97706] text-[10px] md:text-xs font-bold uppercase tracking-wider mb-4">
@@ -37,7 +37,7 @@ const SuccessStories: React.FC = async () => {
 
           <div className="flex w-max gap-6 md:gap-10 animate-testimonial-scroll hover:paused cursor-pointer">
             {/* Map over the stories with the correct keys from your console log */}
-            {stories?.map((testimonial: Testimonial, index) => (
+            {stories?.map((testimonial: Testimonial, index: number) => (
               <div
                 key={`${testimonial._id}-${index}`}
                 className="w-[80vw] md:w-105 shrink-0 relative flex flex-col p-8 rounded-[32px] bg-white border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#14919B20] transition-all duration-300 group"
@@ -85,7 +85,8 @@ const SuccessStories: React.FC = async () => {
         </div>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes testimonialScroll {
           0% { transform: translateX(0); }
           100% { transform: translateX(calc(-33.33% - 20px)); } 
