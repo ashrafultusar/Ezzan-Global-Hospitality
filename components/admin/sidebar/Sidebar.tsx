@@ -2,8 +2,7 @@
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import {
   LayoutDashboard,
-  UserCog,
-  GraduationCap,
+  UserCog,  
   Newspaper,
   ChevronRight,
   ChevronLeft,
@@ -11,6 +10,7 @@ import {
   X,
   Building2,
   Bed,
+  Crown,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Hook for active path
@@ -47,7 +47,7 @@ export default function Sidebar() {
       <div className="lg:hidden flex items-center justify-between px-4 py-3 bg-[#1e2634] text-white">
         <div className="flex items-center gap-2">
           <div className="bg-blue-500 p-1.5 rounded-md">
-            <GraduationCap size={18} />
+            <Crown size={18} />
           </div>
           <span className="text-sm font-semibold text-white">Izzan Global</span>
         </div>
@@ -73,7 +73,7 @@ export default function Sidebar() {
           {/* ===== LOGO ===== */}
           <div className="relative flex items-center gap-3 px-4 py-6">
             <div className="bg-blue-500 p-2 rounded-md shrink-0">
-              <GraduationCap size={24} className="text-white" />
+              <Crown size={24} className="text-white" />
             </div>
 
             <div
