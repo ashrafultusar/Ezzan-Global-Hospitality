@@ -19,7 +19,9 @@ const Page = () => {
             </div>
             <h1 className="text-3xl md:text-5xl font-extrabold text-[#0F172A] tracking-tight">
               Welcome to{" "}
-              <span className="text-[#0891B2]">TS Tour and Travel</span>
+              <span className="text-[#0891B2]">Izzan Global</span> 
+              <br />
+              <span className="text-[#0891B2]">Hotels & Resorts</span>
             </h1>
 
             <p className="mt-2 text-lg text-[#64748B] font-medium italic">

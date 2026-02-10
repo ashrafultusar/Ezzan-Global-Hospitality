@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/profile", "/api/", "/izzan-staff-portal", "/izzan-staff-portal/"],
         },
-        sitemap: "https://tstourtravels.com/sitemap.xml",
+        sitemap: "https://www.izzanglobalhospitality.com/sitemap.xml",
     };
 }

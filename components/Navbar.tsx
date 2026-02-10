@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
-import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { LayoutDashboard, Menu, X } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const NAVIGATION_LINKS = [
   { name: "HOME", href: "/" },
@@ -16,10 +17,31 @@ const NAVIGATION_LINKS = [
 ];
 
 export default function Navbar() {
-  const pathname = usePathname(); // Get current route
+  const { data: session } = useSession();
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const isStaff = useMemo(() => {
+    return (
+      session?.user?.role === "admin" || session?.user?.role === "moderator"
+    );
+  }, [session?.user?.role]);
+
+  const navLinks = useMemo(() => {
+    if (isStaff) {
+      return [
+        {
+          name: "Dashboard",
+          href: "/izzan-staff-portal",
+          icon: LayoutDashboard,
+        },
+        ...NAVIGATION_LINKS,
+      ];
+    }
+    return NAVIGATION_LINKS;
+  }, [isStaff]);
 
   // Scroll Detection Logic
   useEffect(() => {
@@ -76,7 +98,7 @@ export default function Navbar() {
                       isScrolled ? "text-slate-900" : "text-white"
                     }`}
                   >
-                    Ezzan Global
+                    Izzan Global
                   </span>
                   <span
                     className={`text-[8px] tracking-[0.2em] font-medium uppercase transition-colors duration-300 ${
@@ -91,7 +113,7 @@ export default function Navbar() {
 
             {/* --- Desktop Navigation --- */}
             <div className="hidden lg:flex items-center gap-8">
-              {NAVIGATION_LINKS.map((link) => {
+              {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
@@ -101,8 +123,8 @@ export default function Navbar() {
                       isActive
                         ? "text-[#D4AF37]"
                         : isScrolled
-                        ? "text-slate-700 hover:text-[#D4AF37]"
-                        : "text-white hover:text-[#D4AF37]"
+                          ? "text-slate-700 hover:text-[#D4AF37]"
+                          : "text-white hover:text-[#D4AF37]"
                     }`}
                   >
                     {link.name}
@@ -171,7 +193,7 @@ export default function Navbar() {
                 </div>
                 <div className="text-center">
                   <div className="text-4xl font-serif font-bold text-white">
-                    Ezzan Global
+                    Izzan Global
                   </div>
                   <div className="text-sm tracking-widest text-white/80 uppercase mt-2">
                     Hotels & Resorts
@@ -182,7 +204,7 @@ export default function Navbar() {
 
             {/* Nav Links */}
             <nav className="space-y-6">
-              {NAVIGATION_LINKS.map((link, index) => {
+              {navLinks.map((link, index) => {
                 const isActive = pathname === link.href;
                 return (
                   <div
