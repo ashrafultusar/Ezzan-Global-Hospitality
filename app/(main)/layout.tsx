@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <SessionProvider>
-      <main className={` antialiased`}>
+      <main>
         <Navbar />
         {children}
         <ScrollToTop />
