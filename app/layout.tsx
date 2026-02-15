@@ -18,6 +18,15 @@ export const metadata: Metadata = {
     default: "Izzan Global Hotels & Resorts | Luxury Hospitality in Malaysia",
     template: "%s | Izzan Global Hotels & Resorts",
   },
+  icons: {
+    icon: "/assets/logo/logo.png",
+    shortcut: "/assets/logo/logo.png",
+    apple: "/assets/logo/logo.png",
+    other: {
+      rel: "apple-touch-icon-precomposed",
+      url: "/assets/logo/logo.png",
+    },
+  },
   description:
     "Izzan Global Hotels & Resorts — luxury hotel bookings, premium homestays, tour packages, and world-class hospitality services across Malaysia. Book your dream stay today.",
   keywords: [
@@ -37,12 +46,13 @@ export const metadata: Metadata = {
   publisher: "Izzan Global Hotels & Resorts",
   openGraph: {
     title: "Izzan Global Hotels & Resorts",
-    description: "Luxury hotel bookings, premium homestays, and tour packages across Malaysia. Experience world-class hospitality.",
+    description:
+      "Luxury hotel bookings, premium homestays, and tour packages across Malaysia. Experience world-class hospitality.",
     url: "https://www.izzanglobalhospitality.com",
     siteName: "Izzan Global Hotels & Resorts",
     images: [
       {
-        url: "/assets/office/image6.jpeg",
+        url: "/assets/logo/logo.png",
         width: 1200,
         height: 630,
         alt: "Izzan Global Hotels & Resorts — Luxury Hospitality",
@@ -54,8 +64,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Izzan Global Hotels & Resorts",
-    description: "Luxury hotel bookings, premium homestays, and tour packages across Malaysia.",
-    images: ["/assets/office/image6.jpeg"],
+    description:
+      "Luxury hotel bookings, premium homestays, and tour packages across Malaysia.",
+    images: ["/assets/about/image1.jpg"],
   },
 };
 
