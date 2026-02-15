@@ -57,5 +57,4 @@ export default async function HotelDetailPage({ params }: Props) {
       />
     </div>
   );
-  );
 }
