@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     "Ezzan Global",
   ],
   authors: [{ name: "Ezzan Global" }],
-  // icons: {
-  //   icon: "",
-  //   apple: "",
-  // },
+  icons: {
+    icon: "/assets/logo/logo.png",
+    apple: "/assets/logo/logo.png",
+  },
   openGraph: {
     title: "Ezzan Global",
     description: "Your trusted partner for global exploration.",

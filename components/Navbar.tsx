@@ -112,7 +112,7 @@ export default function Navbar() {
           isScrolled ? "text-slate-500" : "text-[#D4AF37]"
         }`}
       >
-        Hotels & Resorts
+       Hospitality 
       </span>
     </div>
   </Link>
@@ -208,7 +208,7 @@ export default function Navbar() {
       Izzan Global
     </div>
     <div className="text-sm tracking-widest text-white/80 uppercase mt-2">
-      Hotels & Resorts
+    Hospitality 
     </div>
   </div>
 </div>
