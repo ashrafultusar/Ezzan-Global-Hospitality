@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Users, Maximize, BedDouble, Check, MessageCircle, Phone } from "lucide-react";
@@ -5,7 +6,46 @@ import { getRoomById } from "@/lib/data/room";
 import { getHotelById } from "@/lib/data/hotel";
 import { IHotel, IRoom } from "@/types/hotel.types";
 
-export default async function RoomDetailsPage({ params }: { params: Promise<{ hotelId: string, roomId: string }> }) {
+type Props = { params: Promise<{ hotelId: string; roomId: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { hotelId, roomId } = await params;
+
+  const [hotelResult, roomResult] = await Promise.all([
+    getHotelById(hotelId),
+    getRoomById(roomId),
+  ]);
+
+  if (!hotelResult.success || !roomResult.success) {
+    return { title: "Room Not Found" };
+  }
+
+  const hotel = hotelResult.hotel as IHotel;
+  const room = roomResult.room as IRoom;
+
+  return {
+    title: `${room.title} at ${hotel.name}`,
+    description: `${room.title} — ${room.description} Starting from MYR ${room.price}/night. ${room.area} sqm, ${room.capacity} guests, ${room.bedType}. Book at ${hotel.name}.`,
+    keywords: [room.title, hotel.name, hotel.location, "hotel room", "room booking Malaysia"],
+    openGraph: {
+      title: `${room.title} at ${hotel.name}`,
+      description: `${room.description} — Starting from MYR ${room.price}/night.`,
+      url: `https://www.izzanglobalhospitality.com/homestay/${hotelId}/${roomId}`,
+      type: "website",
+      images: room.images?.[0]
+        ? [{ url: room.images[0], width: 1200, height: 630, alt: room.title }]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${room.title} at ${hotel.name}`,
+      description: `Starting from MYR ${room.price}/night. ${room.area} sqm, ${room.bedType}.`,
+      images: room.images?.[0] ? [room.images[0]] : undefined,
+    },
+  };
+}
+
+export default async function RoomDetailsPage({ params }: Props) {
   const { hotelId, roomId } = await params;
 
   const [hotelResult, roomResult] = await Promise.all([
