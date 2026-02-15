@@ -3,9 +3,9 @@ import Hotel from "@/models/Hotel";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import Image from "next/image";
-import { revalidateTag } from "next/cache";
+
 import { requireStaff } from "@/lib/access-helper";
-import { deleteHotel } from "@/actions/hotelActions";
+
 import DeleteHotelButton from "@/components/admin/hotels/DeleteHotelButton";
 
 export default async function HotelsPage() {
