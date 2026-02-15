@@ -31,6 +31,11 @@ const mainMenuItems = [
     href: "/izzan-staff-portal/hotels",
   },
   {
+    name: "Gallery",
+    icon: UserCog,
+    href: "/izzan-staff-portal/galleryManagement",
+  },
+  {
     name: "Admin Management",
     icon: UserCog,
     href: "/izzan-staff-portal/admin",
