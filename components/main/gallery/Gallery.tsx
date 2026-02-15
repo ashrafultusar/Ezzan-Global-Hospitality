@@ -101,7 +101,9 @@ export default function Gallery() {
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-all duration-500" />
                 <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                  <p className="text-white text-lg font-medium">{image.title}</p>
+                {image.title && (
+    <p className="text-white text-lg font-medium mb-1">{image.title}</p>
+  )}
                   <p className="text-[#eab308] text-sm font-semibold uppercase">{image.category}</p>
                 </div>
               </div>

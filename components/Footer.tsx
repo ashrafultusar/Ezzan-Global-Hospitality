@@ -62,7 +62,7 @@ const Footer = () => {
       icon: Mail,
       label: "Email",
       value: "izzanglobalhospitality@gmail.com",
-      href: "mailto:info@ezzan.com",
+      href: "izzanglobalhospitality@gmail.com",
     },
     {
       icon: MapPin,
@@ -90,7 +90,7 @@ const Footer = () => {
                 </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-serif font-bold text-white">
-                  Ezzan Global
+                  Izzan Global
                 </span>
                 <span className="text-xs tracking-[0.2em] text-[#D4AF37] font-medium uppercase">
                 Hospitality 
@@ -100,7 +100,7 @@ const Footer = () => {
 
             <p className="text-white/60 leading-relaxed text-sm">
               Experience unparalleled luxury and world-class hospitality at
-              Ezzan Global. Where every stay becomes a cherished memory and
+              Izzan Global. Where every stay becomes a cherished memory and
               every moment is crafted to perfection.
             </p>
 
