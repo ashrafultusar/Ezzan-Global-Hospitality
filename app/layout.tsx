@@ -15,43 +15,51 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.izzanglobalhospitality.com"),
   title: {
-    default: "Izzan Global",
-    template: "%s | Izzan-Global",
+    default: "Izzan Global Hotels & Resorts | Luxury Hospitality in Malaysia",
+    template: "%s | Izzan Global Hotels & Resorts",
   },
   description:
-    "Experience the best travel agency services. We offer affordable tour packages, hotel bookings, and flight tickets worldwide.",
+    "Izzan Global Hotels & Resorts — luxury hotel bookings, premium homestays, tour packages, and world-class hospitality services across Malaysia. Book your dream stay today.",
   keywords: [
     "Izzan Global",
-    "Izzan Global",
-    "izzan hotel",
-    "malaysia hotel",
-    "Izzan Global",
-    "Izzan Global Hospitality",
-    "izzan global hospitality",
-    "Izzan Hospitality",
-    "izzan global",
+    "luxury hotels Malaysia",
+    "hotel booking Malaysia",
+    "homestay Malaysia",
+    "5 star hotel Kuala Lumpur",
+    "Malaysia tour packages",
+    "resort booking",
+    "hospitality services Malaysia",
+    "premium accommodation",
+    "Izzan Global Hotels & Resorts",
   ],
-  authors: [{ name: "Izzan Global" }],
-  icons: {
-    icon: "/assets/logo/logo.png",
-    apple: "/assets/logo/logo.png",
-  },
+  authors: [{ name: "Izzan Global Hotels & Resorts" }],
+  creator: "Izzan Global Hotels & Resorts",
+  publisher: "Izzan Global Hotels & Resorts",
   openGraph: {
-    title: "Izzan Global",
-    description: "Your trusted partner for global exploration.",
+    title: "Izzan Global Hotels & Resorts",
+    description: "Luxury hotel bookings, premium homestays, and tour packages across Malaysia. Experience world-class hospitality.",
     url: "https://www.izzanglobalhospitality.com",
-    siteName: "Izzan Global",
+    siteName: "Izzan Global Hotels & Resorts",
     images: [
       {
         url: "/assets/office/image6.jpeg",
         width: 1200,
         height: 630,
+        alt: "Izzan Global Hotels & Resorts — Luxury Hospitality",
       },
     ],
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Izzan Global Hotels & Resorts",
+    description: "Luxury hotel bookings, premium homestays, and tour packages across Malaysia.",
+    images: ["/assets/office/image6.jpeg"],
+  },
 };
+
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export default function RootLayout({
   children,
@@ -63,6 +71,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <OrganizationJsonLd />
         {children}
       </body>
     </html>

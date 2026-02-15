@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Facebook,
   Instagram,
@@ -13,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
-  
+
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "Home Stay", href: "/homestay" },

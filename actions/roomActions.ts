@@ -73,6 +73,7 @@ export async function createRoom(formData: FormData) {
         });
 
         revalidateTag("rooms", "max");
+        revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room created successfully!" };
     } catch (error) {
         console.error("Error creating room:", error);
@@ -138,6 +139,7 @@ export async function updateRoom(id: string, formData: FormData) {
 
         revalidateTag("rooms", "max");
         revalidateTag(`room-${id}`, "max");
+        revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room updated successfully!" };
     } catch (error) {
         console.error("Error updating room:", error);
@@ -149,9 +151,12 @@ export async function deleteRoom(id: string) {
     try {
         await requireStaff()
         await connectDB();
-        await Room.findByIdAndDelete(id);
+        const deletedRoom = await Room.findByIdAndDelete(id);
         revalidateTag("rooms", "max");
         revalidateTag(`room-${id}`, "max");
+        if (deletedRoom?.hotelId) {
+            revalidateTag(`hotel-${deletedRoom.hotelId}-rooms`, "max");
+        }
         return { success: true, message: "Room deleted successfully" };
     } catch (error) {
         console.error("Error deleting room:", error);
