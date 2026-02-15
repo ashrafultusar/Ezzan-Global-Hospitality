@@ -14,10 +14,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GalleryPage() {
+import { getGalleryImages } from "@/lib/data/gallery";
+import { IGalleryImage } from "@/types/gallery.types";
+
+export default async function GalleryPage() {
+  const { data } = await getGalleryImages();
+  const images: IGalleryImage[] = data || [];
+
   return (
     <div>
-      <Gallery />
+      <Gallery initialImages={images} />
     </div>
   );
 }
