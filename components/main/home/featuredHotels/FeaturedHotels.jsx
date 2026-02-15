@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 const FeaturedHotels = async () => {
     await connectDB();
-    
 
     const hotelsData = await Hotel.find().sort({ createdAt: -1 }).limit(3);
     
@@ -15,14 +14,14 @@ const FeaturedHotels = async () => {
 
     return (
         <section className="relative py-20 px-4 bg-[#f3eee6] overflow-hidden">
-            {/* Background Decorative Gradients */}
+          
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl" />
                 <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-[#D4AF37]/5 rounded-full blur-3xl" />
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                {/* Header Section */}
+            
                 <div className="text-center mb-16 space-y-4">
                     <div className="inline-flex items-center gap-3">
                         <div className="w-8 h-[1px] bg-[#D4AF37]" />
