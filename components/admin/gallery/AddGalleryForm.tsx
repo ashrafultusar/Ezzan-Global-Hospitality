@@ -99,7 +99,6 @@ export default function AddGalleryForm() {
                 <input
                     name="title"
                     type="text"
-                    required
                     disabled={loading}
                     placeholder="e.g. Grand Plaza View"
                     className="w-full p-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500/20 outline-none transition text-sm text-gray-600 disabled:bg-gray-50"
