@@ -16,30 +16,31 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.izzanglobalhospitality.com"),
   title: {
     default: "Izzan Global",
-    template: "%s | Ezzan-Global",
+    template: "%s | Izzan-Global",
   },
   description:
     "Experience the best travel agency services. We offer affordable tour packages, hotel bookings, and flight tickets worldwide.",
   keywords: [
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
-    "Ezzan Global",
+    "Izzan Global",
+    "Izzan Global",
+    "izzan hotel",
+    "malaysia hotel",
+    "Izzan Global",
+    "Izzan Global Hospitality",
+    "izzan global hospitality",
+    "Izzan Hospitality",
+    "izzan global",
   ],
-  authors: [{ name: "Ezzan Global" }],
+  authors: [{ name: "Izzan Global" }],
   icons: {
     icon: "/assets/logo/logo.png",
     apple: "/assets/logo/logo.png",
   },
   openGraph: {
-    title: "Ezzan Global",
+    title: "Izzan Global",
     description: "Your trusted partner for global exploration.",
     url: "https://www.izzanglobalhospitality.com",
-    siteName: "Ezzan Global",
+    siteName: "Izzan Global",
     images: [
       {
         url: "/assets/office/image6.jpeg",

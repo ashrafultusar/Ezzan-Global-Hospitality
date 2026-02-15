@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans">
+    <div className="min-h-screen  text-slate-900 font-sans">
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="flex flex-col items-center justify-center mb-8">
