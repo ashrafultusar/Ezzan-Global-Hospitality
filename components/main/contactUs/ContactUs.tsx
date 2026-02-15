@@ -44,7 +44,7 @@ const LOCATIONS = [
     address:
       "5, Lorong Walter Grenier, Bukit Bintang, Kuala Lumpur, 55100, Malaysia",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7844!2d101.7093!3d3.1478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3629!2sGrand%20Millennium%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1700000000000",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8067676850883!2d101.71116637584413!3d3.1456394531723904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362ec8205f4b%3A0xd75f1363986ac7f!2sThe%20AXON%20%40%20Bukit%20Bintang!5e0!3m2!1sen!2sbd!4v1771149551887!5m2!1sen!2sbd",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ const LOCATIONS = [
     address:
       "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
     mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1!2d99.7!3d6.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b!2sPantai%20Cenang!5e0!3m2!1sen!2smy!4v1700000000000",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7564296191576!2d101.704827873842!3d3.158785413077285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc482851395b3b%3A0xde6db5090e941956!2sSummer%20Suites%2C%2050300%20Kuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sbd!4v1771149751443!5m2!1sen!2sbd",
   },
   {
     id: 3,
