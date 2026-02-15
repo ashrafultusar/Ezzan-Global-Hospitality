@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <Suspense fallback={<HotelSkeleton />}>
+      <Suspense fallback={<div>Loading...</div>}>
         <FeaturedHotels />
       </Suspense>
       <RoomsAndSuites />
