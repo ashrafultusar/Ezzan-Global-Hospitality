@@ -9,6 +9,7 @@ import {
   MapPin,
   Twitter,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -54,7 +55,7 @@ const Footer = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+888045425560",
+      value: "+6017-708 5596",
       href: "tel:+888045425560",
     },
     {
@@ -79,15 +80,20 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B37314] flex items-center justify-center shadow-lg">
-                <span className="text-3xl">👑</span>
-              </div>
+                <div className="relative w-16 h-16 transform group-hover:scale-110 transition-transform duration-300">
+                  <Image
+                    src="/assets/logo/logo.png" 
+                    alt="Izzan Global Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-serif font-bold text-white">
                   Ezzan Global
                 </span>
                 <span className="text-xs tracking-[0.2em] text-[#D4AF37] font-medium uppercase">
-                  Hotels & Resorts
+                Hospitality 
                 </span>
               </div>
             </div>
