@@ -125,12 +125,20 @@ export default function HotelRoomsPage({ hotel, rooms }: HotelRoomsPageProps) {
               <h3 className="text-lg text-black font-bold mb-2">Contact This Hotel</h3>
               <p className="text-xs text-gray-500 mb-6">Direct inquiries and reservations.</p>
               <div className="space-y-3">
-                <button className="w-full bg-[#25D366] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 text-sm hover:opacity-90">
-                  <MessageCircle size={18} /> WhatsApp Us
-                </button>
-                <button className="w-full bg-[#1a2a4d] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 text-sm">
-                  <Phone size={18} /> Call Now
-                </button>
+              <a 
+    href="https://wa.me/60177085596?text=Hello, I am interested in booking a room."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full bg-[#25D366] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 text-sm hover:opacity-90 transition-all"
+  >
+    <MessageCircle size={18} /> WhatsApp Us
+  </a>
+  <a 
+    href="tel:+60177085596"
+    className="w-full bg-[#1a2a4d] text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 text-sm hover:bg-[#15223d] transition-all"
+  >
+    <Phone size={18} /> Call Now
+  </a>
               </div>
             </div>
           </div>
