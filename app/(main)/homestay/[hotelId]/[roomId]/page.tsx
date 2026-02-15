@@ -112,14 +112,16 @@ export default async function RoomDetailsPage({ params }: { params: Promise<{ ho
 
               <div className="space-y-3">
                 {/* Real Color for WhatsApp: Green */}
-                <button className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 rounded-xl font-bold text-sm hover:opacity-90 transition-all">
+                <a href="https://wa.me/60177085596?text=Hello, I am interested in booking a room."
+    target="_blank"
+    rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 rounded-xl font-bold text-sm hover:opacity-90 transition-all">
                   <MessageCircle className="w-5 h-5" />
                   Contact via WhatsApp
-                </button>
-                <button className="w-full flex items-center justify-center gap-2 bg-[#1a2b4b] text-white py-4 rounded-xl font-bold text-sm">
+                </a>
+                <a href="tel:+60177085596"  className="w-full flex items-center justify-center gap-2 bg-[#1a2b4b] text-white py-4 rounded-xl font-bold text-sm">
                   <Phone className="w-4 h-4" />
                   Call Hotel
-                </button>
+                </a>
               </div>
             </div>
           </aside>
