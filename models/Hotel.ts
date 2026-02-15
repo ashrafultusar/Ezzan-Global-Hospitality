@@ -6,6 +6,8 @@ const HotelSchema = new Schema(
         description: { type: String, required: true },
         location: { type: String, required: true },
         image: { type: String, required: true },
+        stars: { type: Number, default: 5, min: 1, max: 7 },
+        tags: { type: [String], default: [] },
     },
     { timestamps: true }
 );

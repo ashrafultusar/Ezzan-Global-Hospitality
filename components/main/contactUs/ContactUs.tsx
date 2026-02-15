@@ -1,7 +1,4 @@
-"use client";
-
-import React from "react";
-import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 
 // --- Types ---
 interface ContactMethod {
@@ -33,7 +30,7 @@ const TOP_CONTACTS: ContactMethod[] = [
     title: "Email Us",
     description: "We'll respond within 24 hours",
     value: "izzanglobalhospitality@gmail.com",
-    icon: <Mail className="w-6 h-6 text-[#4285F4]" />, // Email Blue
+    icon: <Mail className="w-6 h-6 text-[#4285F4]" />,
   },
 ];
 
@@ -43,48 +40,43 @@ const LOCATIONS = [
     name: "AXON Residence",
     address:
       "5, Lorong Walter Grenier, Bukit Bintang, Kuala Lumpur, 55100, Malaysia",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8067676850883!2d101.71116637584413!3d3.1456394531723904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362ec8205f4b%3A0xd75f1363986ac7f!2sThe%20AXON%20%40%20Bukit%20Bintang!5e0!3m2!1sen!2sbd!4v1771149551887!5m2!1sen!2sbd",
+    mapUrl: "https://www.google.com/maps/embed?pb=...", // এখানে সঠিক Embed URL দেবেন
   },
   {
     id: 2,
     name: "Mercu Summer Suites",
     address:
       "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7564296191576!2d101.704827873842!3d3.158785413077285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc482851395b3b%3A0xde6db5090e941956!2sSummer%20Suites%2C%2050300%20Kuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2sbd!4v1771149751443!5m2!1sen!2sbd",
+    mapUrl: "https://www.google.com/maps/embed?pb=...",
   },
   {
     id: 3,
-    name: "The Majestic Hotel Kuala Lumpur, Autograph Collection",
+    name: "The Majestic Hotel Kuala Lumpur",
     address:
-      "5, Jalan Sultan Hishamuddin, Tasik Perdana, 50000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d995.9584230919813!2d101.69146!3d3.1385854!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49c5acb02757%3A0xf0aca4eb92b06ca8!2sThe%20Majestic%20Hotel%20Kuala%20Lumpur%2C%20Autograph%20Collection!5e0!3m2!1sen!2sbd!4v1770404349704!5m2!1sen!2sbd",
+      "5, Jalan Sultan Hishamuddin, Tasik Perdana, 50000 Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=...",
   },
   {
     id: 4,
     name: "THE FACE Suites Hotel",
     address:
-      "1020, Jln Sultan Ismail, Kampung Baru, 50250 Kuala Lumpur, Wilayah Persekutuan, Titiwangsa, Kuala Lumpur, 50250, Malaysia",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.75772404851!2d101.70139067584415!3d3.158448053093624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362b12e0423b%3A0x9bcbe2e9d03af57e!2sTHE%20FACE%20Suites!5e0!3m2!1sen!2sbd!4v1771144916996!5m2!1sen!2sbd",
+      "1020, Jln Sultan Ismail, Kampung Baru, 50250 Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=...",
   },
   {
-    id: 4,
+    id: 5, // Fixed Duplicate ID
     name: "Lucentia Suites by HomeHorizon",
     address:
-      "City Centre, 2, Jln Hang Tuah, Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
-    mapUrl:
-      "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d248.98945754235777!2d101.7081377!3d3.1392074!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc371be344898d%3A0x447972eec73b6dd8!2sLucentia%20Suites%20by%20HomeHorizon!5e0!3m2!1sen!2sbd!4v1770404446489!5m2!1sen!2sbd",
+      "City Centre, 2, Jln Hang Tuah, Bukit Bintang, 55100 Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=...",
   },
 ];
 
 export default function ContactUs() {
   return (
     <section className="bg-[#fdfbf7] min-h-screen">
-      {/* Header */}
-
+      
+      {/* Header Section */}
       <section className="bg-[#1a2a4d] pt-28 pb-20 px-4 text-center">
         <div className="max-w-5xl mx-auto">
           {/* Sub-title */}
@@ -99,14 +91,15 @@ export default function ContactUs() {
 
           {/* Description */}
           <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-            Have questions or need assistance? Our team is here to help you plan
-            your perfect stay.
+            Have questions or need assistance? Our team is here to help you plan your perfect stay.
           </p>
         </div>
       </section>
 
+      {/* Content Wrapper */}
       <div className="max-w-6xl mx-auto px-6 mt-10">
-        {/* Top 3 Cards */}
+        
+        {/* Top 3 Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           {TOP_CONTACTS.map((contact, index) => (
             <div
@@ -138,9 +131,9 @@ export default function ContactUs() {
           ))}
         </div>
 
-        {/* Hotel Cards Grid */}
+        {/* Hotel Cards Grid Section */}
         <section className="pb-20 bg-[#FDFCFB]">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto"> 
             <h2 className="text-3xl font-serif font-bold text-[#1a2b4b] text-center mb-12">
               Our Hotel Locations
             </h2>
@@ -149,7 +142,7 @@ export default function ContactUs() {
               {LOCATIONS.map((hotel) => (
                 <div
                   key={hotel.id}
-                  className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border  border-gray-100 group hover:shadow-lg transition-shadow duration-300"
+                  className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-gray-100 group hover:shadow-lg transition-shadow duration-300"
                 >
                   {/* Google Map Embed */}
                   <div className="h-64 w-full relative">
@@ -173,7 +166,9 @@ export default function ContactUs() {
                     </h3>
                     <div className="flex items-start gap-2 text-gray-500">
                       <MapPin className="w-4 h-4 text-[#D4A373] mt-1 shrink-0" />
-                      <p className="text-sm leading-relaxed">{hotel.address}</p>
+                      <p className="text-sm leading-relaxed">
+                        {hotel.address}
+                      </p>
                     </div>
                   </div>
                 </div>

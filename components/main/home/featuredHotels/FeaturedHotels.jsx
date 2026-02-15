@@ -1,17 +1,36 @@
-import { connectDB } from '@/db/dbConfig';
-import Hotel from '@/models/Hotel';
 import Image from 'next/image';
-import Link from 'next/link';
 
+const hotels = [
+    {
+        id: 1,
+        name: "Grand Millennium Kuala Lumpur",
+        location: "Kuala Lumpur, Malaysia",
+        description: "Luxury in the heart of KL with stunning KLCC views",
+        image: "/assets/home/home.jpg",
+        rating: 5,
+        features: ["City View", "Spa", "Pool"]
+    },
+    {
+        id: 2,
+        name: "Paradise Resort Langkawi",
+        location: "Langkawi, Kedah, Malaysia",
+        description: "Beachfront paradise with crystal clear waters",
+        image: "/assets/home/home1.jpg",
+        rating: 5,
+        features: ["Beachfront", "Water Sports", "Spa"]
+    },
+    {
+        id: 3,
+        name: "Heritage Grand Penang",
+        location: "George Town, Penang, Malaysia",
+        description: "Colonial charm meets modern luxury",
+        image: "/assets/home/home2.jpg",
+        rating: 5,
+        features: ["Heritage", "Cultural Tours", "Garden"]
+    }
+];
 
-const FeaturedHotels = async () => {
-    await connectDB();
-
-    const hotelsData = await Hotel.find().sort({ createdAt: -1 }).limit(3);
-    
-   
-    const hotels = JSON.parse(JSON.stringify(hotelsData));
-
+const FeaturedHotels = () => {
     return (
         <section className="relative py-20 px-4 bg-[#f3eee6] overflow-hidden">
           
@@ -30,81 +49,79 @@ const FeaturedHotels = async () => {
                         </h4>
                         <div className="w-8 h-[1px] bg-[#D4AF37]" />
                     </div>
-                    
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1A2B48]">
+
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1A2B48] animate-fade-up [animation-delay:200ms]">
                         Featured Hotels
                     </h2>
-                    
-                    <p className="text-gray-500 max-w-xl mx-auto">
+
+                    <p className="text-gray-500 max-w-xl mx-auto animate-fade-up [animation-delay:400ms]">
                         Experience luxury redefined at our most exclusive properties
                     </p>
                 </div>
 
-            {/* Hotel Cards Grid */}
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-    {hotels && hotels.map((hotel, index) => (
-        <Link 
-            key={hotel._id} 
-            href={`/homestay/${hotel._id}`} 
-            className="group relative block" 
-        >
-            {/* Card Body */}
-            <div className="relative bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                
-                {/* Image Container */}
-                <div className="relative h-64 w-full overflow-hidden">
-                    <Image 
-                        src={hotel.image || "/placeholder.jpg"} 
-                        alt={hotel.name}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    
-                    {/* Rating Badge */}
-                    <div className="absolute top-4 right-4 z-20 bg-[#FFB400] text-white px-3 py-1 rounded flex items-center gap-1 text-sm font-bold shadow-lg">
-                        <span className="text-white">★</span> {hotel.rating || "5.0"}
-                    </div>
+                {/* Hotel Cards Grid — CSS-only hover (no JS state needed) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    {hotels.map((hotel, index) => (
+                        <div
+                            key={hotel.id}
+                            className="group relative animate-fade-up"
+                            style={{ animationDelay: `${(index + 3) * 150}ms` }}
+                        >
+                            {/* Card Body */}
+                            <div className="relative bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl group-hover:-translate-y-2">
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {hotel.features && hotel.features.slice(0, 3).map((f, i) => (
-                            <span key={i} className="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full border border-white/40">
-                                {f}
-                            </span>
-                        ))}
-                    </div>
+                                {/* Image Container */}
+                                <div className="relative h-64 w-full">
+                                    <Image
+                                        src={hotel.image}
+                                        alt={hotel.name}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    {/* Rating Badge */}
+                                    <div className="absolute top-4 right-4 z-20 bg-[#FFB400] text-white px-3 py-1 rounded flex items-center gap-1 text-sm font-bold shadow-lg">
+                                        <span className="text-white">★</span> {hotel.rating}
+                                    </div>
+
+                                    {/* Hover Features Overlay — pure CSS hover via group-hover */}
+                                    <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center gap-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                                        {hotel.features.map((f, i) => (
+                                            <span key={i} className="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full border border-white/40">
+                                                {f}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Content */}
+                                <div className="p-6">
+                                    <div className="flex items-center text-gray-400 text-xs mb-2 italic">
+                                        <span className="mr-1">📍</span> {hotel.location}
+                                    </div>
+                                    <h3 className="text-[#1A2B48] text-xl font-bold mb-2 group-hover:text-[#D4AF37] transition-colors">
+                                        {hotel.name}
+                                    </h3>
+                                    <p className="text-gray-500 text-sm mb-6 line-clamp-2">
+                                        {hotel.description}
+                                    </p>
+
+                                    <button className="flex items-center text-[#D4AF37] font-bold text-sm uppercase tracking-wider group/btn">
+                                        View Details
+                                        <span className="ml-2 transition-transform group-hover/btn:translate-x-2">→</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                    <div className="flex items-center text-gray-400 text-xs mb-2 italic">
-                        <span className="mr-1">📍</span> {hotel.location}
-                    </div>
-                    
-                    <h3 className="text-[#1A2B48] text-xl font-bold mb-2 group-hover:text-[#D4AF37] transition-colors">
-                        {hotel.name}
-                    </h3>
-                    
-                    <p className="text-gray-500 text-sm mb-6 line-clamp-2">
-                        {hotel.description}
-                    </p>
-                
-                    <div className="flex items-center text-[#D4AF37] font-bold text-sm uppercase tracking-wider group/btn">
-                        View Details 
-                        <span className="ml-2 transition-transform group-hover/btn:translate-x-2">→</span>
-                    </div>
-                </div>
-            </div>
-        </Link>
-    ))}
-</div>
-
-                {/* Explore Button */}
-                <div className="flex justify-center">
-                    <Link href="/homestay" className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
-                        Explore Venues 
+                {/* Footer Button */}
+                <div className="text-center">
+                    <button className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
+                        Explore Venues
                         <span className="transition-transform group-hover:translate-x-2">→</span>
-                    </Link>
+                    </button>
                 </div>
             </div>
         </section>

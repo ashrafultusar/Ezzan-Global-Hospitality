@@ -1,7 +1,27 @@
 import React from 'react';
-import { 
-  Home, Building2, Sparkles, Truck, HardHat, Sofa, Wind, MessageCircle, Phone, Star 
+import type { Metadata } from "next";
+import {
+  Home, Building2, Sparkles, Truck, HardHat, Sofa, Wind, MessageCircle, Phone, Star
 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Professional cleaning and hospitality services by Izzan Global — residential, commercial, deep cleaning, post-renovation, carpet cleaning, aircon servicing, and more across Malaysia.",
+  keywords: [
+    "cleaning services Malaysia",
+    "residential cleaning",
+    "commercial cleaning",
+    "deep cleaning Malaysia",
+    "hospitality services",
+  ],
+  openGraph: {
+    title: "Our Services | Izzan Global Hotels & Resorts",
+    description: "Professional cleaning and hospitality services across Malaysia.",
+    url: "https://www.izzanglobalhospitality.com/ourServices",
+    type: "website",
+  },
+};
 
 export default function OurServices() {
   const services = [
@@ -26,7 +46,7 @@ export default function OurServices() {
 
   return (
     <div className="min-h-screen font-sans text-[#1a2b4b]">
-      
+
       {/* 1. Hero Section */}
       <section className="bg-[#1a2b4b] text-white pt-28 pb-24 px-6 text-center">
         <div className="max-w-4xl mx-auto">
@@ -37,7 +57,7 @@ export default function OurServices() {
           <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
             From residential homes to commercial spaces, we deliver exceptional cleaning services across Malaysia with attention to detail.
           </p>
-          
+
         </div>
       </section>
 

@@ -1,17 +1,13 @@
-import { connectDB } from "@/db/dbConfig";
-import Hotel from "@/models/Hotel";
+import { getHotels } from "@/lib/data/hotel";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import Image from "next/image";
-
 import { requireStaff } from "@/lib/access-helper";
-
 import DeleteHotelButton from "@/components/admin/hotels/DeleteHotelButton";
 
 export default async function HotelsPage() {
-    await requireStaff()
-    await connectDB();
-    const hotels = await Hotel.find().sort({ createdAt: -1 });
+    await requireStaff();
+    const { hotels } = await getHotels();
 
     return (
         <div className="p-6">
@@ -27,7 +23,7 @@ export default async function HotelsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {hotels.map((hotel) => (
+                {hotels.map((hotel: any) => (
                     <div
                         key={hotel._id}
                         className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition"

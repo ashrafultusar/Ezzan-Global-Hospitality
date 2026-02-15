@@ -1,9 +1,8 @@
 import { Plus, Bed, Edit, MapPin, Ruler, Users, Building } from "lucide-react";
 import { getRooms } from "@/lib/data/room";
 import Link from "next/link";
+import Image from "next/image";
 import DeleteRoomButton from "@/components/admin/rooms/DeleteRoomButton";
-
-export const dynamic = "force-dynamic";
 
 const RoomsPage = async () => {
     const { rooms } = await getRooms();
@@ -42,10 +41,12 @@ const RoomsPage = async () => {
                         {/* Room Image Section */}
                         <div className="h-48 w-full relative bg-gray-100 overflow-hidden">
                             {room.images && room.images.length > 0 ? (
-                                <img
+                                <Image
                                     src={room.images[0]}
                                     alt={room.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                             ) : (
                                 <div className="w-full h-full flex items-center justify-center text-gray-300">
