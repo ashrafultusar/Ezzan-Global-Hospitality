@@ -1,14 +1,19 @@
 import Link from "next/link";
-import { HOTELS } from "@/data/hotels";
 import Image from "next/image";
+import { connectDB } from "@/db/dbConfig";
+import Hotel from "@/models/Hotel";
 
-export default function HomeStayPage() {
+export default async function  HomeStayPage() {
+
+  await connectDB()
+const hotels=await Hotel.find().sort({createdAt: -1})
+
   return (
     <div className="pt-18 pb-20 max-w-7xl mx-auto px-6">
       <h1 className="text-4xl font-bold mb-10 text-[#1a2b4b]">Our Hotels</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {HOTELS?.map((hotel) => (
-          <Link href={`/homestay/${hotel.id}`} key={hotel.id} className="group">
+        {hotels?.map((hotel) => (
+          <Link href={`/homestay/${hotel._id}`} key={hotel._id.toString()} className="group">
             <div className="border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
               <div className="relative h-64">
                 <Image src={hotel.image} alt={hotel.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />

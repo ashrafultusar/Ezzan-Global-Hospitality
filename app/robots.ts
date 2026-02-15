@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: "*",
             allow: "/",
-            disallow: ["/profile", "/api/", "/ts-staff-portal", "/ts-staff-portal/"],
+            disallow: ["/profile", "/api/", "/izzan-staff-portal", "/izzan-staff-portal/"],
         },
-        sitemap: "https://tstourtravels.com/sitemap.xml",
+        sitemap: "https://www.izzanglobalhospitality.com/sitemap.xml",
     };
 }

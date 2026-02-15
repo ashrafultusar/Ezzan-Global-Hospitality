@@ -3,19 +3,19 @@ import { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://tstourtravels.com",
+      url: "https://www.izzanglobalhospitality.com",
       lastModified: new Date(),
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: "https://tstourtravels.com/login",
+      url: "https://www.izzanglobalhospitality.com/login",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: "https://tstourtravels.com/register",
+      url: "https://www.izzanglobalhospitality.com/register",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,

@@ -11,6 +11,9 @@ interface ImageUploadProps {
     onImageChange: (file: File | null, preview: string | null) => void;
     onCompressionStateChange?: (isCompressing: boolean) => void;
     label?: string;
+    className?: string;
+    multiple?: boolean;
+    onFilesChange?: (files: File[], previews: string[]) => void;
     shape?: "circle" | "rectangle";
     maxSizeMB?: number;
     maxLimitMB?: number;
@@ -21,62 +24,81 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     preview,
     onImageChange,
     onCompressionStateChange,
+    onFilesChange,
     label = "Upload Image",
     shape = "rectangle",
     maxSizeMB = 1,
     maxLimitMB = 10,
+    className = "",
+    multiple = false,
 }) => {
     const [isCompressing, setIsCompressing] = useState(false);
     const isCircle = shape === "circle";
 
     const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
+        const files = e.target.files;
+        if (!files || files.length === 0) return;
 
-        // Reset input value so same file can be selected again if removed
+        // Reset input
+        const fileList = Array.from(files);
         e.target.value = "";
 
-        if (!file.type.startsWith("image/")) {
+        // Check for non-image files
+        const invalidFile = fileList.find(f => !f.type.startsWith("image/"));
+        if (invalidFile) {
             toast.error("Only image files are allowed");
             return;
         }
 
-        if (file.size > maxLimitMB * 1024 * 1024) {
-            toast.error(`Image too large (max ${maxLimitMB}MB)`);
-            return;
-        }
-
-        // No compression needed if already small
-        if (file.size <= maxSizeMB * 1024 * 1024) {
-            const previewUrl = URL.createObjectURL(file);
-            onImageChange(file, previewUrl);
+        // Check size limit (pre-compression)
+        const tooLarge = fileList.find(f => f.size > maxLimitMB * 1024 * 1024);
+        if (tooLarge) {
+            toast.error(`One or more images are too large (max ${maxLimitMB}MB)`);
             return;
         }
 
         try {
             setIsCompressing(true);
             onCompressionStateChange?.(true);
-            const toastId = toast.loading("Optimizing image...");
+            const toastId = toast.loading(fileList.length > 1 ? `Optimizing ${fileList.length} images...` : "Optimizing image...");
 
             const options = {
                 maxSizeMB: maxSizeMB,
                 maxWidthOrHeight: 1920,
-                useWebWorker: false,
+                useWebWorker: true, // Optimizing for multiple
                 initialQuality: 0.8,
             };
 
-            const compressed = await imageCompression(file, options);
 
-            // Renaming and creating File object
-            const renamedFile = new File([compressed], file.name, {
-                type: file.type,
-                lastModified: Date.now(),
-            });
 
-            const previewUrl = URL.createObjectURL(renamedFile);
-            onImageChange(renamedFile, previewUrl);
+            // Process sequentially or concurrent with order preservation
+            const results = await Promise.all(fileList.map(async (file) => {
+                let finalFile = file;
+                // Compress if needed
+                if (file.size > maxSizeMB * 1024 * 1024) {
+                    const compressed = await imageCompression(file, options);
+                    finalFile = new File([compressed], file.name, {
+                        type: file.type,
+                        lastModified: Date.now(),
+                    });
+                }
+                return {
+                    file: finalFile,
+                    preview: URL.createObjectURL(finalFile)
+                };
+            }));
 
-            toast.success("Image optimized!", { id: toastId });
+            const processedFiles = results.map(r => r.file);
+            const processedPreviews = results.map(r => r.preview);
+
+            if (multiple && onFilesChange) {
+                onFilesChange(processedFiles, processedPreviews);
+            } else if (processedFiles.length > 0) {
+                // Single mode fallback
+                onImageChange(processedFiles[0], processedPreviews[0]);
+            }
+
+            toast.success("Images optimized!", { id: toastId });
         } catch (err) {
             console.error("Compression Error:", err);
             toast.error("Compression failed");
@@ -87,21 +109,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     };
 
     const handleRemove = useCallback(() => {
-        if (preview) URL.revokeObjectURL(preview);
+        // Let parent handle revocation if needed, or rely on GC/explicit cleanup
+        // if (preview) URL.revokeObjectURL(preview); 
         onImageChange(null, null);
     }, [preview, onImageChange]);
 
-    // Cleanup to prevent memory leaks
-    useEffect(() => {
-        return () => {
-            if (preview && preview.startsWith("blob:")) {
-                URL.revokeObjectURL(preview);
-            }
-        };
-    }, [preview]);
+    // Removed auto-cleanup to prevent revoking URLs managed by parent/state
+    // during re-renders or strict mode double-mounts.
 
     return (
-        <div className={`w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-xl py-6 bg-gray-50/50 hover:bg-gray-50 transition-colors ${isCompressing ? 'opacity-70 pointer-events-none' : ''}`}>
+        <div className={`w-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded-xl py-6 bg-gray-50/50 hover:bg-gray-50 transition-colors ${isCompressing ? 'opacity-70 pointer-events-none' : ''} ${className}`}>
             {preview ? (
                 <div className={`relative ${isCircle ? "h-32 w-32" : "h-48 w-full max-w-md px-4"}`}>
                     <img
@@ -119,7 +136,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                     </button>
                 </div>
             ) : (
-                <label className="flex flex-col items-center cursor-pointer group w-full">
+                <label className="flex flex-col items-center cursor-pointer group w-full h-full justify-center">
                     <div className="p-4 bg-white rounded-full shadow-sm mb-3 group-hover:scale-105 transition-transform border border-gray-100">
                         {isCompressing ? (
                             <Loader2 className="animate-spin text-blue-500" size={28} />
@@ -140,6 +157,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                         type="file"
                         name={name}
                         accept="image/*"
+                        multiple={multiple}
                         disabled={isCompressing}
                         className="hidden"
                         onChange={handleImageChange}

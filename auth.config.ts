@@ -10,7 +10,7 @@ export const authConfig = {
       const userRole = auth?.user?.role;
 
       const isOnDashboard = nextUrl.pathname.startsWith("/profile");
-      const isOnTsStaff = nextUrl.pathname.startsWith("/ts-staff");
+      const isOnTsStaff = nextUrl.pathname.startsWith("/izzan-staff-portal");
 
       if (isOnTsStaff) {
         if (!isLoggedIn) return false;

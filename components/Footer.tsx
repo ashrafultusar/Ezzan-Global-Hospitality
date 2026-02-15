@@ -1,30 +1,31 @@
 "use client";
 
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+} from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
-  const services = [
-    { name: "Luxury Suites", href: "/rooms" },
-    { name: "Spa & Wellness", href: "/spa" },
-    { name: "Fine Dining", href: "/dining" },
-    { name: "Event Venues", href: "/events" },
-    { name: "Concierge Service", href: "/concierge" },
-  ];
-
+  
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "Hotels", href: "/hotels" },
-    { name: "Services", href: "/services" },
+    { name: "Home Stay", href: "/homestay" },
+    { name: "Services", href: "/ourServices" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Contact", href: "/contact" },
-    { name: "Book Now", href: "/booking" },
+    { name: "Contact", href: "/contactUs" },
+    { name: "Book Now", href: "/homestay" },
   ];
 
   const socialLinks = [
     {
       icon: Facebook,
-      href: "#",
+      href: "https://www.facebook.com/profile.php?id=61560087117685&rdid=9P8cnr3c5xrOOvLV&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17QZu6Fp2u%2F#",
       label: "Facebook",
       brandClass: "bg-[#1877F2] hover:bg-[#1877F2]/90 text-white",
     },
@@ -32,7 +33,8 @@ const Footer = () => {
       icon: Instagram,
       href: "#",
       label: "Instagram",
-      brandClass: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white",
+      brandClass:
+        "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:opacity-90 text-white",
     },
     {
       icon: Twitter,
@@ -58,13 +60,13 @@ const Footer = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "info@ezzan.com",
+      value: "izzanglobalhospitality@gmail.com",
       href: "mailto:info@ezzan.com",
     },
     {
       icon: MapPin,
       label: "Address",
-      value: "Luxury Street, Resort City 5400",
+      value: "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
       href: "#",
     },
   ];
@@ -73,7 +75,7 @@ const Footer = () => {
     <footer className="bg-[#2a2622] text-white/80">
       {/* Main Footer */}
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
@@ -91,13 +93,14 @@ const Footer = () => {
             </div>
 
             <p className="text-white/60 leading-relaxed text-sm">
-              Experience unparalleled luxury and world-class hospitality at Ezzan Global. 
-              Where every stay becomes a cherished memory and every moment is crafted to perfection.
+              Experience unparalleled luxury and world-class hospitality at
+              Ezzan Global. Where every stay becomes a cherished memory and
+              every moment is crafted to perfection.
             </p>
-            
+
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (
-                <a
+                <a target="_blank"
                   key={social.label}
                   href={social.href}
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${social.brandClass} hover:scale-110 active:scale-95 shadow-lg`}
@@ -131,29 +134,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
-              Our Services
-            </h3>
-            <ul className="space-y-4">
-              {services.map((service) => (
-                <li key={service.name}>
-                  <Link
-                    href={service.href}
-                    className="flex items-center gap-3 group text-white/60 hover:text-[#D4AF37] transition-all duration-300"
-                  >
-                    <span className="text-[#D4AF37]/60 group-hover:text-[#D4AF37] transition-colors">
-                      •
-                    </span>
-                    <span className="text-sm group-hover:translate-x-1 transition-transform">
-                      {service.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Contact Info */}
           <div>
@@ -181,12 +161,8 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-
-          
           </div>
         </div>
-
-       
       </div>
     </footer>
   );

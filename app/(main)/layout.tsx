@@ -2,8 +2,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SessionProvider } from "next-auth/react";
 import ToasterProvider from "@/components/toasterProvider/ToasterProvider";
+import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
 // import WhatsAppFloating from "@/components/shared/whatsAppFloating.tsx/WhatsAppFloating";
-
 
 export default function RootLayout({
   children,
@@ -12,12 +12,14 @@ export default function RootLayout({
 }>) {
   return (
     <SessionProvider>
-      <main className={` antialiased`}>
+      <main>
         <Navbar />
         {children}
+        <ScrollToTop />
         <Footer />
         {/* <WhatsAppFloating/> */}
-      </main><ToasterProvider />
+      </main>
+      <ToasterProvider />
     </SessionProvider>
   );
 }

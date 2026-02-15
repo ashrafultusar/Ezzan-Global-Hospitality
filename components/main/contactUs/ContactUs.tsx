@@ -13,19 +13,14 @@ interface ContactMethod {
   btnColor?: string;
 }
 
-interface HotelContact {
-  id: number;
-  name: string;
-  location: string;
-  phone: string;
-}
+
 
 // --- Data ---
 const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Call Us",
     description: "Available 24/7 for your inquiries",
-    value: "+60 12-345 6789",
+    value: "+6017708 5596",
     icon: <Phone className="w-6 h-6 text-[#d4a373]" />, // Golden color
   },
   {
@@ -39,7 +34,7 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Email Us",
     description: "We'll respond within 24 hours",
-    value: "+60 12-345 6789",
+    value: "izzanglobalhospitality@gmail.com",
     icon: <Mail className="w-6 h-6 text-[#4285F4]" />, // Email Blue
   },
 ];
@@ -47,33 +42,34 @@ const TOP_CONTACTS: ContactMethod[] = [
 const LOCATIONS = [
   {
     id: 1,
-    name: "Grand Millennium Kuala Lumpur",
-    address: "160, Jalan Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+    name: "AXON Residence",
+    address: "5, Lorong Walter Grenier, Bukit Bintang, Kuala Lumpur, 55100, Malaysia",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.7844!2d101.7093!3d3.1478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3629!2sGrand%20Millennium%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1700000000000",
   },
   {
     id: 2,
-    name: "Paradise Resort Langkawi",
-    address: "Pantai Cenang, 07000 Langkawi, Kedah, Malaysia",
+    name: "Mercu Summer Suites",
+    address: "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.1!2d99.7!3d6.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b!2sPantai%20Cenang!5e0!3m2!1sen!2smy!4v1700000000000",
   },
   {
     id: 3,
-    name: "Heritage Grand Penang",
-    address: "10, Lebuh Farquhar, George Town, 10200 Penang, Malaysia",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.1!2d100.3!3d5.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304a!2sGeorge%20Town!5e0!3m2!1sen!2smy!4v1700000000000",
+    name: "The Majestic Hotel Kuala Lumpur, Autograph Collection",
+    address: "5, Jalan Sultan Hishamuddin, Tasik Perdana, 50000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d995.9584230919813!2d101.69146!3d3.1385854!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49c5acb02757%3A0xf0aca4eb92b06ca8!2sThe%20Majestic%20Hotel%20Kuala%20Lumpur%2C%20Autograph%20Collection!5e0!3m2!1sen!2sbd!4v1770404349704!5m2!1sen!2sbd",
   },
   {
     id: 4,
-    name: "Waterfront Luxury Johor Bahru",
-    address: "Jalan Ibrahim Sultan, Stulang Laut, 80300 Johor Bahru, Johor, Malaysia",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.1!2d103.7!3d1.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da!2sJohor%20Bahru!5e0!3m2!1sen!2smy!4v1700000000000",
+    name: "Lucentia Suites by HomeHorizon",
+    address: "City Centre, 2, Jln Hang Tuah, Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d248.98945754235777!2d101.7081377!3d3.1392074!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc371be344898d%3A0x447972eec73b6dd8!2sLucentia%20Suites%20by%20HomeHorizon!5e0!3m2!1sen!2sbd!4v1770404446489!5m2!1sen!2sbd",
   },
+
   {
     id: 5,
-    name: "Rainforest Eco Lodge Sabah",
+    name: "THE FACE Suites Hotel",
     address: "Jalan Pantai, Tanjung Aru, 88100 Kota Kinabalu, Sabah, Malaysia",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3968.1!2d116.0!3d5.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x323b!2sKota%20Kinabalu!5e0!3m2!1sen!2smy!4v1700000000000",
+    mapUrl: "1020, Jln Sultan Ismail, Kampung Baru, 50250 Kuala Lumpur, Wilayah Persekutuan, Titiwangsa, Kuala Lumpur, 50250, Malaysia",
   },
 ];
 
@@ -168,27 +164,6 @@ export default function ContactUs() {
       </div>
     </section>
 
-        {/* Footer Info */}
-        <div className="border-t border-gray-200 pt-16 pb-10">
-            <h3 className="text-center text-2xl font-serif text-[#1a2b4b] mb-12">Head Office</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-                <div className="flex flex-col items-center">
-                    <MapPin className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Address</h5>
-                    <p className="text-gray-500 text-[10px] leading-relaxed">Level 19, Tower A, KL23, Kuala Lumpur, 50088 Malaysia</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Phone className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Phone</h5>
-                    <p className="text-gray-500 text-[10px]">+60 12-345 6789</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <Clock className="text-[#f2b830] w-5 h-5 mb-3" />
-                    <h5 className="font-bold text-sm mb-1">Hours</h5>
-                    <p className="text-gray-500 text-[10px]">Mon - Fri: 9:00 AM - 6:00 PM<br/>Sat - Sun: 10:00 AM - 4:00 PM</p>
-                </div>
-            </div>
-        </div>
       </div>
     </section>
   );

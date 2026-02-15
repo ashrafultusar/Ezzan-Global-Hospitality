@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000/"),
+  metadataBase: new URL("https://www.izzanglobalhospitality.com"),
   title: {
     default: "Ezzan Global",
     template: "%s | Ezzan-Global",
@@ -31,14 +31,14 @@ export const metadata: Metadata = {
     "Ezzan Global",
   ],
   authors: [{ name: "Ezzan Global" }],
-  icons: {
-    icon: "",
-    apple: "",
-  },
+  // icons: {
+  //   icon: "",
+  //   apple: "",
+  // },
   openGraph: {
     title: "Ezzan Global",
     description: "Your trusted partner for global exploration.",
-    url: "https://tstourtravels.com",
+    url: "https://www.izzanglobalhospitality.com",
     siteName: "Ezzan Global",
     images: [
       {

@@ -10,7 +10,7 @@ function LoginButton() {
   return (
     <button
       type="submit"
-      className="group relative flex w-full justify-center rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-4 py-3 text-sm font-semibold text-white shadow-lg hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-300 hover:shadow-xl active:scale-[0.98] aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+      className="group relative flex w-full justify-center rounded-lg bg-gradient-to-r from-amber-600 to-yellow-600 px-4 py-3 text-sm font-semibold text-white shadow-lg hover:from-amber-700 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 transition-all duration-300 hover:shadow-xl active:scale-[0.98] aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
       aria-disabled={pending}
     >
       {pending ? "Signing in..." : "Sign in"}
@@ -21,17 +21,17 @@ function LoginButton() {
 export default function LoginPage() {
   const [errorMessage, dispatch] = useActionState(authenticate, undefined);
   return (
-    <div className="relative min-h-screen bg-linear-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-gray-950 dark:via-indigo-950 dark:to-purple-950">
+    <div className="relative min-h-screen bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-amber-950 dark:to-yellow-950">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,rgba(99,102,241,0.08)_0%,transparent_25%),radial-gradient(circle_at_85%_30%,rgba(168,85,247,0.07)_0%,transparent_35%)] dark:bg-[radial-gradient(circle_at_15%_50%,rgba(99,102,241,0.12)_0%,transparent_25%),radial-gradient(circle_at_85%_30%,rgba(168,85,247,0.11)_0%,transparent_35%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_50%,rgba(245,158,11,0.08)_0%,transparent_25%),radial-gradient(circle_at_85%_30%,rgba(217,119,6,0.07)_0%,transparent_35%)] dark:bg-[radial-gradient(circle_at_15%_50%,rgba(245,158,11,0.12)_0%,transparent_25%),radial-gradient(circle_at_85%_30%,rgba(217,119,6,0.11)_0%,transparent_35%)]" />
 
       <div className="relative flex min-h-screen items-center justify-center px-5 py-12 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-10 rounded-2xl bg-white/70 p-8 shadow-2xl backdrop-blur-xl dark:bg-gray-900/70 dark:shadow-indigo-950/30 sm:p-10 border border-white/30 dark:border-gray-700/40 transition-all duration-500 hover:shadow-3xl hover:scale-[1.005]">
+        <div className="w-full max-w-md space-y-10 rounded-2xl bg-white/70 p-8 shadow-2xl backdrop-blur-xl dark:bg-gray-900/70 dark:shadow-amber-950/30 sm:p-10 border border-white/30 dark:border-gray-700/40 transition-all duration-500 hover:shadow-3xl hover:scale-[1.005]">
           {/* Brand / Logo */}
           <div className="text-center">
-            <div className="mx-auto h-14 w-14 rounded-xl bg-linear-to-br from-indigo-500 to-purple-600 p-0.5 shadow-lg">
-              <div className="flex h-full w-full items-center justify-center rounded-xl bg-white dark:bg-gray-900 text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-                TS
+            <div className="mx-auto h-14 w-14 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-600 p-0.5 shadow-lg">
+              <div className="flex h-full w-full items-center justify-center rounded-xl bg-white dark:bg-gray-900 text-2xl font-bold text-amber-600 dark:text-amber-400">
+                Izzan
               </div>
             </div>
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -61,7 +61,7 @@ export default function LoginPage() {
                     type="email"
                     autoComplete="email"
                     required
-                    className="block w-full rounded-lg border border-gray-300 bg-white/60 pl-11 py-3 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800/60 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 sm:text-sm transition-colors duration-200"
+                    className="block w-full rounded-lg border border-gray-300 bg-white/60 pl-11 py-3 text-gray-900 placeholder:text-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800/60 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-amber-400 dark:focus:ring-amber-400 sm:text-sm transition-colors duration-200"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -85,7 +85,7 @@ export default function LoginPage() {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-lg border border-gray-300 bg-white/60 pl-11 py-3 text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800/60 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400 sm:text-sm transition-colors duration-200"
+                    className="block w-full rounded-lg border border-gray-300 bg-white/60 pl-11 py-3 text-gray-900 placeholder:text-gray-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800/60 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-amber-400 dark:focus:ring-amber-400 sm:text-sm transition-colors duration-200"
                     placeholder="••••••••"
                   />
                 </div>
@@ -97,7 +97,7 @@ export default function LoginPage() {
                     id="remember"
                     name="remember"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:border-gray-600 dark:text-indigo-500"
+                    className="h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-500 dark:border-gray-600 dark:text-amber-500"
                   />
                   <label
                     htmlFor="remember"
@@ -129,7 +129,7 @@ export default function LoginPage() {
             Don&apos;t have an account?{" "}
             <a
               href="/register"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
+              className="font-semibold leading-6 text-amber-600 hover:text-amber-500 dark:text-amber-400 dark:hover:text-amber-300 transition-colors"
             >
               Create one now →
             </a>

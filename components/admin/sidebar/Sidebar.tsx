@@ -2,38 +2,37 @@
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import {
   LayoutDashboard,
-  UserCog,
-  UsersRound,
-  GraduationCap,
+  UserCog,  
   Newspaper,
-  Trophy,
   ChevronRight,
   ChevronLeft,
   Menu,
   X,
+  Building2,
+  Bed,
+  Crown,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Hook for active path
 import { useState } from "react";
 
 const mainMenuItems = [
-  { name: "Dashboard", icon: LayoutDashboard, href: "/ts-staff-portal" },
-  { name: "Admin Management", icon: UserCog, href: "/ts-staff-portal/admin" },
+  { name: "Dashboard", icon: LayoutDashboard, href: "/izzan-staff-portal" },
   {
-    name: "Professional Team",
-    icon: UsersRound,
-    href: "/ts-staff-portal/professionalTeam",
+    name: "Admin Management",
+    icon: UserCog,
+    href: "/izzan-staff-portal/admin",
   },
   {
-    name: "Universities",
-    icon: GraduationCap,
-    href: "/ts-staff-portal/universities",
+    name: "Rooms",
+    icon: Bed,
+    href: "/izzan-staff-portal/rooms",
   },
-  { name: "Blog", icon: Newspaper, href: "/ts-staff-portal/blog" },
+  { name: "Blog", icon: Newspaper, href: "/izzan-staff-portal/blog" },
   {
-    name: "Success Stories",
-    icon: Trophy,
-    href: "/ts-staff-portal/successStories",
+    name: "Hotels",
+    icon: Building2,
+    href: "/izzan-staff-portal/hotels",
   },
 ];
 
@@ -48,11 +47,9 @@ export default function Sidebar() {
       <div className="lg:hidden flex items-center justify-between px-4 py-3 bg-[#1e2634] text-white">
         <div className="flex items-center gap-2">
           <div className="bg-blue-500 p-1.5 rounded-md">
-            <GraduationCap size={18} />
+            <Crown size={18} />
           </div>
-          <span className="text-sm font-semibold text-white">
-            TS Tour Travel
-          </span>
+          <span className="text-sm font-semibold text-white">Izzan Global</span>
         </div>
         <button
           className="cursor-pointer"
@@ -76,14 +73,14 @@ export default function Sidebar() {
           {/* ===== LOGO ===== */}
           <div className="relative flex items-center gap-3 px-4 py-6">
             <div className="bg-blue-500 p-2 rounded-md shrink-0">
-              <GraduationCap size={24} className="text-white" />
+              <Crown size={24} className="text-white" />
             </div>
 
             <div
               className={`${!isOpen && "lg:hidden opacity-0"} transition-opacity duration-200`}
             >
               <h1 className="text-md font-bold text-white leading-none">
-                TS Tour Travel
+                Izzan Global
               </h1>
               <p className="text-[11px] text-gray-500 mt-1 uppercase tracking-wider font-semibold">
                 Admin Panel

@@ -65,7 +65,7 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
                     : await createTeamMember(formData);
 
             handleServerResponse(result, () => {
-                router.push("/ts-staff-portal/professionalTeam");
+                router.push("/izzan-staff-portal/professionalTeam");
             });
         } catch (error) {
             console.error("Error submitting team member:", error);
@@ -143,7 +143,7 @@ const ProfessionalTeamForm: React.FC<ProfessionalTeamFormProps> = ({
             <div className="flex justify-end items-center gap-4 pt-4 border-t border-gray-50">
                 <button
                     type="button"
-                    onClick={() => router.push("/ts-staff-portal/professionalTeam")}
+                    onClick={() => router.push("/izzan-staff-portal/professionalTeam")}
                     disabled={loading || isCompressing}
                     className="px-6 py-2.5 text-gray-500 font-medium hover:text-gray-800 transition disabled:opacity-50"
                 >
