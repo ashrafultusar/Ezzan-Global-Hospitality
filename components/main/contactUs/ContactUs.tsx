@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
 
 // --- Types ---
@@ -79,23 +76,23 @@ export default function ContactUs() {
       {/* Header */}
 
       <section className="bg-[#1a2a4d] pt-28 pb-20 px-4 text-center">
-      <div className="max-w-5xl mx-auto">
-        {/* Sub-title */}
-        <p className="text-[#d48e28] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
-        GET IN TOUCH
-        </p>
+        <div className="max-w-5xl mx-auto">
+          {/* Sub-title */}
+          <p className="text-[#d48e28] text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+            GET IN TOUCH
+          </p>
 
-        {/* Main Title */}
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
-        Contact Us
-        </h1>
+          {/* Main Title */}
+          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
+            Contact Us
+          </h1>
 
-        {/* Description */}
-        <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
-        Have questions or need assistance? Our team is here to help you plan your perfect stay.
-        </p>
-      </div>
-    </section>
+          {/* Description */}
+          <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+            Have questions or need assistance? Our team is here to help you plan your perfect stay.
+          </p>
+        </div>
+      </section>
 
 
       <div className="max-w-6xl mx-auto px-6 mt-10">
@@ -120,49 +117,49 @@ export default function ContactUs() {
 
         {/* Hotel Cards Grid */}
         <section className="pb-20 bg-[#FDFCFB]">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl font-serif font-bold text-[#1a2b4b] text-center mb-12">
-          Our Hotel Locations
-        </h2>
+          <div className="max-w-7xl mx-auto px-6">
+            <h2 className="text-3xl font-serif font-bold text-[#1a2b4b] text-center mb-12">
+              Our Hotel Locations
+            </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {LOCATIONS.map((hotel) => (
-            <div 
-              key={hotel.id} 
-              className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border  border-gray-100 group hover:shadow-lg transition-shadow duration-300"
-            >
-              {/* Google Map Embed */}
-              <div className="h-64 w-full relative">
-                <iframe
-                  title={hotel.name}
-                  src={hotel.mapUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale-[0.2] contrast-[1.1]"
-                />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {LOCATIONS.map((hotel) => (
+                <div
+                  key={hotel.id}
+                  className="bg-white rounded-2xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.05)] border  border-gray-100 group hover:shadow-lg transition-shadow duration-300"
+                >
+                  {/* Google Map Embed */}
+                  <div className="h-64 w-full relative">
+                    <iframe
+                      title={hotel.name}
+                      src={hotel.mapUrl}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="grayscale-[0.2] contrast-[1.1]"
+                    />
+                  </div>
 
-              {/* Hotel Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-[#1a2b4b] mb-3 group-hover:text-[#D4A373] transition-colors">
-                  {hotel.name}
-                </h3>
-                <div className="flex items-start gap-2 text-gray-500">
-                  <MapPin className="w-4 h-4 text-[#D4A373] mt-1 shrink-0" />
-                  <p className="text-sm leading-relaxed">
-                    {hotel.address}
-                  </p>
+                  {/* Hotel Info */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-[#1a2b4b] mb-3 group-hover:text-[#D4A373] transition-colors">
+                      {hotel.name}
+                    </h3>
+                    <div className="flex items-start gap-2 text-gray-500">
+                      <MapPin className="w-4 h-4 text-[#D4A373] mt-1 shrink-0" />
+                      <p className="text-sm leading-relaxed">
+                        {hotel.address}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </div>
+        </section>
 
       </div>
     </section>

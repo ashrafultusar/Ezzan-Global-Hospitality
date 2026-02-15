@@ -1,5 +1,3 @@
-'use client';
-import { useState } from 'react';
 import Image from 'next/image';
 
 const hotels = [
@@ -8,7 +6,7 @@ const hotels = [
         name: "Grand Millennium Kuala Lumpur",
         location: "Kuala Lumpur, Malaysia",
         description: "Luxury in the heart of KL with stunning KLCC views",
-        image: "/assets/home/home.jpg", 
+        image: "/assets/home/home.jpg",
         rating: 5,
         features: ["City View", "Spa", "Pool"]
     },
@@ -17,7 +15,7 @@ const hotels = [
         name: "Paradise Resort Langkawi",
         location: "Langkawi, Kedah, Malaysia",
         description: "Beachfront paradise with crystal clear waters",
-        image: "/assets/home/home1.jpg", 
+        image: "/assets/home/home1.jpg",
         rating: 5,
         features: ["Beachfront", "Water Sports", "Spa"]
     },
@@ -26,15 +24,13 @@ const hotels = [
         name: "Heritage Grand Penang",
         location: "George Town, Penang, Malaysia",
         description: "Colonial charm meets modern luxury",
-        image: "/assets/home/home2.jpg", 
+        image: "/assets/home/home2.jpg",
         rating: 5,
         features: ["Heritage", "Cultural Tours", "Garden"]
     }
 ];
 
 const FeaturedHotels = () => {
-    const [hoveredCard, setHoveredCard] = useState(null);
-
     return (
         <section className="relative py-20 px-4 bg-[#f3eee6] overflow-hidden">
             {/* Background Decorative Gradients */}
@@ -53,44 +49,43 @@ const FeaturedHotels = () => {
                         </h4>
                         <div className="w-8 h-[1px] bg-[#D4AF37]" />
                     </div>
-                    
+
                     <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1A2B48] animate-fade-up [animation-delay:200ms]">
                         Featured Hotels
                     </h2>
-                    
+
                     <p className="text-gray-500 max-w-xl mx-auto animate-fade-up [animation-delay:400ms]">
                         Experience luxury redefined at our most exclusive properties
                     </p>
                 </div>
 
-                {/* Hotel Cards Grid */}
+                {/* Hotel Cards Grid — CSS-only hover (no JS state needed) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                     {hotels.map((hotel, index) => (
-                        <div 
+                        <div
                             key={hotel.id}
                             className="group relative animate-fade-up"
                             style={{ animationDelay: `${(index + 3) * 150}ms` }}
-                            onMouseEnter={() => setHoveredCard(hotel.id)}
-                            onMouseLeave={() => setHoveredCard(null)}
                         >
                             {/* Card Body */}
                             <div className="relative bg-white rounded-xl overflow-hidden shadow-md transition-all duration-500 hover:shadow-2xl group-hover:-translate-y-2">
-                                
+
                                 {/* Image Container */}
                                 <div className="relative h-64 w-full">
-                                    <Image 
-                                        src={hotel.image} 
+                                    <Image
+                                        src={hotel.image}
                                         alt={hotel.name}
                                         fill
+                                        sizes="(max-width: 768px) 100vw, 33vw"
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
                                     {/* Rating Badge */}
                                     <div className="absolute top-4 right-4 z-20 bg-[#FFB400] text-white px-3 py-1 rounded flex items-center gap-1 text-sm font-bold shadow-lg">
                                         <span className="text-white">★</span> {hotel.rating}
                                     </div>
-                                    
-                                    {/* Hover Features Overlay */}
-                                    <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center gap-2 transition-opacity duration-300 ${hoveredCard === hotel.id ? 'opacity-100' : 'opacity-0'}`}>
+
+                                    {/* Hover Features Overlay — pure CSS hover via group-hover */}
+                                    <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center gap-2 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
                                         {hotel.features.map((f, i) => (
                                             <span key={i} className="text-[10px] bg-white/20 text-white px-2 py-1 rounded-full border border-white/40">
                                                 {f}
@@ -110,9 +105,9 @@ const FeaturedHotels = () => {
                                     <p className="text-gray-500 text-sm mb-6 line-clamp-2">
                                         {hotel.description}
                                     </p>
-                                    
+
                                     <button className="flex items-center text-[#D4AF37] font-bold text-sm uppercase tracking-wider group/btn">
-                                        View Details 
+                                        View Details
                                         <span className="ml-2 transition-transform group-hover/btn:translate-x-2">→</span>
                                     </button>
                                 </div>
@@ -123,10 +118,10 @@ const FeaturedHotels = () => {
 
                 {/* Footer Button */}
                 <div className="text-center">
-                <button className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
-                            Explore Venues 
-                            <span className="transition-transform group-hover:translate-x-2">→</span>
-                        </button>
+                    <button className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
+                        Explore Venues
+                        <span className="transition-transform group-hover:translate-x-2">→</span>
+                    </button>
                 </div>
             </div>
         </section>
