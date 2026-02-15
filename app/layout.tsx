@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.izzanglobalhospitality.com"),
   title: {
-    default: "Ezzan Global",
+    default: "Izzan Global",
     template: "%s | Ezzan-Global",
   },
   description:
