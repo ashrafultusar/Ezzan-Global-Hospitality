@@ -152,7 +152,7 @@ export default async function RoomDetailsPage({ params }: Props) {
             )}
           </div>
 
-          {/* Right Column: Booking Card (Sticky) */}
+          {/* Right Column: Booking Card */}
           <aside className="lg:sticky lg:top-10">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
               <p className="text-gray-400 text-sm mb-1">Starting from</p>
@@ -161,22 +161,18 @@ export default async function RoomDetailsPage({ params }: Props) {
               </div>
               <p className="text-gray-400 text-xs mb-8 uppercase tracking-widest">per night</p>
 
-              <div className="text-left mb-8">
-                <h4 className="font-bold text-[#1a2b4b] mb-2 text-sm">Interested in this room?</h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Contact us directly to check availability and make a reservation.
-                </p>
-              </div>
-
               <div className="space-y-3">
-                <button className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 rounded-xl font-bold text-sm hover:opacity-90 transition-all">
+                {/* Real Color for WhatsApp: Green */}
+                <a href="https://wa.me/60177085596?text=Hello, I am interested in booking a room."
+    target="_blank"
+    rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 rounded-xl font-bold text-sm hover:opacity-90 transition-all">
                   <MessageCircle className="w-5 h-5" />
                   Contact via WhatsApp
-                </button>
-                <button className="w-full flex items-center justify-center gap-2 bg-[#1a2b4b] text-white py-4 rounded-xl font-bold text-sm hover:bg-[#0f1a2d] transition-all">
+                </a>
+                <a href="tel:+60177085596"  className="w-full flex items-center justify-center gap-2 bg-[#1a2b4b] text-white py-4 rounded-xl font-bold text-sm">
                   <Phone className="w-4 h-4" />
                   Call Hotel
-                </button>
+                </a>
               </div>
             </div>
           </aside>

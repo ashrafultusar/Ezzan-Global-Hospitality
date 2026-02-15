@@ -1,68 +1,63 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
+import { getGalleryImages } from "@/lib/data/gallery";
 
-// --- Types & Interfaces ---
+
 interface GalleryImage {
-  id: number;
-  category: "Hotels" | "Rooms" | "Events";
+  _id: string;
+  category: string;
   src: string;
   title: string;
 }
 
-type Category = "All" | GalleryImage["category"];
-
-// --- Data ---
-// Sob image-er ID unique (alada) hote hobe jate filtering logic thik thake
-const IMAGES: GalleryImage[] = [
-  { id: 1, category: "Hotels", src: "/assets/gallery/image1.jpg", title: "Luxury Resort" },
-  { id: 2, category: "Rooms", src: "/assets/gallery/image2.jpg", title: "Cozy Suite" },
-  { id: 3, category: "Rooms", src: "/assets/gallery/image3.jpg", title: "Living Area" },
-  
-  // Events category - sob unique ID deya hoyeche
-  { id: 4, category: "Events", src: "/assets/gallery/enents/image1.jpg", title: "Grand Ballroom" },
-  { id: 5, category: "Events", src: "/assets/gallery/enents/image2.jpg", title: "Royal Banquet" },
-  { id: 6, category: "Events", src: "/assets/gallery/enents/image3.jpg", title: "Corporate Hall" },
-  { id: 7, category: "Events", src: "/assets/gallery/enents/image4.jpg", title: "Wedding Hall" },
-  { id: 8, category: "Events", src: "/assets/gallery/enents/image5.jpg", title: "Outdoor Event" },
-  
-  { id: 9, category: "Hotels", src: "/assets/gallery/image5.jpg", title: "City View" },
-  { id: 10, category: "Hotels", src: "/assets/gallery/image6.jpg", title: "Beach Front" },
-  { id: 11, category: "Hotels", src: "/assets/gallery/image7.jpg", title: "Mountain View" },
-  { id: 12, category: "Hotels", src: "/assets/gallery/image8.jpg", title: "Infinity Pool" },
-  { id: 13, category: "Hotels", src: "/assets/gallery/image9.jpg", title: "Eco Lodge" },
-];
-
-const CATEGORIES: Category[] = ["All", "Hotels", "Rooms", "Events"];
+const CATEGORIES = ["All", "Hotels", "Rooms", "Events"] as const;
+type Category = (typeof CATEGORIES)[number];
 
 export default function Gallery() {
+  const [images, setImages] = useState<GalleryImage[]>([]);
   const [filter, setFilter] = useState<Category>("All");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  // Filtering Logic: Strict category checking
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const result = await getGalleryImages();
+        
+        console.log("Database Data:", result); 
+
+        if (result.success && Array.isArray(result.data)) {
+          setImages(result.data);
+        } else {
+          setError(true);
+        }
+      } catch (err) {
+        console.error("Fetch Error:", err);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
+
   const filteredImages = useMemo(() => {
-    if (filter === "All") return IMAGES;
-    // Sudhu oi category match korle show korbe, onno kisu ashbe na
-    return IMAGES.filter((img) => img.category === filter);
-  }, [filter]);
+    if (filter === "All") return images;
+    return images.filter((img) => img.category === filter);
+  }, [filter, images]);
 
   return (
     <section className="bg-[#fdfbf7] min-h-screen pb-20">
-      {/* Header */}
+      {/* Header Section */}
       <div className="bg-[#1a2a4d] pt-28 pb-20 px-4 text-center">
-        <p className="text-[#eab308] uppercase tracking-[0.3em] text-xs font-bold mb-3">
-          Gallery
-        </p>
-        <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
-          Visual Journey
-        </h2>
-        <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-          Explore our stunning <span className="text-white border-b border-[#eab308]">hotels</span>, 
-          luxurious rooms, and world-class event spaces.
-        </p>
+        <p className="text-[#eab308] uppercase tracking-[0.3em] text-xs font-bold mb-3">Gallery</p>
+        <h2 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">Visual Journey</h2>
       </div>
 
-      {/* Filter Buttons */}
+      {/* Filters */}
       <div className="flex flex-wrap justify-center gap-3 py-12 px-4">
         {CATEGORIES.map((cat) => (
           <button
@@ -79,41 +74,47 @@ export default function Gallery() {
         ))}
       </div>
 
-      {/* Image Grid with Animation key change */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredImages.map((image, index) => (
-          <div
-            key={`${filter}-${image.id}`} // Filter change hole jate animation reset hoy
-            className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 shadow-sm transition-all duration-500 animate-in fade-in zoom-in-95"
-          >
-            <Image
-              src={image.src}
-              alt={image.title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-              priority={index < 3}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8WQ8AAn8Bf79X77gAAAAASUVORK5CYII=" 
-            />
-            
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-all duration-500" />
-            
-            <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-              <p className="text-white text-lg font-medium">{image.title}</p>
-              <p className="text-[#eab308] text-sm font-semibold uppercase tracking-wider">{image.category}</p>
-            </div>
+      <div className="max-w-7xl mx-auto px-6">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#eab308]"></div>
+            <p className="mt-4 text-gray-500">Loading gallery...</p>
           </div>
-        ))}
+        ) : error ? (
+          <div className="text-center py-20 text-red-500">
+            Failed to load images. Please refresh.
+          </div>
+        ) : filteredImages.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredImages.map((image) => (
+              <div
+                key={image._id}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-gray-200 shadow-sm transition-all duration-500"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.title || "Gallery Image"}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  unoptimized 
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/60 transition-all duration-500" />
+                <div className="absolute bottom-6 left-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
+                {image.title && (
+    <p className="text-white text-lg font-medium mb-1">{image.title}</p>
+  )}
+                  <p className="text-[#eab308] text-sm font-semibold uppercase">{image.category}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <p className="text-gray-400">No images found.</p>
+          </div>
+        )}
       </div>
-
-      {/* No Images Found (Fallback) */}
-      {filteredImages.length === 0 && (
-        <div className="text-center py-20">
-          <p className="text-gray-400">No images found in this category.</p>
-        </div>
-      )}
     </section>
   );
 }

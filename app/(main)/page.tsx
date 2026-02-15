@@ -26,14 +26,13 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <main className="flex flex-col">
       <HeroSection />
-      <FeaturedHotels />
+      <Suspense fallback={<HotelSkeleton />}>
+        <FeaturedHotels />
+      </Suspense>
       <RoomsAndSuites />
       <EventsMeetings />
-      <Suspense
-        fallback={<div className="h-80 w-full bg-slate-100 animate-pulse" />}
-      ></Suspense>
-    </div>
+    </main>
   );
 }

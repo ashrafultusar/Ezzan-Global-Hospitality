@@ -2,13 +2,13 @@ import Image from "next/image";
 
 const Page = () => {
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans">
+    <div className="min-h-screen  text-slate-900 font-sans">
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="flex flex-col items-center justify-center mb-8">
             <div className="relative h-20 w-20 sm:h-24 sm:w-24 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-xl bg-white p-1 mb-4 select-none">
               <Image
-                src="/assets/logo/logo.jpg"
+                src="/assets/logo/logo.png"
                 alt="TS Tour and Travel Official Logo"
                 fill
                 priority 
