@@ -1,11 +1,12 @@
-import { Plus, Bed, Edit, MapPin, Ruler, Users, Building } from "lucide-react";
-import { getRooms } from "@/lib/data/room";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Plus, Bed, Edit, Ruler, Users, Building } from "lucide-react";
+import { getAllRoomsData } from "@/lib/data/room";
 import Link from "next/link";
 import Image from "next/image";
 import DeleteRoomButton from "@/components/admin/rooms/DeleteRoomButton";
 
 const RoomsPage = async () => {
-    const { rooms } = await getRooms();
+    const { rooms } = await getAllRoomsData();
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -74,7 +75,7 @@ const RoomsPage = async () => {
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-5 flex flex-col flex-grow">
+                        <div className="p-5 flex flex-col grow">
                             <div className="mb-3">
                                 <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">
                                     <Building size={12} />
