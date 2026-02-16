@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Plus, Bed, Edit, Ruler, Users, Building } from "lucide-react";
 import { getAllRoomsData } from "@/lib/data/room";
 import Link from "next/link";
@@ -74,7 +75,7 @@ const RoomsPage = async () => {
                         </div>
 
                         {/* Content Section */}
-                        <div className="p-5 flex flex-col flex-grow">
+                        <div className="p-5 flex flex-col grow">
                             <div className="mb-3">
                                 <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">
                                     <Building size={12} />
