@@ -7,7 +7,7 @@ import sanitize from "mongo-sanitize";
 
 import Room from "@/models/Room";
 import { uploadImage } from "@/lib/cloudinary";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { requireStaff } from "@/lib/access-helper";
 
 const RoomSchema = z.object({
@@ -73,6 +73,7 @@ export async function createRoom(formData: FormData) {
         });
 
         revalidateTag("rooms", "max");
+        revalidatePath("/homestay")
         revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room created successfully!" };
     } catch (error) {
@@ -138,6 +139,7 @@ export async function updateRoom(id: string, formData: FormData) {
         await Room.findByIdAndUpdate(id, updateData);
 
         revalidateTag("rooms", "max");
+        revalidatePath("/homestay")
         revalidateTag(`room-${id}`, "max");
         revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room updated successfully!" };
@@ -153,6 +155,7 @@ export async function deleteRoom(id: string) {
         await connectDB();
         const deletedRoom = await Room.findByIdAndDelete(id);
         revalidateTag("rooms", "max");
+        revalidatePath("/homestay")
         revalidateTag(`room-${id}`, "max");
         if (deletedRoom?.hotelId) {
             revalidateTag(`hotel-${deletedRoom.hotelId}-rooms`, "max");
