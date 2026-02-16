@@ -7,7 +7,7 @@ import sanitize from "mongo-sanitize";
 
 import Hotel from "@/models/Hotel";
 import { uploadImage } from "@/lib/cloudinary";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { requireStaff } from "@/lib/access-helper";
 
 const HotelSchema = z.object({
@@ -53,6 +53,7 @@ export async function createHotel(formData: FormData) {
         });
 
         revalidateTag("hotels", "max");
+        revalidatePath("/homestay")
         return { success: true, message: "Hotel created successfully!" };
     } catch (error) {
         console.error("Error creating hotel:", error);
@@ -98,6 +99,7 @@ export async function updateHotel(id: string, formData: FormData) {
         await Hotel.findByIdAndUpdate(id, updateData);
 
         revalidateTag("hotels", "max");
+        revalidatePath("/homestay")
         revalidateTag(`hotel-${id}`, "max");
         return { success: true, message: "Hotel updated successfully!" };
     } catch (error) {
@@ -112,6 +114,7 @@ export async function deleteHotel(id: string) {
         await connectDB();
         await Hotel.findByIdAndDelete(id);
         revalidateTag("hotels", "max");
+        revalidatePath("/homestay")
         revalidateTag(`hotel-${id}`, "max");
         return { success: true, message: "Hotel deleted successfully" };
     } catch (error) {

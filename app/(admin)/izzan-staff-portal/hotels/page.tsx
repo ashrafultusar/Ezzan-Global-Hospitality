@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getHotels } from "@/lib/data/hotel";
 import Link from "next/link";
 import { Plus } from "lucide-react";
