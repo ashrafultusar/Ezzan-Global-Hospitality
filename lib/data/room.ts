@@ -7,6 +7,14 @@ import Room from "@/models/Room";
 // Data Cache (Next.js Cache - Shared across requests)
 // ============================================
 
+const getAllRooms= unstable_cache(
+    async()=>{
+        await connectDB()
+        const rooms = await Room.find().lean()
+        return {success: true, rooms: JSON.parse(JSON.stringify(rooms))}
+    }
+)
+
 const getRoomsConfig = unstable_cache(
     async () => {
         await connectDB();
@@ -57,6 +65,9 @@ const getRoomsByHotelIdConfig = async (hotelId: string) => {
 // ============================================
 // Request Memoization (React Cache - Per Request)
 // ============================================
+export const getAllRoomsData= cache(async()=>{
+    return await getAllRooms()
+})
 
 export const getRooms = cache(async () => {
     return await getRoomsConfig();

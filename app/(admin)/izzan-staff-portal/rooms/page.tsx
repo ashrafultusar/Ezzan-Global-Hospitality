@@ -1,11 +1,11 @@
-import { Plus, Bed, Edit, MapPin, Ruler, Users, Building } from "lucide-react";
-import { getRooms } from "@/lib/data/room";
+import { Plus, Bed, Edit, Ruler, Users, Building } from "lucide-react";
+import { getAllRoomsData } from "@/lib/data/room";
 import Link from "next/link";
 import Image from "next/image";
 import DeleteRoomButton from "@/components/admin/rooms/DeleteRoomButton";
 
 const RoomsPage = async () => {
-    const { rooms } = await getRooms();
+    const { rooms } = await getAllRoomsData();
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
