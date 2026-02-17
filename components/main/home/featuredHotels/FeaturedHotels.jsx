@@ -48,7 +48,7 @@ const FeaturedHotels = async () => {
         {/* Hotel Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {hotels &&
-            hotels.map((hotel) => (
+            hotels?.map((hotel) => (
               <Link
                 key={hotel._id}
                 href={`/homestay/${hotel._id}`}
