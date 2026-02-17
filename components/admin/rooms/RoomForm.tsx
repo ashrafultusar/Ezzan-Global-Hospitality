@@ -180,7 +180,7 @@ const RoomForm: React.FC<RoomFormProps> = ({ mode, initialData, hotels }) => {
                     <label className="block text-sm font-bold text-gray-700 mb-2">Price / Rent (per night)</label>
                     <div className="relative">
                         <span className="absolute left-3 top-3.5 text-gray-500 font-bold">$</span>
-                        <input name="price" type="number" required min="0" defaultValue={initialData?.price} className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="0.00" />
+                        <input name="price" type="text" required defaultValue={initialData?.price} className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none" placeholder="0.00" />
                     </div>
                 </div>
 

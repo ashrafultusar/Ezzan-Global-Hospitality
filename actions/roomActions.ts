@@ -14,7 +14,7 @@ const RoomSchema = z.object({
     title: z.string().min(2, "Title must be at least 2 characters"),
     hotelId: z.string().min(1, "Hotel is required"),
     description: z.string().min(10, "Description must be at least 10 characters"),
-    price: z.coerce.number().min(0, "Price must be positive"),
+    price: z.string().min(1, "Price must be positive"),
     area: z.coerce.number().min(0, "Area must be positive"),
     capacity: z.coerce.number().min(1, "Capacity must be at least 1"),
     amenities: z.array(z.string()).optional(),
@@ -74,6 +74,7 @@ export async function createRoom(formData: FormData) {
 
         revalidateTag("rooms", "max");
         revalidatePath("/homestay")
+        revalidatePath("/izzan-staff-portal/rooms")
         revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room created successfully!" };
     } catch (error) {
@@ -156,6 +157,7 @@ export async function deleteRoom(id: string) {
         const deletedRoom = await Room.findByIdAndDelete(id);
         revalidateTag("rooms", "max");
         revalidatePath("/homestay")
+        revalidatePath("/izzan-staff-portal/rooms")
         revalidateTag(`room-${id}`, "max");
         if (deletedRoom?.hotelId) {
             revalidateTag(`hotel-${deletedRoom.hotelId}-rooms`, "max");
