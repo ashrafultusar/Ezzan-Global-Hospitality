@@ -11,9 +11,9 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { requireStaff } from "@/lib/access-helper";
 
 const RoomSchema = z.object({
-    title: z.string().min(2, "Title must be at least 2 characters"),
+    title: z.string().min(1, "Title must be at least 2 characters"),
     hotelId: z.string().min(1, "Hotel is required"),
-    description: z.string().min(10, "Description must be at least 10 characters"),
+    description: z.string().min(1, "Description must be at least 10 characters"),
     price: z.string().min(1, "Price must be positive"),
     area: z.coerce.number().min(0, "Area must be positive"),
     capacity: z.coerce.number().min(1, "Capacity must be at least 1"),
