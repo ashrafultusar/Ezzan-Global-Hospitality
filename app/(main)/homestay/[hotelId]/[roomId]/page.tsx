@@ -25,11 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${room.title} at ${hotel.name}`,
-    description: `${room.title} — ${room.description} Starting from MYR ${room.price}/night. ${room.area} sqm, ${room.capacity} guests, ${room.bedType}. Book at ${hotel.name}.`,
+    description: `${room.title} — ${room.description} Starting from $ ${room.price}/night. ${room.area} sqm, ${room.capacity} guests, ${room.bedType}. Book at ${hotel.name}.`,
     keywords: [room.title, hotel.name, hotel.location, "hotel room", "room booking Malaysia"],
     openGraph: {
       title: `${room.title} at ${hotel.name}`,
-      description: `${room.description} — Starting from MYR ${room.price}/night.`,
+      description: `${room.description} — Starting from $ ${room.price}/night.`,
       url: `https://www.izzanglobalhospitality.com/homestay/${hotelId}/${roomId}`,
       type: "website",
       images: room.images?.[0]
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: "summary_large_image",
       title: `${room.title} at ${hotel.name}`,
-      description: `Starting from MYR ${room.price}/night. ${room.area} sqm, ${room.bedType}.`,
+      description: `Starting from $ ${room.price}/night. ${room.area} sqm, ${room.bedType}.`,
       images: room.images?.[0] ? [room.images[0]] : undefined,
     },
   };
@@ -157,7 +157,7 @@ export default async function RoomDetailsPage({ params }: Props) {
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
               <p className="text-gray-400 text-sm mb-1">Starting from</p>
               <div className="text-4xl font-serif font-bold text-[#D4A373] mb-1">
-                MYR {room.price.toLocaleString()}
+                $ {room.price.toLocaleString()}
               </div>
               <p className="text-gray-400 text-xs mb-8 uppercase tracking-widest">per night</p>
 
