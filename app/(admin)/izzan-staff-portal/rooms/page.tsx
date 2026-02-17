@@ -79,7 +79,7 @@ const RoomsPage = async () => {
                             <div className="mb-3">
                                 <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider mb-1">
                                     <Building size={12} />
-                                    {room.hotelId?.name || "Unknown Hotel"}
+                                    {room.hotelId || "Unknown Hotel"}
                                 </div>
                                 <h3 className="font-bold text-gray-800 text-lg leading-tight line-clamp-1 mb-2">
                                     {room.title}
