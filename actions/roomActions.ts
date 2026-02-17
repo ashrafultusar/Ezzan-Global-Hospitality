@@ -73,8 +73,6 @@ export async function createRoom(formData: FormData) {
         });
 
         revalidateTag("rooms", "max");
-        revalidatePath("/homestay")
-        revalidatePath("/izzan-staff-portal/rooms")
         revalidateTag(`hotel-${validatedFields.data.hotelId}-rooms`, "max");
         return { success: true, message: "Room created successfully!" };
     } catch (error) {
@@ -156,8 +154,6 @@ export async function deleteRoom(id: string) {
         await connectDB();
         const deletedRoom = await Room.findByIdAndDelete(id);
         revalidateTag("rooms", "max");
-        revalidatePath("/homestay")
-        revalidatePath("/izzan-staff-portal/rooms")
         revalidateTag(`room-${id}`, "max");
         if (deletedRoom?.hotelId) {
             revalidateTag(`hotel-${deletedRoom.hotelId}-rooms`, "max");
