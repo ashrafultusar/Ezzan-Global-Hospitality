@@ -4,6 +4,7 @@ import HeroSection from "@/components/main/home/heroSection/HeroSection";
 import RoomsAndSuites from "@/components/main/home/roomsAndSuites/RoomsAndSuites";
 import EventsMeetings from "@/components/main/home/eventsMeetings/EventsMeetings";
 import { Suspense } from "react";
+import FeaturedHotelsSkeleton from "@/components/main/home/featuredHotels/FeaturedHotelsSkeleton";
 
 export const metadata: Metadata = {
   title: "Luxury Hotels & Resorts in Malaysia",
@@ -28,7 +29,7 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <HeroSection />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FeaturedHotelsSkeleton />}>
         <FeaturedHotels />
       </Suspense>
       <RoomsAndSuites />
