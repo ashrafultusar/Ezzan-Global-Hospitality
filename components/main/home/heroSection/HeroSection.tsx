@@ -3,9 +3,12 @@ import styles from "./HeroSection.module.css";
 
 const HeroSection = () => {
   const images = [
-    "/assets/home/home.jpg",
-    "/assets/home/home1.jpg",
-    "/assets/home/home2.jpg",
+    "/assets/home/banner1.jpg",
+    "/assets/home/banner2.jpg",
+    "/assets/home/banner3.jpg",
+    "/assets/home/banner4.jpg",
+    "/assets/home/banner5.jpg",
+    "/assets/home/banner6.jpg",   
   ];
 
   return (
