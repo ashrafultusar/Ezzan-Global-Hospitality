@@ -72,7 +72,7 @@ const RoomsAndSuites = () => {
             {/* First Image */}
             <div className="absolute top-0 left-0 w-[70%] h-[70%] z-10 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
               <Image
-                src="/assets/home/home1.jpg"
+                src="/assets/home/roomandsuites/roomandsuites1.jpg"
                 alt="Luxury Bedroom"
                 fill
                 className="object-cover"
@@ -82,7 +82,7 @@ const RoomsAndSuites = () => {
             {/* Second Image */}
             <div className="absolute bottom-0 right-0 w-[70%] h-[70%] z-20 rounded-2xl overflow-hidden shadow-2xl border-8 border-[#F9F6F1] transform hover:scale-105 transition-transform duration-500">
               <Image
-                src="/assets/home/home2.jpg"
+                src="/assets/home/roomandsuites/roomandsuites2.jpg"
                 alt="Luxury Suite Living Room"
                 fill
                 className="object-cover"
