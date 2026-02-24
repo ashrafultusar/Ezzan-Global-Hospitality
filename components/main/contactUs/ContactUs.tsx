@@ -58,7 +58,7 @@ const LOCATIONS = [
     id: 3,
     name: "The Majestic Hotel Kuala Lumpur, Autograph Collection",
     address:
-      "5, Jalan Sultan Hishamuddin, Tasik Perdana, 50000 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur, Malaysia",
+      "1016, Jln Sultan Ismail, Bandar Wawasan 50250 Kuala Lumpur Kuala Lumpur ",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d995.9584230919813!2d101.69146!3d3.1385854!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49c5acb02757%3A0xf0aca4eb92b06ca8!2sThe%20Majestic%20Hotel%20Kuala%20Lumpur%2C%20Autograph%20Collection!5e0!3m2!1sen!2sbd!4v1770404349704!5m2!1sen!2sbd",
   },
