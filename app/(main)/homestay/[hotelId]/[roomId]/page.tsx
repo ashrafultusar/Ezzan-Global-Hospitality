@@ -132,7 +132,7 @@ export default async function RoomDetailsPage({ params }: Props) {
             )}
 
             {/* Gallery Section */}
-            {room.images?.length > 0 && (
+            {room?.images?.length > 0 && (
               <section>
                 <h2 className="text-2xl font-serif font-bold text-[#1a2b4b] mb-6">Gallery</h2>
                 <div className="grid grid-cols-3 gap-4">
@@ -157,7 +157,7 @@ export default async function RoomDetailsPage({ params }: Props) {
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
               <p className="text-gray-400 text-sm mb-1">Starting from</p>
               <div className="text-4xl font-serif font-bold text-[#D4A373] mb-1">
-                $ {room.price.toLocaleString()}
+              MYR {room.price.toLocaleString()}
               </div>
               <p className="text-gray-400 text-xs mb-8 uppercase tracking-widest">per night</p>
 

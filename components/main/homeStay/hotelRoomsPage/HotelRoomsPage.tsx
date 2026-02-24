@@ -168,7 +168,7 @@ export default function HotelRoomsClient({
           Rooms & Suites
         </h2>
 
-        {filteredRooms.length > 0 ? (
+        {filteredRooms?.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredRooms.map((room) => (
               <Link
@@ -206,7 +206,7 @@ export default function HotelRoomsClient({
                       </span>
                       <div className="text-right">
                         <p className="text-[#d48e28] font-bold text-xl leading-none">
-                          $ {room.price}
+                          MYR {room.price}
                         </p>
                         <span className="text-gray-400 text-[10px] uppercase">
                           per night
