@@ -11,7 +11,7 @@ export default function TourPackagesPage() {
       <section className="relative h-[450px] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/assets/tourPackages/tourpackage.jpg"
+            src="/assets/tourPackages/inside/KLCCPark.jpg"
             alt="Resort"
             fill
             className="object-cover brightness-[0.4]"
