@@ -202,7 +202,7 @@ export default function HotelRoomsClient({
                     </p>
                     <div className="flex justify-between items-center pt-5 border-t border-gray-50">
                       <span className="text-gray-400 text-xs font-medium">
-                        {room.area} sqm • {room.capacity} Guests
+                        {room.area} sqm • {room.capacity} 
                       </span>
                       <div className="text-right">
                         <p className="text-[#d48e28] font-bold text-xl leading-none">

@@ -98,7 +98,7 @@ export default async function RoomDetailsPage({ params }: Props) {
               </div>
               <div className="bg-[#F3F1ED] p-6 rounded-lg text-center flex flex-col items-center justify-center gap-2">
                 <Users className="w-6 h-6 text-[#D4A373]" />
-                <span className="text-sm font-bold text-[#1a2b4b]">{room.capacity} Guests</span>
+                <span className="text-sm font-bold text-[#1a2b4b]">{room.capacity} </span>
                 <span className="text-xs text-gray-500">Max Capacity</span>
               </div>
               <div className="bg-[#F3F1ED] p-6 rounded-lg text-center flex flex-col items-center justify-center gap-2">
