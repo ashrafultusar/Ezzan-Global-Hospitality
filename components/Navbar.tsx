@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -77,39 +77,46 @@ export default function Navbar() {
           <div className="h-16 flex items-center justify-between">
             {/* --- Logo Section --- */}
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setMobileOpen(true)}
-                className={`lg:hidden p-2 rounded-lg transition-colors ${
-                  isScrolled
-                    ? "hover:bg-slate-100 text-slate-700"
-                    : "hover:bg-white/10 text-white"
-                }`}
-              >
-                <Menu size={22} className="cursor-pointer" />
-              </button>
+  <button
+    onClick={() => setMobileOpen(true)}
+    className={`lg:hidden p-2 rounded-lg transition-colors ${
+      isScrolled
+        ? "hover:bg-slate-100 text-slate-700"
+        : "hover:bg-white/10 text-white"
+    }`}
+  >
+    <Menu size={22} className="cursor-pointer" />
+  </button>
 
-              <Link href="/" className="flex items-center gap-2 group">
-                <div className="w-10 h-10 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition-transform">
-                  <span className="text-xl">👑</span>
-                </div>
-                <div className="flex flex-col">
-                  <span
-                    className={`text-lg font-serif font-bold leading-tight transition-colors duration-300 ${
-                      isScrolled ? "text-slate-900" : "text-white"
-                    }`}
-                  >
-                    Izzan Global
-                  </span>
-                  <span
-                    className={`text-[8px] tracking-[0.2em] font-medium uppercase transition-colors duration-300 ${
-                      isScrolled ? "text-slate-500" : "text-[#D4AF37]"
-                    }`}
-                  >
-                    Hotels & Resorts
-                  </span>
-                </div>
-              </Link>
-            </div>
+  <Link href="/" className="flex items-center gap-2 group">
+ 
+    <div className="relative w-16 h-16 transform group-hover:scale-110 transition-transform duration-300">
+      <Image
+        src="/assets/logo/logo.png" 
+        alt="Izzan Global Logo"
+        fill
+        className="object-contain"
+      />
+    </div>
+    
+    <div className="flex flex-col">
+      <span
+        className={`text-lg font-serif font-bold leading-tight transition-colors duration-300 ${
+          isScrolled ? "text-slate-900" : "text-white"
+        }`}
+      >
+        Izzan Global
+      </span>
+      <span
+        className={`text-[8px] tracking-[0.2em] font-medium uppercase transition-colors duration-300 ${
+          isScrolled ? "text-slate-500" : "text-[#D4AF37]"
+        }`}
+      >
+       Hospitality 
+      </span>
+    </div>
+  </Link>
+</div>
 
             {/* --- Desktop Navigation --- */}
             <div className="hidden lg:flex items-center gap-8">
@@ -188,18 +195,23 @@ export default function Navbar() {
               }`}
             >
               <div className="flex flex-col items-center justify-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-[#D4AF37] flex items-center justify-center shadow-lg">
-                  <span className="text-3xl">👑</span>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-serif font-bold text-white">
-                    Izzan Global
-                  </div>
-                  <div className="text-sm tracking-widest text-white/80 uppercase mt-2">
-                    Hotels & Resorts
-                  </div>
-                </div>
-              </div>
+  <div className="relative w-20 h-20 shadow-lg">
+    <Image
+      src="/assets/logo/logo.png" 
+      alt="Izzan Global Logo"
+      fill
+      className="object-contain"
+    />
+  </div>
+  <div className="text-center">
+    <div className="text-4xl font-serif font-bold text-white">
+      Izzan Global
+    </div>
+    <div className="text-sm tracking-widest text-white/80 uppercase mt-2">
+    Hospitality 
+    </div>
+  </div>
+</div>
             </div>
 
             {/* Nav Links */}

@@ -1,13 +1,13 @@
-import mongoose, { Schema, model, models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const RoomSchema = new Schema(
     {
         title: { type: String, required: true },
         hotelId: { type: Schema.Types.ObjectId, ref: "Hotel", required: true },
         description: { type: String, required: true },
-        price: { type: Number, required: true },
+        price: { type: String, required: true },
         area: { type: Number, required: true },
-        capacity: { type: Number, required: true },
+        capacity: { type: String, required: true },
         amenities: { type: [String], default: [] },
         bedType: { type: String, required: true },
         images: {

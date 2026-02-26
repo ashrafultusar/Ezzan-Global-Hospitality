@@ -1,7 +1,27 @@
 import React from 'react';
-import { 
-  Home, Building2, Sparkles, Truck, HardHat, Sofa, Wind, MessageCircle, Phone, Star 
+import type { Metadata } from "next";
+import {
+  Home, Building2, Sparkles, Truck, HardHat, Sofa, Wind, MessageCircle, Phone, Star
 } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Professional cleaning and hospitality services by Izzan Global — residential, commercial, deep cleaning, post-renovation, carpet cleaning, aircon servicing, and more across Malaysia.",
+  keywords: [
+    "cleaning services Malaysia",
+    "residential cleaning",
+    "commercial cleaning",
+    "deep cleaning Malaysia",
+    "hospitality services",
+  ],
+  openGraph: {
+    title: "Our Services | Izzan Global Hotels & Resorts",
+    description: "Professional cleaning and hospitality services across Malaysia.",
+    url: "https://www.izzanglobalhospitality.com/ourServices",
+    type: "website",
+  },
+};
 
 export default function OurServices() {
   const services = [
@@ -26,7 +46,7 @@ export default function OurServices() {
 
   return (
     <div className="min-h-screen font-sans text-[#1a2b4b]">
-      
+
       {/* 1. Hero Section */}
       <section className="bg-[#1a2b4b] text-white pt-28 pb-24 px-6 text-center">
         <div className="max-w-4xl mx-auto">
@@ -37,7 +57,7 @@ export default function OurServices() {
           <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
             From residential homes to commercial spaces, we deliver exceptional cleaning services across Malaysia with attention to detail.
           </p>
-          
+
         </div>
       </section>
 
@@ -119,12 +139,14 @@ export default function OurServices() {
           <h2 className="text-4xl font-serif font-bold mb-6">Ready for a Spotless Space?</h2>
           <p className="text-gray-400 mb-10">Contact us today for a free quote. Our team is ready to transform your space.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-[#25D366] text-white px-8 py-4 rounded-md font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+            <a href="https://wa.me/60177085596?text=Hello, I am interested in booking a room."
+    target="_blank"
+    rel="noopener noreferrer" className="bg-[#25D366] text-white px-8 py-4 rounded-md font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all">
               <MessageCircle size={20} /> WhatsApp Us
-            </button>
-            <button className="bg-[#f2b830] text-[#1a2b4b] px-8 py-4 rounded-md font-bold flex items-center justify-center gap-2 hover:bg-[#d4a028] transition-all">
+            </a>
+            <a href="tel:+60177085596"  className="bg-[#f2b830] text-[#1a2b4b] px-8 py-4 rounded-md font-bold flex items-center justify-center gap-2 hover:bg-[#d4a028] transition-all">
               <Phone size={18} /> Call Now
-            </button>
+            </a>
           </div>
         </div>
       </section>

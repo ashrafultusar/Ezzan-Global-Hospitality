@@ -2,6 +2,7 @@ import React from 'react';
 import { Plus, Edit, Calendar, FileText, ChevronRight } from 'lucide-react';
 import { getBlogs } from '@/lib/data/blog';
 import Link from 'next/link';
+import Image from 'next/image';
 import DeleteBlogButton from '@/components/admin/blog/DeleteBlogButton';
 
 
@@ -41,7 +42,7 @@ const BlogAdminPage = async () => {
               {/* Left Side: Info */}
               <div className="flex items-center gap-4">
                 {post.image ? (
-                  <img src={post.image} alt={post.title} className="w-12 h-12 rounded-xl object-cover" />
+                  <Image src={post.image} alt={post.title} width={48} height={48} className="w-12 h-12 rounded-xl object-cover" />
                 ) : (
                   <div className="hidden sm:flex bg-blue-50 w-12 h-12 rounded-xl items-center justify-center text-blue-600 shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                     <FileText size={22} />

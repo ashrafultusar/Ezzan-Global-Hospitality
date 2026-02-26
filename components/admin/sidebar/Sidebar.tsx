@@ -2,7 +2,7 @@
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import {
   LayoutDashboard,
-  UserCog,  
+  UserCog,
   Newspaper,
   ChevronRight,
   ChevronLeft,
@@ -10,30 +10,37 @@ import {
   X,
   Building2,
   Bed,
-  Crown,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Hook for active path
 import { useState } from "react";
 
 const mainMenuItems = [
   { name: "Dashboard", icon: LayoutDashboard, href: "/izzan-staff-portal" },
-  {
-    name: "Admin Management",
-    icon: UserCog,
-    href: "/izzan-staff-portal/admin",
-  },
+
   {
     name: "Rooms",
     icon: Bed,
     href: "/izzan-staff-portal/rooms",
   },
-  { name: "Blog", icon: Newspaper, href: "/izzan-staff-portal/blog" },
+
   {
     name: "Hotels",
     icon: Building2,
     href: "/izzan-staff-portal/hotels",
   },
+  {
+    name: "Gallery",
+    icon: UserCog,
+    href: "/izzan-staff-portal/galleryManagement",
+  },
+  {
+    name: "Admin Management",
+    icon: UserCog,
+    href: "/izzan-staff-portal/admin",
+  },
+  // { name: "Blog", icon: Newspaper, href: "/izzan-staff-portal/blog" },
 ];
 
 export default function Sidebar() {
@@ -46,8 +53,13 @@ export default function Sidebar() {
       {/* Mobile Header */}
       <div className="lg:hidden flex items-center justify-between px-4 py-3 bg-[#1e2634] text-white">
         <div className="flex items-center gap-2">
-          <div className="bg-blue-500 p-1.5 rounded-md">
-            <Crown size={18} />
+          <div className="relative w-12 h-12 shadow-lg">
+            <Image
+              src="/assets/logo/logo.png"
+              alt="Izzan Global Logo"
+              fill
+              className="object-contain"
+            />
           </div>
           <span className="text-sm font-semibold text-white">Izzan Global</span>
         </div>
@@ -72,12 +84,19 @@ export default function Sidebar() {
         <div className="flex flex-col h-full">
           {/* ===== LOGO ===== */}
           <div className="relative flex items-center gap-3 px-4 py-6">
-            <div className="bg-blue-500 p-2 rounded-md shrink-0">
-              <Crown size={24} className="text-white" />
+            <div className="relative w-12 h-12 shadow-lg">
+              <Image
+                src="/assets/logo/logo.png"
+                alt="Izzan Global Logo"
+                fill
+                className="object-contain"
+              />
             </div>
 
             <div
-              className={`${!isOpen && "lg:hidden opacity-0"} transition-opacity duration-200`}
+              className={`${
+                !isOpen && "lg:hidden opacity-0"
+              } transition-opacity duration-200`}
             >
               <h1 className="text-md font-bold text-white leading-none">
                 Izzan Global
@@ -100,7 +119,9 @@ export default function Sidebar() {
           {/* ===== MENU ===== */}
           <div className="flex-1 overflow-y-auto px-3">
             <p
-              className={`text-[10px] uppercase tracking-[2px] text-gray-500 mb-4 mt-4 px-3 font-bold ${!isOpen && "lg:hidden"}`}
+              className={`text-[10px] uppercase tracking-[2px] text-gray-500 mb-4 mt-4 px-3 font-bold ${
+                !isOpen && "lg:hidden"
+              }`}
             >
               Main Menu
             </p>
@@ -130,10 +151,14 @@ export default function Sidebar() {
                   >
                     <item.icon
                       size={20}
-                      className={`shrink-0 ${isActive ? "text-white" : "text-gray-400"}`}
+                      className={`shrink-0 ${
+                        isActive ? "text-white" : "text-gray-400"
+                      }`}
                     />
                     <span
-                      className={`${!isOpen && "lg:hidden opacity-0"} whitespace-nowrap`}
+                      className={`${
+                        !isOpen && "lg:hidden opacity-0"
+                      } whitespace-nowrap`}
                     >
                       {item.name}
                     </span>

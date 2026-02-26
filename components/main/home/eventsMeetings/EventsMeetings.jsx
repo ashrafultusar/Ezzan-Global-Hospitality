@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Calendar, Users, Music, Briefcase } from 'lucide-react'; 
+import Link from 'next/link';
 
 const EventsMeetings = () => {
     const eventTypes = [
@@ -18,7 +19,7 @@ const EventsMeetings = () => {
                 <div className="w-full lg:w-1/2">
                     <div className="relative h-[350px] md:h-[450px] w-full rounded-2xl overflow-hidden shadow-2xl group">
                         <Image 
-                            src="/assets/home/home.jpg" 
+                            src="/assets/home/roomandsuites/roomandsuites2.jpg" 
                             alt="Grand Ballroom Event"
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -58,10 +59,20 @@ const EventsMeetings = () => {
 
                     {/* Dark Button with Hover Effect */}
                     <div className="pt-6">
-                        <button className="bg-[#1A2B48] text-white px-8 py-3.5 rounded-lg font-bold flex items-center gap-3 transition-all duration-300 hover:bg-[#2c3f64] hover:shadow-xl active:scale-95 group">
-                            Explore Venues 
-                            <span className="transition-transform group-hover:translate-x-2">→</span>
-                        </button>
+                    <Link
+              href="/homestay"
+              className="inline-flex items-center justify-center group mt-8 
+              bg-[#EAB308] hover:bg-[#D4AF37] 
+              text-[#1A2B48] font-bold 
+              px-8 py-4 rounded-lg 
+              gap-3 transition-all duration-300 
+              shadow-md hover:shadow-lg active:scale-95"
+            >
+              Browse Rooms
+              <span className="transition-transform group-hover:translate-x-2">
+                →
+              </span>
+            </Link>
                     </div>
                 </div>
 
