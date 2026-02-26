@@ -96,7 +96,7 @@ const RoomsPage = async () => {
                   </div>
                   <div className="flex items-center gap-1.5 text-gray-500 text-xs bg-gray-50 px-2 py-1.5 rounded-md">
                     <Users size={14} />
-                    <span>{room.capacity} Guests</span>
+                    <span>{room.capacity}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-gray-500 text-xs bg-gray-50 px-2 py-1.5 rounded-md col-span-2">
                     <Bed size={14} />
