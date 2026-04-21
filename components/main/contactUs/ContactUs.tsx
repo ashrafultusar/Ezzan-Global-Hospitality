@@ -18,7 +18,7 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Call Us",
     description: "Available 24/7 for your inquiries",
-    value: "+888045425560",
+    value: "+6017-708 5596, +60 17-590 4849 ",
     icon: <Phone className="w-6 h-6 text-[#d4a373]" />,
   },
   {
