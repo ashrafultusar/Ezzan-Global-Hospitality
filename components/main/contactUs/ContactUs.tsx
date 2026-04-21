@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { Phone, MessageCircle, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 
 // --- Types ---
 interface ContactMethod {
   title: string;
   description: string;
-  value: string;
+  value: string | string[];
   icon: React.ReactNode;
   btnLabel?: string;
   btnColor?: string;
@@ -18,13 +18,13 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Call Us",
     description: "Available 24/7 for your inquiries",
-    value: "+6017-708 5596, +60 17-590 4849 ",
+    value: ["+6017-708 5596", "+60 17-590 4849"],
     icon: <Phone className="w-6 h-6 text-[#d4a373]" />,
   },
   {
     title: "WhatsApp",
     description: "Quick responses via WhatsApp",
-    value: "+888045425560",
+    value: "+60175904849",
     icon: <MessageCircle className="w-6 h-6 text-[#25D366]" />,
     btnLabel: "Chat Now",
     btnColor: "bg-[#25D366]",
@@ -32,7 +32,7 @@ const TOP_CONTACTS: ContactMethod[] = [
   {
     title: "Email Us",
     description: "We'll respond within 24 hours",
-    value: "izzanglobalhospitality@gmail.com",
+    value: ["izzanglobalhospitality@gmail.com","izzanglobaltradingmsdnbhd@gmail.com"],
     icon: <Mail className="w-6 h-6 text-[#4285F4]" />, // Email Blue
   },
 ];
@@ -40,7 +40,7 @@ const TOP_CONTACTS: ContactMethod[] = [
 const LOCATIONS = [
   {
     id: 1,
-    name: "AXON Residence",
+    name: "AXON RESIDENCE",
     address:
       "5, Lorong Walter Grenier, Bukit Bintang, Kuala Lumpur, 55100, Malaysia",
     mapUrl:
@@ -48,7 +48,7 @@ const LOCATIONS = [
   },
   {
     id: 2,
-    name: "Mercu Summer Suites",
+    name: "MERCU SUMMER SUITES",
     address:
       "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
     mapUrl:
@@ -56,7 +56,7 @@ const LOCATIONS = [
   },
   {
     id: 3,
-    name: "The Majestic Hotel Kuala Lumpur, Autograph Collection",
+    name: "MAJESTIC RESIDENCE",
     address:
       "1016, Jln Sultan Ismail, Bandar Wawasan 50250 Kuala Lumpur Kuala Lumpur ",
     mapUrl:
@@ -64,7 +64,7 @@ const LOCATIONS = [
   },
   {
     id: 4,
-    name: "THE FACE Suites Hotel",
+    name: "THE PLATINUM SUITES",
     address:
       "1020, Jln Sultan Ismail, Kampung Baru, 50250 Kuala Lumpur, Wilayah Persekutuan, Titiwangsa, Kuala Lumpur, 50250, Malaysia",
     mapUrl:
@@ -72,7 +72,7 @@ const LOCATIONS = [
   },
   {
     id: 4,
-    name: "Lucentia Suites by HomeHorizon",
+    name: "LUCENTIA RESIDENCE",
     address:
       "City Centre, 2, Jln Hang Tuah, Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia",
     mapUrl:
@@ -131,6 +131,12 @@ export default function ContactUs() {
                 >
                   {contact.btnLabel}
                 </a>
+              ) : Array.isArray(contact.value) ? (
+                <div className="text-[#f2b830] font-bold">
+                  {contact.value.map((num, i) => (
+                    <p key={i}>{num}</p>
+                  ))}
+                </div>
               ) : (
                 <p className="text-[#f2b830] font-bold">{contact.value}</p>
               )}
@@ -142,7 +148,7 @@ export default function ContactUs() {
         <section className="pb-20 bg-[#FDFCFB]">
           <div className="max-w-7xl mx-auto px-6">
             <h2 className="text-3xl font-serif font-bold text-[#1a2b4b] text-center mb-12">
-              Our Hotel Locations
+              Our Homestay Locations
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
