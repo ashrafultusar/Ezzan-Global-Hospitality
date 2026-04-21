@@ -11,7 +11,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
-
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "Home Stay", href: "/homestay" },
@@ -53,19 +52,23 @@ const Footer = () => {
     {
       icon: Phone,
       label: "Phone",
-      value: "+6017-708 5596",
-      href: "tel:+888045425560",
+      value: ["+6017-708 5596", "+60 17-590 4849"],
+      href: "tel:+60177085596",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "izzanglobalhospitality@gmail.com",
-      href: "izzanglobalhospitality@gmail.com",
+      value: [
+        "izzanglobalhospitality@gmail.com",
+        "izzanglobaltradingmsdnbhd@gmail.com",
+      ],
+      href: "mailto:izzanglobalhospitality@gmail.com",
     },
     {
       icon: MapPin,
       label: "Address",
-      value: "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
+      value:
+        "8 Jalan Cendana Mercu Summer Suites, Kampung Baru, Kuala Lumpur, 50250, Malaysia",
       href: "#",
     },
   ];
@@ -78,20 +81,20 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center gap-4">
-                <div className="relative w-16 h-16 transform group-hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src="/assets/logo/logo.png" 
-                    alt="Izzan Global Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+              <div className="relative w-16 h-16 transform group-hover:scale-110 transition-transform duration-300">
+                <Image
+                  src="/assets/logo/logo.png"
+                  alt="Izzan Global Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-serif font-bold text-white">
                   Izzan Global
                 </span>
                 <span className="text-xs tracking-[0.2em] text-[#D4AF37] font-medium uppercase">
-                Hospitality 
+                  Hospitality
                 </span>
               </div>
             </div>
@@ -104,7 +107,8 @@ const Footer = () => {
 
             <div className="flex gap-4 pt-2">
               {socialLinks.map((social) => (
-                <a target="_blank"
+                <a
+                  target="_blank"
                   key={social.label}
                   href={social.href}
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${social.brandClass} hover:scale-110 active:scale-95 shadow-lg`}
@@ -138,7 +142,6 @@ const Footer = () => {
             </ul>
           </div>
 
-
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-bold text-white mb-6 pb-2 border-b border-[#D4AF37]/20">
@@ -154,13 +157,23 @@ const Footer = () => {
                   <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center group-hover:bg-[#D4AF37]/20 transition-colors">
                     <info.icon size={18} className="text-[#D4AF37]" />
                   </div>
+
                   <div>
                     <p className="text-sm font-medium text-white/90 group-hover:text-[#D4AF37] transition-colors">
                       {info.label}
                     </p>
-                    <p className="text-sm text-white/60 group-hover:text-white/90 transition-colors mt-1">
-                      {info.value}
-                    </p>
+
+                    {Array.isArray(info.value) ? (
+                      <div className="text-sm text-white/60 group-hover:text-white/90 transition-colors mt-1">
+                        {info.value.map((item, i) => (
+                          <p key={i}>{item}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-white/60 group-hover:text-white/90 transition-colors mt-1">
+                        {info.value}
+                      </p>
+                    )}
                   </div>
                 </a>
               ))}
