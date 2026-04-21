@@ -31,7 +31,7 @@ const RoomsAndSuites = () => {
           {/* Left Content */}
           <div className="w-full lg:w-1/2 space-y-6">
             <p className="text-gray-600 leading-relaxed max-w-lg">
-              From elegant deluxe rooms to lavish presidential suites, our hotels
+              From elegant deluxe rooms to lavish presidential suites, our homestay
               offer a diverse range of accommodations to suit every preference.
               Each room is thoughtfully designed with premium amenities and
               stunning views.
