@@ -38,7 +38,7 @@ const EventsMeetings = () => {
                         Events & Meetings
                     </h2>
                     <p className="text-gray-500 leading-relaxed text-sm md:text-base">
-                        From intimate gatherings to grand celebrations, our hotels provide world-class venues 
+                        From intimate gatherings to grand celebrations, our homestay provide world-class venues 
                         equipped with state-of-the-art facilities. Our dedicated events team ensures every detail 
                         is perfectly executed, leaving you free to focus on your guests.
                     </p>

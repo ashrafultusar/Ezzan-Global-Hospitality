@@ -26,7 +26,7 @@ export default function HomestayPage() {
 
           {/* Main Title */}
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-serif mb-6">
-            Luxury Hotels in Malaysia
+            Luxury Homestay in Malaysia
           </h1>
 
           {/* Description */}
