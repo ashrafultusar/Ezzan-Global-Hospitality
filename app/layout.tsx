@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       url: "/assets/logo/logo.png",
     },
   },
+
   description:
     "Izzan Global Hotels & Resorts — luxury hotel bookings, premium homestays, tour packages, and world-class hospitality services across Malaysia. Book your dream stay today.",
   keywords: [

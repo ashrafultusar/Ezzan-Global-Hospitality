@@ -7,7 +7,7 @@ import DeleteRoomButton from "@/components/admin/rooms/DeleteRoomButton";
 
 const RoomsPage = async () => {
   const { rooms } = await getAllRoomsData();
-  console.log(rooms);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       {/* Header Section */}
@@ -69,7 +69,7 @@ const RoomsPage = async () => {
               {/* Price Badge */}
               <div className="absolute bottom-3 left-3">
                 <span className="px-3 py-1 bg-black/70 backdrop-blur-md text-white text-xs font-bold rounded-lg shadow-lg">
-                  ${room.price}{" "}
+                  MYR {room.price}{" "}
                   <span className="text-[10px] font-normal opacity-80">
                     / night
                   </span>
