@@ -11,9 +11,9 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { requireStaff } from "@/lib/access-helper";
 
 const HotelSchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    description: z.string().min(10, "Description must be at least 10 characters"),
-    location: z.string().min(2, "Location is required"),
+    name: z.string().min(1, "Name must be at least 2 characters"),
+    description: z.string().min(1, "Description must be at least 10 characters"),
+    location: z.string().min(1, "Location is required"),
 });
 
 export async function createHotel(formData: FormData) {
