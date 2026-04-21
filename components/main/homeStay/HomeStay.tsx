@@ -8,7 +8,7 @@ export default async function HomeStayPage() {
 
   return (
     <div className="pt-18 pb-20 max-w-7xl mx-auto px-6">
-      <h1 className="text-4xl font-bold mb-10 text-[#1a2b4b]">Our Hotels</h1>
+      <h1 className="text-4xl font-bold mb-10 text-[#1a2b4b]">Our Homestay</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {hotels?.map((hotel: IHotel) => (
           <Link href={`/homestay/${hotel._id}`} key={hotel._id} className="group">

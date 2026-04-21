@@ -55,8 +55,7 @@ const VALUES: ValueItem[] = [
 export default function About() {
   return (
     <div className="w-full">
-      {/* --- Hero Section Fix --- */}
-      {/* হাইট h-[50vh] থেকে h-[60vh] করা হয়েছে এবং pt-20 দেওয়া হয়েছে যাতে হেডারের নিচে ঢাকা না পড়ে */}
+     
       <div className="relative h-[60vh] w-full flex items-center justify-center pt-20">
         <Image
           src="/assets/about/image1.jpg"
@@ -72,7 +71,7 @@ export default function About() {
             ABOUT US
           </p>
           <h1 className="text-4xl md:text-6xl font-serif max-w-4xl mx-auto leading-[1.2] mb-6 font-medium">
-            Malaysia&apos;s Premier <br className="hidden md:block" /> Hotel Collection
+            Malaysia&apos;s Premier <br className="hidden md:block" /> Homestay Collection
           </h1>
           <p className="text-gray-300 text-sm md:text-base font-light tracking-wide max-w-xl mx-auto">
             For over 15 years, we&apos;ve been curating the finest luxury hotel experiences across Malaysia.
@@ -92,7 +91,7 @@ export default function About() {
                 five exceptional properties across Malaysia&apos;s most sought-after destinations.
               </p>
               <p>
-                Each of our hotels reflects the unique character of its location while maintaining the highest
+                Each of our homestay reflects the unique character of its location while maintaining the highest
                 standards of luxury and service. From the bustling streets of Kuala Lumpur to the pristine
                 beaches of Langkawi, our properties offer guests an authentic Malaysian experience wrapped
                 in world-class hospitality.

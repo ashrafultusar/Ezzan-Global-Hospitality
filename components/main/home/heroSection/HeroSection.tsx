@@ -60,7 +60,7 @@ exclusive locations. Every moment crafted for your perfection.
               href="/homestay"
               className="bg-[#D4AF37] hover:bg-[#B37314] text-slate-900 font-bold px-8 py-3.5 rounded-md transition-all w-[80%] sm:w-auto text-base shadow-lg active:scale-95"
             >
-              Explore Our Hotels
+              Explore Our Homestay
             </Link>
             <Link
               href="/homestay"

@@ -37,7 +37,7 @@ const FeaturedHotels = async () => {
           </div>
 
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1A2B48]">
-            Featured Hotels
+            Featured Homestay
           </h2>
 
           <p className="text-gray-500 max-w-xl mx-auto">
